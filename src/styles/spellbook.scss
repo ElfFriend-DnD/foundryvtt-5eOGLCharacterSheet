@@ -1,0 +1,23 @@
+@import './mixins';
+@import './variables';
+
+.spellcasting-ability {
+  flex: 0 auto;
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+
+  > div {
+    flex: 1;
+    white-space: nowrap;
+  }
+
+  label {
+    font-weight: 700;
+    color: var(--accent-text);
+  }
+}
+
+.spell-comps {
+  @include spaced(0.2em);
+}

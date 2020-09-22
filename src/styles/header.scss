@@ -1,0 +1,239 @@
+@import './mixins';
+@import './variables';
+
+.sheet-header {
+  @include spaced($space);
+
+  border-bottom: 0;
+  flex: 0;
+
+  > section {
+    @include spaced-vertical($space / 2);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .profile {
+    border-right: none;
+    flex: 0 0 100px;
+    height: auto;
+    max-height: 100%;
+    max-width: 100px;
+  }
+
+  h1 {
+    flex: 0 auto;
+    height: auto;
+    padding: 0;
+    font-size: 1.6em;
+    font-weight: 700;
+
+    input {
+      font-size: inherit;
+      height: 100%;
+      line-height: normal;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+    }
+  }
+
+  .health {
+    flex: 2;
+  }
+
+  .death-save-attribute {
+    flex: 2;
+    background-color: rgba(var(--highlight), 0.1);
+    border-color: var(--highlight);
+
+    .attribute-value {
+      @include spaced($space / 2);
+
+      > * {
+        flex: 2.1; //arbitrary decimal to center failures
+        padding: 0;
+      }
+
+      > :last-child {
+        border-left: 2px groove var(--groove-gray);
+        padding-left: $space / 2;
+        flex: 1 0 15%;
+      }
+    }
+  }
+}
+
+.ac {
+  flex: 0 0 70px;
+  height: 80px; // arbitrary
+  min-width: 70px; // arbitrary based on the shield shape
+  padding: 12px; // arbitrary to fit within shield shape
+  position: relative;
+  text-align: center;
+
+  h4 {
+    color: var(--accent-text);
+    font-size: 10px;
+    font-weight: 700;
+    margin: 0;
+    text-transform: uppercase;
+  }
+}
+
+.ac-symbol {
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  > svg {
+    max-width: 100%;
+    max-height: 100%;
+
+    path {
+      fill: var(--light-gray);
+    }
+  }
+}
+
+.header-actions {
+  @include spaced($space / 2);
+
+  display: flex;
+  margin-top: auto;
+  justify-content: flex-start;
+  font-size: 12px;
+  font-family: 'Signika', sans-serif;
+
+  .rest {
+    align-items: center;
+    border: 1px solid var(--light-gray);
+    border-radius: $border-radius;
+    display: inline-flex;
+    padding: 0.1em 0.2em;
+
+    &:hover,
+    &:focus {
+      border-color: var(--highlight);
+      background-color: rgba(var(--highlight), 0.1);
+    }
+
+    i {
+      margin-left: 0.2em;
+    }
+  }
+}
+
+.header-details {
+  @include spaced-vertical($space / 2);
+
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+}
+
+.header-exp {
+  flex: 0 auto;
+  font-family: 'Signika', sans-serif;
+  font-size: 10px;
+  height: auto;
+  max-width: 27em;
+
+  .xpbar {
+    border-radius: 0;
+    border: 0;
+    flex: 0 0 auto;
+    height: 2px;
+    position: relative;
+    margin-bottom: 0;
+    background-color: var(--light-gray);
+
+    .bar {
+      background: var(--highlight);
+      border: 0;
+      height: 2px;
+      left: 0;
+      margin: 0;
+      position: absolute;
+      top: 0;
+    }
+  }
+
+  .experience {
+    flex: auto;
+    justify-items: center;
+    letter-spacing: 0.02em;
+    margin: 0;
+    font-size: inherit;
+
+    input {
+      flex: 1;
+      letter-spacing: inherit;
+    }
+
+    .max {
+      flex: 1;
+      text-align: left;
+    }
+
+    .left-label {
+      text-align: left;
+    }
+
+    .left-label,
+    .right-label {
+      flex: 0 0 max-content;
+    }
+  }
+}
+
+.health-armor {
+  @include spaced($space);
+}
+
+.inline-summary {
+  @include spaced(0.2em);
+
+  align-items: center;
+  color: var(--accent-text);
+  display: inline-flex;
+  flex: 0 auto;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    position: relative;
+    width: max-content;
+
+    // make editable items have a max-content that they can size based on
+    .hidden {
+      border: 1px solid transparent; // match input styles
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    input {
+      bottom: 0;
+      color: inherit;
+      font-weight: inherit;
+      height: 100%;
+      left: 0;
+      padding: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 100%;
+    }
+
+    .non-editable {
+      border: 1px solid transparent; // match input styles
+      display: block;
+    }
+  }
+}

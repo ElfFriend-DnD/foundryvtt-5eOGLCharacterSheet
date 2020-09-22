@@ -1,0 +1,203 @@
+@import './styles/variables.scss';
+
+// ensure our styles take precedence over 5e default
+.dnd5e.sheet.actor.character.ogl5e {
+  --accent-text: #4b4a44;
+  --color: #191813;
+  --groove-gray: #eeede0;
+  --highlight: #c53131;
+  --light-gray: #b5b3a4;
+
+  .dark-mode & {
+    --accent-text: #a0a0a0;
+    --color: #b5b5b5;
+    --groove-gray: #5e5e5e;
+    --highlight: #3f88e6;
+    --light-gray: #5e5e5e;
+  }
+
+  @import './styles/ability-scores.scss';
+  @import './styles/actions.scss';
+  @import './styles/attributes.scss';
+  @import './styles/header.scss';
+  @import './styles/inventory.scss';
+  @import './styles/sidebar.scss';
+  @import './styles/spellbook.scss';
+  @import './styles/tab-area.scss';
+  @import './styles/biography.scss';
+
+  min-height: 500px;
+
+  .window-content {
+    box-sizing: border-box;
+    padding: (
+      $space / 2
+    ); //  ($space / 2 + $scrollbar-width) ($space / 2) ($space / 2); // scrollbar width taken into account
+    // overflow: auto;
+
+    * {
+      box-sizing: inherit;
+    }
+
+    > form {
+      @include spaced-vertical($space);
+
+      // overflow: initial;
+      // height: auto;
+    }
+  }
+
+  input[type='text'] {
+    font-weight: inherit;
+
+    &:hover,
+    &:focus {
+      box-shadow: none;
+      border-color: var(--highlight);
+    }
+  }
+
+  input[type='checkbox'] {
+    width: 1em;
+    height: 1em;
+    flex-basis: 1em;
+    margin: 0;
+  }
+
+  h4.box-title {
+    font-size: 16px;
+  }
+
+  .sheet-main-wrapper {
+    @include spaced($space);
+
+    display: flex;
+  }
+
+  .sheet-main {
+    @include spaced-vertical($space);
+
+    display: flex;
+    flex-direction: column;
+    flex: 3 75%;
+  }
+
+  .tag {
+    display: flex;
+    place-content: center;
+    place-items: center;
+    line-height: normal;
+    margin: 0;
+    flex: 0 1 auto;
+
+    &.active {
+      background: var(--highlight);
+      color: white;
+    }
+  }
+
+  /* these lists now use tags and thus should be styled differenly */
+  .item-properties,
+  .traits-list {
+    @include spaced(0.2em);
+
+    display: flex;
+    flex-wrap: wrap;
+    line-height: normal;
+
+    > .tag {
+      margin-bottom: 0.2em;
+    }
+  }
+
+  /* Support Better Rolls / Minor QOL buttons on item summaries */
+  .item-properties .item-buttons {
+    @include spaced(0.2em);
+
+    display: flex;
+    font-size: 1em;
+    margin-bottom: $space / 2;
+    width: 100%;
+
+    .tag {
+      background-color: var(--light-gray);
+      font-size: inherit;
+    }
+
+    button {
+      background: none;
+      border: 0;
+      font-size: inherit;
+      line-height: normal;
+    }
+  }
+
+  /* complicated flex layout to allow tab areas to be scrollable */
+  /* instrumental: https://stackoverflow.com/questions/52487743/prevent-flex-item-from-exceeding-parent-height-and-make-scroll-bar-work */
+
+  .sheet-sidebar {
+    overflow: overlay;
+    padding-right: $scrollbar-width;
+  }
+
+  .sheet-main-wrapper {
+    overflow: hidden;
+    flex: 0 100%;
+  }
+
+  .sheet-main {
+    overflow: hidden;
+  }
+
+  .sheet-tab-area {
+    flex: 1 1 1px; /* makes this item grow, but not affect the parent's initial layout compuation */
+    overflow: hidden;
+  }
+
+  /* Scrollbars */
+
+  /* width */
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--light-gray);
+    border-color: var(--light-gray);
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--highlight);
+    border-color: var(--highlight);
+  }
+
+  /* copied from dnd5e, but without the nesting and element specific prefixes and removed some default values */
+
+  .attribute {
+    border: 2px groove var(--groove-gray);
+    border-radius: 4px;
+    text-align: center;
+  }
+
+  .attribute-value {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Modesto Condensed', 'Palatino Linotype', serif;
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  .attribute-footer {
+    font-family: 'Signika', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+  }
+}

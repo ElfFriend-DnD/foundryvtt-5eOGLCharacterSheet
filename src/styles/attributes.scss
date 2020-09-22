@@ -1,0 +1,53 @@
+@import './mixins';
+@import './variables';
+
+.attributes {
+  flex: 0 0 auto;
+  height: auto;
+
+  display: grid;
+  max-height: 30%;
+  overflow: overlay;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  grid-gap: $space / 2;
+
+  .attribute {
+    margin: 0;
+    width: 100%;
+  }
+}
+
+.attribute {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: auto;
+
+  .attribute-value {
+    font-size: 24px;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+}
+
+.attribute-footer {
+  display: flex;
+  align-items: center;
+  min-height: 18px; // arbitrary
+  justify-content: space-around;
+
+  input {
+    flex: 1;
+  }
+}
+
+.resource {
+  // flex: 1 100px;
+  // min-width: 100px;
+
+  .attribute-value {
+    input {
+      flex: 0 auto;
+    }
+  }
+}

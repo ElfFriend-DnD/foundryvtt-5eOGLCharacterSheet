@@ -1,0 +1,81 @@
+@import './mixins';
+@import './variables';
+
+.inventory {
+  hr {
+    width: 100%;
+  }
+}
+
+.inventory-header {
+  display: flex;
+  flex: 0 auto;
+  font-size: 12px;
+
+  h3 {
+    margin-bottom: 0;
+  }
+}
+
+.currency {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-left: auto;
+  flex: 1 0 auto;
+
+  .currency-inputs {
+    @include spaced($space);
+    align-items: center;
+    display: flex;
+
+    > * {
+      align-items: center;
+      display: flex;
+      flex-wrap: nowrap;
+
+      > * {
+        margin-left: 0.2em;
+      }
+    }
+  }
+
+  label {
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  .dynamic-input {
+    position: relative;
+    width: max-content;
+
+    .hidden {
+      border: 1px solid transparent; // match input styles
+      display: block;
+      min-width: 20px;
+      opacity: 0;
+      padding: 0.1em 0.2em;
+      pointer-events: none;
+    }
+
+    input {
+      bottom: 0;
+      color: inherit;
+      font-weight: normal;
+      height: 100%;
+      left: 0;
+      padding: 0.1em 0.2em;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 100%;
+    }
+  }
+}
+
+.encumberance {
+  .encumbered {
+    font-weight: 700;
+    color: var(--highlight);
+  }
+}
