@@ -72,4 +72,5 @@ interface OGL5eCharacterSheetSheetData extends ActorSheet5eCharacterSheetData {
 
 declare class OGL5eCharacterSheet extends ActorSheet5eCharacter {
   sheetData: OGL5eCharacterSheetSheetData;
+  getData(): OGL5eCharacterSheetSheetData;
 }

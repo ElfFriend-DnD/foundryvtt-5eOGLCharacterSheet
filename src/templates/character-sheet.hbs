@@ -2,177 +2,151 @@
 
   {{> (ogl5e-path "templates/parts/sheet-header.hbs")}}
 
-  {{!-- Ability Scores --}}
-  <ul class="ability-scores ability-score-row">
-    {{#each data.abilities as |ability id|}}
-    <li class="ability {{#if ability.proficient}}proficient{{/if}}" data-ability="{{id}}">
-      <h4 class="ability-name box-title rollable">{{ability.label}}</h4>
-      <input class="ability-score" name="data.abilities.{{id}}.value" type="text" value="{{ability.value}}"
-        data-dtype="Number" placeholder="10" />
-      <div class="ability-modifiers flexrow">
-        <span class="ability-mod" title="Modifier">{{numberFormat ability.mod decimals=0 sign=true}}</span>
-        <input type="hidden" name="data.abilities.{{id}}.proficient" value="{{ability.proficient}}"
-          data-dtype="Number" />
-        <a class="proficiency-toggle ability-proficiency"
-          title="{{ localize 'DND5E.Proficiency' }}">{{{ability.icon}}}</a>
-        <span class="ability-save" title="Saving Throw">{{numberFormat ability.save decimals=0 sign=true}}</span>
+  <main class="sheet-body">
+
+    <article class="tab core flexcol active" data-group="primary" data-tab="core">
+
+      <div class="flexcol sheet-body-column">
+        <div class="flexrow">
+          {{!-- Ability Scores --}}
+          <ul class="ability-scores ability-score-column">
+            {{#each data.abilities as |ability id|}}
+            <li class="ability {{#if ability.proficient}}proficient{{/if}}" data-ability="{{id}}">
+              <h4 class="ability-name box-title rollable">{{ability.label}}</h4>
+              <input class="ability-score" name="data.abilities.{{id}}.value" type="text" value="{{ability.value}}"
+                data-dtype="Number" placeholder="10" />
+              <div class="ability-modifiers flexrow">
+                <span class="ability-mod" title="Modifier">{{numberFormat ability.mod decimals=0 sign=true}}</span>
+                <input type="hidden" name="data.abilities.{{id}}.proficient" value="{{ability.proficient}}"
+                  data-dtype="Number" />
+                <a class="proficiency-toggle ability-proficiency"
+                  title="{{ localize 'DND5E.Proficiency' }}">{{{ability.icon}}}</a>
+                <span class="ability-save"
+                  title="Saving Throw">{{numberFormat ability.save decimals=0 sign=true}}</span>
+              </div>
+            </li>
+            {{/each}}
+          </ul>
+
+          {{> (ogl5e-path "templates/parts/actor-skills.hbs")}}
+        </div>
+
+        {{> (ogl5e-path "templates/parts/actor-traits.hbs")}}
       </div>
-    </li>
-    {{/each}}
 
-    <li class="attribute initiative">
-      <h4 class="attribute-name box-title">{{ localize "DND5E.Initiative" }}</h4>
-      <div class="attribute-value">
-        <span>{{numberFormat data.attributes.init.total decimals=0 sign=true}}</span>
-      </div>
-      <footer class="attribute-footer">
-        <span>{{ localize "DND5E.Modifier" }}</span>
-        <input name="data.attributes.init.value" type="text" placeholder="0" data-dtype="Number"
-          value="{{numberFormat data.attributes.init.value decimals=0 sign=true}}" />
-      </footer>
-    </li>
+      <div class="flexcol sheet-body-column">
+        {{!-- Health, Armor, Initiative, Speed, Exhaustion --}}
+        {{> (ogl5e-path "templates/parts/actor-health-armor.hbs")}}
 
-    <li class="attribute">
-      <h4 class="attribute-name box-title">{{ localize "DND5E.Speed" }}</h4>
-      <div class="attribute-value">
-        <input name="data.attributes.speed.value" type="text" value="{{data.attributes.speed.value}}" placeholder="0" />
-      </div>
-      <footer class="attribute-footer">
-        <input type="text" class="speed" name="data.attributes.speed.special" value="{{data.attributes.speed.special}}"
-          placeholder="{{ localize 'DND5E.SpeedSpecial' }}" />
-      </footer>
-    </li>
+        {{!-- Attacks & Spellcasting --}}
+        <section class="actions flexcol">
+          <ol class="inventory-list">
 
-  </ul>
+            {{!-- Actions --}}
+            {{> (ogl5e-path "templates/parts/actor-actions-list.hbs")  items=actionsData.action label=(localize "DND5E.Action") }}
 
+            {{!-- Bonus Actions --}}
+            {{> (ogl5e-path "templates/parts/actor-actions-list.hbs")  items=actionsData.bonus label=(localize "DND5E.BonusAction") }}
 
-  <div class="sheet-main-wrapper">
-    {{> (ogl5e-path "templates/parts/sheet-sidebar.hbs")}}
+            {{!-- Reactions --}}
+            {{> (ogl5e-path "templates/parts/actor-actions-list.hbs")  items=actionsData.reaction label=(localize "DND5E.Reaction") }}
 
+            {{!-- Special --}}
+            {{> (ogl5e-path "templates/parts/actor-actions-list.hbs")  items=actionsData.special label=(localize "DND5E.Special") }}
 
-    <main class="sheet-main">
-
-      {{!-- Header Attributes --}}
-      <ul class="attributes">
-        {{#each resources as |res|}}
-        <li class="attribute resource">
-          <h4 class="attribute-name box-title">
-            <input name="data.resources.{{res.name}}.label" type="text" value="{{res.label}}"
-              placeholder="{{res.placeholder}}" />
-          </h4>
-          <div class="attribute-value">
-
-            <input name="data.resources.{{res.name}}.value" type="text" value="{{res.value}}" data-dtype="Number"
-              placeholder="0" />
-            <span class="sep"> / </span>
-            <input name="data.resources.{{res.name}}.max" type="text" value="{{res.max}}" data-dtype="Number"
-              placeholder="0" />
-
-          </div>
-          <div class="attribute-footer">
-            <label class="recharge checkbox">
-              {{ localize "DND5E.AbbreviationSR" }} <input name="data.resources.{{res.name}}.sr" type="checkbox"
-                {{checked res.sr}} />
-            </label>
-
-            <label class="recharge checkbox">
-              {{ localize "DND5E.AbbreviationLR" }} <input name="data.resources.{{res.name}}.lr" type="checkbox"
-                {{checked res.lr}} />
-            </label>
-          </div>
-        </li>
-        {{/each}}
-      </ul>
-
-
-      <div class="sheet-tab-area">
-        {{!-- NPC Sheet Navigation --}}
-        <nav class="sheet-navigation tabs" data-group="primary">
-          <a class="item active" data-tab="actions">{{ localize "DND5E.ActionPl" }}</a>
-          <a class="item" data-tab="spellbook">{{ localize "DND5E.Spellbook" }}</a>
-          <a class="item" data-tab="inventory">{{ localize "DND5E.Inventory" }}</a>
-          <a class="item" data-tab="features">{{ localize "DND5E.Features" }}</a>
-          <a class="item" data-tab="biography">{{ localize "DND5E.Biography" }}</a>
-        </nav>
-
-        {{!-- NPC Sheet Body --}}
-        <section class="sheet-body">
-
-          {{!-- Actions Tab --}}
-          <div class="tab actions flexcol" data-group="primary" data-tab="actions">{{!-- Actions --}}
-            <ol class="inventory-list">
-
-              {{!-- Actions --}}
-              {{> (ogl5e-path "templates/parts/actor-actions-list.hbs")  items=actionsData.action label=(localize "DND5E.Action") }}
-
-              {{!-- Bonus Actions --}}
-              {{> (ogl5e-path "templates/parts/actor-actions-list.hbs")  items=actionsData.bonus label=(localize "DND5E.BonusAction") }}
-
-              {{!-- Reactions --}}
-              {{> (ogl5e-path "templates/parts/actor-actions-list.hbs")  items=actionsData.reaction label=(localize "DND5E.Reaction") }}
-
-              {{!-- Special --}}
-              {{> (ogl5e-path "templates/parts/actor-actions-list.hbs")  items=actionsData.special label=(localize "DND5E.Special") }}
-
-            </ol>
-          </div>
-
-          {{!-- Spellbook Tab --}}
-          <div class="tab spellbook flexcol" data-group="primary" data-tab="spellbook">
-            {{> (ogl5e-path "templates/parts/actor-spellbook.hbs")}}
-          </div>
-
-          {{!-- Inventory Tab --}}
-          <div class="tab inventory flexcol" data-group="primary" data-tab="inventory">
-            {{> (ogl5e-path "templates/parts/actor-inventory.hbs") sections=inventory}}
-          </div>
-
-          {{!-- Features Tab --}}
-          <div class="tab features flexcol" data-group="primary" data-tab="features">
-            {{> (ogl5e-path "templates/parts/actor-features.hbs") sections=features}}
-          </div>
-
-          {{!-- Biography Tab --}}
-          <div class="tab biography flexrow" data-group="primary" data-tab="biography">
-            <div class="left-notes note-entries flexcol">
-              <article>
-                <h4 class="section-titles biopage">{{ localize "ogl5e.Traits" }}</h4>
-                {{editor content=data.details.trait target="data.details.trait" button=true owner=owner editable=editable}}
-              </article>
-              <article>
-                <h4 class="section-titles biopage">{{ localize "ogl5e.Ideals" }}</h4>
-                {{editor content=data.details.ideal target="data.details.ideal" button=true owner=owner editable=editable}}
-              </article>
-              <article>
-                <h4 class="section-titles biopage">{{ localize "ogl5e.Bonds" }}</h4>
-                {{editor content=data.details.bond target="data.details.bond" button=true owner=owner editable=editable}}
-              </article>
-              <article>
-                <h4 class="section-titles biopage">{{ localize "ogl5e.Flaws" }}</h4>
-                {{editor content=data.details.flaw target="data.details.flaw" button=true owner=owner editable=editable}}
-              </article>
-              <article>
-                <h4 class="section-titles biopage">{{ localize "DND5E.Alignment" }}</h4>
-
-                <input type="text" name="data.details.alignment" value="{{data.details.alignment}}"
-                  placeholder="{{ localize 'DND5E.Alignment' }}" />
-              </article>
-            </div>
-
-            <div class="right-notes note-entries flexcol">
-              <article>
-                <h4 class="section-titles biopage">{{ localize "ogl5e.Appearance" }}</h4>
-                {{editor content=data.details.description.value target="data.details.description.value" button=true owner=owner editable=editable}}
-              </article>
-              <article class="biography-notes big-bio">
-                <h4 class="section-titles">{{ localize "ogl5e.Background" }}</h4>
-                {{editor content=data.details.biography.value target="data.details.biography.value" button=true owner=owner editable=editable}}
-              </article>
-            </div>
-
-          </div>
+          </ol>
         </section>
+
+        {{!-- Inventory --}}
+        <section class="inventory flexcol">
+          {{> (ogl5e-path "templates/parts/actor-inventory.hbs") sections=inventory}}
+
+        </section>
+
       </div>
-    </main>
-  </div>
+
+
+      <div class="flexcol sheet-body-column">
+        {{!-- Personality/Ideals/Bonds/Flaws --}}
+        <article>
+          <h4 class="section-titles biopage">{{ localize "ogl5e.Traits" }}</h4>
+          {{editor content=data.details.trait target="data.details.trait" button=true owner=owner editable=editable}}
+        </article>
+        <article>
+          <h4 class="section-titles biopage">{{ localize "ogl5e.Ideals" }}</h4>
+          {{editor content=data.details.ideal target="data.details.ideal" button=true owner=owner editable=editable}}
+        </article>
+        <article>
+          <h4 class="section-titles biopage">{{ localize "ogl5e.Bonds" }}</h4>
+          {{editor content=data.details.bond target="data.details.bond" button=true owner=owner editable=editable}}
+        </article>
+        <article>
+          <h4 class="section-titles biopage">{{ localize "ogl5e.Flaws" }}</h4>
+          {{editor content=data.details.flaw target="data.details.flaw" button=true owner=owner editable=editable}}
+        </article>
+
+        {{!-- Resources --}}
+        <ul class="attributes">
+          {{#each resources as |res|}}
+          <li class="attribute resource">
+            <h4 class="attribute-name box-title">
+              <input name="data.resources.{{res.name}}.label" type="text" value="{{res.label}}"
+                placeholder="{{res.placeholder}}" />
+            </h4>
+            <div class="attribute-value">
+
+              <input name="data.resources.{{res.name}}.value" type="text" value="{{res.value}}" data-dtype="Number"
+                placeholder="0" />
+              <span class="sep"> / </span>
+              <input name="data.resources.{{res.name}}.max" type="text" value="{{res.max}}" data-dtype="Number"
+                placeholder="0" />
+
+            </div>
+            <div class="attribute-footer">
+              <label class="recharge checkbox">
+                {{ localize "DND5E.AbbreviationSR" }} <input name="data.resources.{{res.name}}.sr" type="checkbox"
+                  {{checked res.sr}} />
+              </label>
+
+              <label class="recharge checkbox">
+                {{ localize "DND5E.AbbreviationLR" }} <input name="data.resources.{{res.name}}.lr" type="checkbox"
+                  {{checked res.lr}} />
+              </label>
+            </div>
+          </li>
+          {{/each}}
+        </ul>
+
+
+        {{!-- Features --}}
+        <div class="features flexcol" data-group="primary" data-tab="features">
+          {{> (ogl5e-path "templates/parts/actor-features.hbs") sections=features}}
+        </div>
+      </div>
+
+    </article>
+
+    {{!-- Spellbook Tab --}}
+    <article class="tab spellbook flexcol" data-group="primary" data-tab="spellbook">
+      {{> (ogl5e-path "templates/parts/actor-spellbook.hbs")}}
+    </article>
+
+    {{!-- Biography Tab --}}
+    <article class="tab biography flexrow" data-group="primary" data-tab="biography">
+      <div class="left-notes note-entries flexcol">
+        <article>
+          <h4 class="section-titles biopage">{{ localize "ogl5e.Appearance" }}</h4>
+          {{editor content=data.details.description.value target="data.details.description.value" button=true owner=owner editable=editable}}
+        </article>
+      </div>
+
+      <div class="right-notes note-entries flexcol">
+        <article class="biography-notes big-bio">
+          <h4 class="section-titles">{{ localize "ogl5e.Background" }}</h4>
+          {{editor content=data.details.biography.value target="data.details.biography.value" button=true owner=owner editable=editable}}
+        </article>
+      </div>
+
+    </article>
+  </main>
 </form>

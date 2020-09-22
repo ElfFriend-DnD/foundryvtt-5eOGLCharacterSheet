@@ -43,6 +43,7 @@ export class OGL5eCharacterSheet extends ActorSheet5eCharacter {
     mergeObject(options, {
       classes: ['dnd5e', 'sheet', 'actor', 'character', 'ogl5e'],
       height: 680,
+      width: 830,
     });
 
     return options;
@@ -160,6 +161,23 @@ export class OGL5eCharacterSheet extends ActorSheet5eCharacter {
     }
     sheetData.actionsData = actionsData;
 
+    log('sheetData before classlist', sheetData);
+
+    // replace classLabels with Subclass + Class list
+    try {
+      let items = sheetData.items;
+      const classList = items
+        .filter((item) => item.type === 'class')
+        .map((item) => {
+          return `${item.data.subclass} ${item.name} ${item.data.levels}`;
+        });
+
+      sheetData.classLabels = classList.join(', ');
+    } catch (e) {
+      log('error trying to parse class list', e);
+    }
+
+    log('sheetData after classlist', sheetData);
     return sheetData;
   }
 }

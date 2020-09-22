@@ -1,11 +1,4 @@
-<aside class="sheet-sidebar traits">
-
-  <div class="fancy-value">
-    <h4>{{ localize "DND5E.Proficiency" }}</h4>
-    <div>{{numberFormat data.attributes.prof decimals=0 sign=true}}</div>
-  </div>
-
-
+<aside class="skills-column traits">
   <div class="fancy-value">
     <h4>{{ localize "DND5E.Inspiration" }}</h4>
     <div>
@@ -13,6 +6,11 @@
         {{checked data.attributes.inspiration}} />
       <i class="fas fa-sun {{#if data.attributes.inspiration}}active{{/if}}"></i>
     </div>
+  </div>
+
+  <div class="fancy-value">
+    <h4>{{ localize "DND5E.Proficiency" }}</h4>
+    <div>{{numberFormat data.attributes.prof decimals=0 sign=true}}</div>
   </div>
 
   {{!-- Skills --}}
@@ -28,7 +26,4 @@
     </li>
     {{/each}}
   </ul>
-
-  {{> (ogl5e-path "templates/parts/actor-traits.hbs")}}
-
 </aside>
