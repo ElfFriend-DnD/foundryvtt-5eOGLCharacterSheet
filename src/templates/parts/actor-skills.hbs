@@ -13,17 +13,36 @@
     <div>{{numberFormat data.attributes.prof decimals=0 sign=true}}</div>
   </div>
 
-  {{!-- Skills --}}
-  <ul class="skills-list">
-    {{#each data.skills as |skill s|}}
-    <li class="skill flexrow {{#if skill.value}}proficient{{/if}}" data-skill="{{s}}">
-      <input type="hidden" name="data.skills.{{s}}.value" value="{{skill.value}}" data-dtype="Number" />
-      <a class="proficiency-toggle skill-proficiency" title="{{skill.hover}}">{{{skill.icon}}}</a>
-      <span class="skill-ability">{{skill.ability}}</span>
-      <h4 class="skill-name rollable">{{skill.label}}</h4>
-      <span class="skill-mod">{{numberFormat skill.total decimals=0 sign=true}}</span>
-      <!-- <span class="skill-passive">({{skill.passive}})</span> -->
-    </li>
-    {{/each}}
-  </ul>
+  <div>
+    <ul class="skills-list saving-throws">
+      {{#each data.abilities as |ability id|}}
+      <li class="ability skill flexrow {{#if ability.proficient}}proficient{{/if}}" data-ability="{{id}}">
+        <a class="proficiency-toggle skill-proficiency"
+          title="{{ localize 'DND5E.Proficiency' }}">{{{ability.icon}}}</a>
+        <span class="skill-mod" title="Saving Throw">{{numberFormat ability.save decimals=0 sign=true}}</span>
+        <h4 class="saving-throw-name rollable">{{ability.label}}</h4>
+      </li>
+      {{/each}}
+    </ul>
+    <h4>Saving Throws</h4>
+  </div>
+
+  <div>
+    {{!-- Skills --}}
+    <ul class="skills-list">
+      {{#each data.skills as |skill s|}}
+      <li class="skill flexrow {{#if skill.value}}proficient{{/if}}" data-skill="{{s}}">
+        <input type="hidden" name="data.skills.{{s}}.value" value="{{skill.value}}" data-dtype="Number" />
+        <a class="proficiency-toggle skill-proficiency" title="{{skill.hover}}">{{{skill.icon}}}</a>
+        <span class="skill-mod">{{numberFormat skill.total decimals=0 sign=true}}</span>
+        <h4 class="skill-name rollable">
+          {{skill.label}}
+          <span class="skill-ability">{{skill.ability}}</span>
+        </h4>
+        <!-- <span class="skill-passive">({{skill.passive}})</span> -->
+      </li>
+      {{/each}}
+    </ul>
+    <h4>Skills</h4>
+  </div>
 </aside>

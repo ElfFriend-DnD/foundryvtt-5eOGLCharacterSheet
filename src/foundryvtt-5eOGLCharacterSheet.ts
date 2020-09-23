@@ -49,6 +49,33 @@ export class OGL5eCharacterSheet extends ActorSheet5eCharacter {
     return options;
   }
 
+  /**
+   * Handle rolling an Ability check, either a test or a saving throw
+   * @param {Event} event   The originating click event
+   * @private
+   */
+  _onRollAbilitySave(event) {
+    event.preventDefault();
+    let ability = event.currentTarget.parentElement.dataset.ability;
+    log('onRollAbilitySave', ability);
+
+    //@ts-ignore
+    this.actor.rollAbilitySave(ability, { event: event });
+  }
+
+  /**
+   * Activate event listeners using the prepared sheet HTML
+   * @param html {HTML}   The prepared HTML object ready to be rendered into the DOM
+   */
+  activateListeners(html) {
+    super.activateListeners(html);
+    //@ts-ignore
+    if (!this.options.editable) return;
+
+    // Death saving throws
+    html.find('.saving-throw-name').click(this._onRollAbilitySave.bind(this));
+  }
+
   getData() {
     const sheetData = super.getData();
 
@@ -147,18 +174,6 @@ export class OGL5eCharacterSheet extends ActorSheet5eCharacter {
       log('error trying to digest spellbook', e);
     }
 
-    try {
-      const activeFeatures = sheetData?.features.find(({ label }) => label.includes('Active')).items || [];
-
-      // MUTATES actionsData
-      activeFeatures.forEach((item) => {
-        const activationType = getActivationType(item.data?.activation?.type);
-
-        actionsData[activationType].add(item);
-      });
-    } catch (e) {
-      log('error trying to digest features', e);
-    }
     sheetData.actionsData = actionsData;
 
     log('sheetData before classlist', sheetData);

@@ -4,7 +4,7 @@
 
   <main class="sheet-body">
 
-    <article class="tab core flexcol active" data-group="primary" data-tab="core">
+    <article class="tab core flexrow active" data-group="primary" data-tab="core">
 
       <div class="flexcol sheet-body-column">
         <div class="flexrow">
@@ -58,7 +58,7 @@
         </section>
 
         {{!-- Inventory --}}
-        <section class="inventory flexcol">
+        <section class="inventory flexrow">
           {{> (ogl5e-path "templates/parts/actor-inventory.hbs") sections=inventory}}
 
         </section>
@@ -127,7 +127,7 @@
     </article>
 
     {{!-- Spellbook Tab --}}
-    <article class="tab spellbook flexcol" data-group="primary" data-tab="spellbook">
+    <article class="tab spellbook flexrow" data-group="primary" data-tab="spellbook">
       {{> (ogl5e-path "templates/parts/actor-spellbook.hbs")}}
     </article>
 

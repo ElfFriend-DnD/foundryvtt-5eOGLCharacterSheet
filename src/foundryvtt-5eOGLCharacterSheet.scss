@@ -68,20 +68,6 @@
     font-size: 16px;
   }
 
-  .sheet-main-wrapper {
-    @include spaced($space);
-
-    display: flex;
-  }
-
-  .sheet-main {
-    @include spaced-vertical($space);
-
-    display: flex;
-    flex-direction: column;
-    flex: 3 75%;
-  }
-
   .tag {
     display: flex;
     place-content: center;
@@ -132,26 +118,25 @@
     }
   }
 
-  /* complicated flex layout to allow tab areas to be scrollable */
-  /* instrumental: https://stackoverflow.com/questions/52487743/prevent-flex-item-from-exceeding-parent-height-and-make-scroll-bar-work */
-
+  /* Overall Layout related */
   .sheet-sidebar {
     overflow: overlay;
     padding-right: $scrollbar-width;
   }
 
-  .sheet-main-wrapper {
-    overflow: hidden;
-    flex: 0 100%;
-  }
-
-  .sheet-main {
-    overflow: hidden;
-  }
-
   .sheet-tab-area {
     flex: 1 1 1px; /* makes this item grow, but not affect the parent's initial layout compuation */
     overflow: hidden;
+  }
+
+  .tab {
+    @include spaced;
+
+    flex-wrap: nowrap;
+  }
+
+  .sheet-body-column {
+    flex: 1 33%;
   }
 
   /* Scrollbars */

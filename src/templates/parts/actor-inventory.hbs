@@ -1,22 +1,8 @@
-<div class="inventory-header">
+<aside class="inventory-sidebar flexcol">
 
-  {{#unless isNPC}}
-  <div class="encumberance">
-    {{#with data.attributes.encumbrance}}
-    <h3><strong>Weight Carried:</strong> {{ value }} {{localize "DND5E.AbbreviationLbs"}}</h3>
-    <span class="{{#if (gt value max)}}encumbered{{/if}}">
-      Max: {{ max }} {{localize "DND5E.AbbreviationLbs"}}
-    </span>
-    {{/with}}
-  </div>
-  {{/unless}}
 
   {{#unless isNPC}}
   <div class="currency">
-    <h3>
-      <strong>{{localize "DND5E.Currency"}}</strong>
-      <a class="currency-convert" title="Convert Currency"><i class="fas fa-coins"></i></a>
-    </h3>
     <div class="currency-inputs">
       {{#each data.currency as |v k|}}
       <label class="denomination {{k}}">
@@ -30,20 +16,22 @@
     </div>
   </div>
   {{/unless}}
-</div>
 
-<div class="inventory-filters flexrow">
-  {{#unless isVehicle}}
-  <ul class="filter-list flexrow" data-filter="inventory">
-    <li class="filter-item tag" data-filter="action">{{localize "DND5E.Action"}}</li>
-    <li class="filter-item tag" data-filter="bonus">{{localize "DND5E.BonusAction"}}</li>
-    <li class="filter-item tag" data-filter="reaction">{{localize "DND5E.Reaction"}}</li>
-    <li class="filter-item tag" data-filter="equipped">{{localize "DND5E.Equipped"}}</li>
-  </ul>
+  {{#unless isNPC}}
+  <div class="encumberance">
+    {{#with data.attributes.encumbrance}}
+    <strong>{{localize "DND5E.CoverTotal"}} {{localize "DND5E.ItemContainerCapacityWeight"}}</strong>
+    <h3>{{ value }} {{localize "DND5E.AbbreviationLbs"}}</h3>
+    {{#if (gt value max)}}
+    <span class="encumbered">
+      Max: {{ max }} {{localize "DND5E.AbbreviationLbs"}}
+    </span>
+    {{/if}}
+    {{/with}}
+  </div>
   {{/unless}}
-</div>
+</aside>
 
-{{!-- <div class="scrollable-area"> --}}
 <ol class="inventory-list">
   {{#each sections as |section sid|}}
   <li class="inventory-header flexrow">
@@ -59,7 +47,6 @@
     {{/if}}
 
     <div class="item-detail item-uses">{{localize "DND5E.Charges"}}</div>
-    <div class="item-detail item-action">{{localize "DND5E.Usage"}}</div>
     {{/if}}
 
     {{#if ../owner}}
@@ -80,7 +67,7 @@
         {{#if section.editableName}}
         <input type="text" value="{{item.name}}">
         {{else}}
-        <div class="item-image" style="background-image: url({{item.img}})"></div>
+
         <h4>
           {{item.name~}}
           {{~#if item.isStack}} ({{item.data.quantity}}){{/if}}
@@ -119,12 +106,6 @@
         / {{item.data.uses.max}}
         {{/if}}
       </div>
-
-      <div class="item-detail item-action">
-        {{#if item.data.activation.type }}
-        {{item.labels.activation}}
-        {{/if}}
-      </div>
       {{/if}}
 
       {{#if ../../owner}}
@@ -144,4 +125,3 @@
   </ol>
   {{/each}}
 </ol>
-{{!-- </div> --}}

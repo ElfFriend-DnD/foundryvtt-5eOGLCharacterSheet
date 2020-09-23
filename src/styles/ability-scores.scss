@@ -2,6 +2,8 @@
 @import './variables';
 
 .ability-scores {
+  height: auto;
+
   .ability {
     height: auto;
     &:last-child {
@@ -22,12 +24,13 @@
   }
 }
 
-.ability-score-row {
-  @include spaced($space / 2);
+.ability-score-column {
+  @include spaced-vertical($space / 2);
 
   border-radius: 0;
   border: 0;
   display: flex;
+  flex-direction: column;
   flex: 0 0 auto;
   height: auto;
 

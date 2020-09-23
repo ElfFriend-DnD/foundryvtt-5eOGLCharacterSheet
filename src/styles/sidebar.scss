@@ -35,6 +35,14 @@ ul.skills-list {
       letter-spacing: 0.01em;
       opacity: 0.6;
       text-transform: uppercase;
+
+      &::before {
+        content: '(';
+      }
+
+      &::after {
+        content: ')';
+      }
     }
   }
 }

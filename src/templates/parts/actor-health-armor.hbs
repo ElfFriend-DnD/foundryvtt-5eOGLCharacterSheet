@@ -37,66 +37,58 @@
     </li>
   </ul>
 
-  <div class="attribute death-save-attribute">
-    <h4 class="attribute-name box-title death-save rollable">Death Saves</h4>
+
+  <div class="attribute health">
+    <h4 class="attribute-name box-title">{{ localize "DND5E.HitPoints" }}</h4>
     <div class="attribute-value multiple">
-      <div>
-        <input type="text" name="data.attributes.death.success" data-dtype="Number" placeholder="0"
-          value="{{data.attributes.death.success}}" />
-        <label class="attribute-footer">
-          <i class="fas fa-check"></i></label>
-      </div>
-      <div>
-        <input type="text" name="data.attributes.death.failure" data-dtype="Number" placeholder="0"
-          value="{{data.attributes.death.failure}}" />
-        <label class="attribute-footer">
-          <i class="fas fa-times"></i>
-        </label>
-      </div>
-      <div>
-        <small><input type="text" name="data.attributes.hp.value" data-dtype="Number" placeholder="0"
-            value="{{data.attributes.hp.value}}" /></small>
-        <label class="attribute-footer">
-          <small>Healing</small>
-        </label>
-      </div>
+      <input name="data.attributes.hp.value" type="text" value="{{data.attributes.hp.value}}" data-dtype="Number"
+        placeholder="10" />
+      <span class="sep"> / </span>
+      <input name="data.attributes.hp.max" type="text" value="{{data.attributes.hp.max}}" data-dtype="Number"
+        placeholder="10" />
     </div>
+    <footer class="attribute-footer">
+      <input name="data.attributes.hp.temp" type="text" class="temphp" placeholder="+{{ localize 'DND5E.Temp' }}"
+        value="{{data.attributes.hp.temp}}" data-dtype="{{data.attributes.hp.type}}" />
+      <input name="data.attributes.hp.tempmax" type="text" class="temphp" placeholder="+{{ localize 'DND5E.Max' }}"
+        value="{{data.attributes.hp.tempmax}}" data-dtype="{{data.attributes.hp.type}}" />
+    </footer>
   </div>
 
   <div class="hd-ds">
     <div class="attribute health">
-      <h4 class="attribute-name box-title">{{ localize "DND5E.HitPoints" }}</h4>
       <div class="attribute-value multiple">
-        <input name="data.attributes.hp.value" type="text" value="{{data.attributes.hp.value}}" data-dtype="Number"
-          placeholder="10" />
+        <input name="data.attributes.hp.value" type="text" value="{{data.attributes.hd}}" data-dtype="Number"
+          placeholder="0" />
         <span class="sep"> / </span>
-        <input name="data.attributes.hp.max" type="text" value="{{data.attributes.hp.max}}" data-dtype="Number"
-          placeholder="10" />
+        <span class="non-editable">{{data.details.level}}</span>
       </div>
       <footer class="attribute-footer">
-        <input name="data.attributes.hp.temp" type="text" class="temphp" placeholder="+{{ localize 'DND5E.Temp' }}"
-          value="{{data.attributes.hp.temp}}" data-dtype="{{data.attributes.hp.type}}" />
-        <input name="data.attributes.hp.tempmax" type="text" class="temphp" placeholder="+{{ localize 'DND5E.Max' }}"
-          value="{{data.attributes.hp.tempmax}}" data-dtype="{{data.attributes.hp.type}}" />
+        <h4 class="attribute-name box-title">
+          <a class="rest short-rest">{{ localize "DND5E.HitDice" }}</a>
+        </h4>
       </footer>
     </div>
 
-    <div class="attribute health">
-      <h4 class="attribute-name box-title">{{ localize "DND5E.HitPoints" }}</h4>
+    <div class="attribute death-save-attribute">
+      <h4 class="attribute-name box-title death-save rollable">Death Saves</h4>
       <div class="attribute-value multiple">
-        <input name="data.attributes.hp.value" type="text" value="{{data.attributes.hp.value}}" data-dtype="Number"
-          placeholder="10" />
-        <span class="sep"> / </span>
-        <input name="data.attributes.hp.max" type="text" value="{{data.attributes.hp.max}}" data-dtype="Number"
-          placeholder="10" />
+        <div>
+          <input type="text" name="data.attributes.death.success" data-dtype="Number" placeholder="0"
+            value="{{data.attributes.death.success}}" />
+          <label class="attribute-footer">
+            <i class="fas fa-check"></i></label>
+        </div>
+        <div>
+          <input type="text" name="data.attributes.death.failure" data-dtype="Number" placeholder="0"
+            value="{{data.attributes.death.failure}}" />
+          <label class="attribute-footer">
+            <i class="fas fa-times"></i>
+          </label>
+        </div>
       </div>
-      <footer class="attribute-footer">
-        <input name="data.attributes.hp.temp" type="text" class="temphp" placeholder="+{{ localize 'DND5E.Temp' }}"
-          value="{{data.attributes.hp.temp}}" data-dtype="{{data.attributes.hp.type}}" />
-        <input name="data.attributes.hp.tempmax" type="text" class="temphp" placeholder="+{{ localize 'DND5E.Max' }}"
-          value="{{data.attributes.hp.tempmax}}" data-dtype="{{data.attributes.hp.type}}" />
-      </footer>
     </div>
+
   </div>
 
 
