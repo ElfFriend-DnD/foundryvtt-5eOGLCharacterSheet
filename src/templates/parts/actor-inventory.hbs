@@ -1,17 +1,16 @@
-<aside class="inventory-sidebar flexcol">
+<aside class="inventory-sidebar">
 
 
   {{#unless isNPC}}
   <div class="currency">
     <div class="currency-inputs">
       {{#each data.currency as |v k|}}
-      <label class="denomination {{k}}">
-        {{k}}
-        <div class="dynamic-input">
-          <input type="text" name="data.currency.{{k}}" value="{{v}}" data-dtype="Number" />
-          <span class="hidden">{{ v }}</span>
-        </div>
-      </label>
+      <div class="currency-input">
+        <label class="denomination {{k}}">
+          {{k}}
+        </label>
+        <input type="text" name="data.currency.{{k}}" value="{{v}}" data-dtype="Number" />
+      </div>
       {{/each}}
     </div>
   </div>
@@ -33,21 +32,33 @@
 </aside>
 
 <ol class="inventory-list">
-  {{#each sections as |section sid|}}
   <li class="inventory-header flexrow">
-    <h3 class="item-name flexrow">{{localize section.label}}</h3>
+    <div class="item-detail item-quantity" title="{{localize "DND5E.Quantity"}}">
+      <i class="fas fa-hashtag"></i>
+    </div>
 
-    {{#if section.columns}}
-    {{#each section.columns}}
-    <div class="item-detail {{css}}">{{label}}</div>
-    {{/each}}
-    {{else}}
-    {{#if ../isCharacter}}
-    <div class="item-detail item-weight">{{localize "DND5E.Weight"}}</div>
-    {{/if}}
+    <h3 class="item-name flexrow">{{localize "DND5E.ItemName"}}</h3>
 
-    <div class="item-detail item-uses">{{localize "DND5E.Charges"}}</div>
+    <div class="item-detail item-weight" title="{{localize "DND5E.Weight"}}">
+      <i class="fas fa-weight-hanging"></i>
+    </div>
+
+    {{#if ../owner}}
+    <div class="item-controls">
+      <a class="item-control item-create" title='{{localize "DND5E.ItemCreate"}}'
+        {{#each section.dataset as |v k|}}data-{{k}}="{{v}}" {{/each}}>
+        <i class="fas fa-plus"></i> {{localize "DND5E.Add"}}
+      </a>
+    </div>
     {{/if}}
+  </li>
+
+  {{#each sections as |section sid|}}
+  <li class="sub-header">
+
+    <h3>{{localize section.label}}</h3>
+
+    <hr />
 
     {{#if ../owner}}
     <div class="item-controls">
@@ -63,50 +74,29 @@
     {{#each section.items as |item iid|}}
     <li class="item flexrow {{section.css}}"
       data-item-id="{{#if section.editableName}}{{iid}}{{else}}{{item._id}}{{/if}}">
-      <div class="item-name flexrow rollable">
+      <div class="item-detail item-quantity">
+        <input type="text" name="item.data.quantity" value="{{item.data.quantity}}" data-dtype="Number" />
+      </div>
+
+      <div class="item-name flexrow">
         {{#if section.editableName}}
         <input type="text" value="{{item.name}}">
         {{else}}
 
         <h4>
           {{item.name~}}
-          {{~#if item.isStack}} ({{item.data.quantity}}){{/if}}
           {{~#if item.data.attuned}} <i class="fas fa-sun attuned" title={{localize "DND5E.Attuned"}}></i>{{/if}}
         </h4>
         {{/if}}
       </div>
 
-      {{#if section.columns}}
-      {{#each section.columns}}
-      <div class="item-detail {{css}}">
-        {{#with (getProperty item property)}}
-        {{#if ../editable}}
-        <input type="text" value="{{this}}" placeholder="&mdash;" data-dtype="{{../editable}}"
-          data-property="{{../property}}">
-        {{else}}
-        {{this}}
-        {{/if}}
-        {{/with}}
-      </div>
-      {{/each}}
-      {{else}}
-      {{#if ../../isCharacter}}
       <div class="item-detail item-weight">
         {{#if item.totalWeight}}
         <div class="item-detail">
-          {{ item.totalWeight }} {{localize "DND5E.AbbreviationLbs"}}
+          {{ item.totalWeight }}
         </div>
         {{/if}}
       </div>
-      {{/if}}
-
-      <div class="item-detail item-uses">
-        {{#if item.hasUses }}
-        <input type="text" value="{{item.data.uses.value}}" placeholder="0" />
-        / {{item.data.uses.max}}
-        {{/if}}
-      </div>
-      {{/if}}
 
       {{#if ../../owner}}
       <div class="item-controls">
@@ -120,6 +110,7 @@
         <a class="item-control item-delete" title='{{localize "DND5E.ItemDelete"}}'><i class="fas fa-trash"></i></a>
       </div>
       {{/if}}
+
     </li>
     {{/each}}
   </ol>

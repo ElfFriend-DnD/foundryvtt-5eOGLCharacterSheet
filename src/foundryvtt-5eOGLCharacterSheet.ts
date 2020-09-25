@@ -5,19 +5,19 @@ import { MODULE_ID, MySettings } from './constants.js';
 //@ts-ignore
 import ActorSheet5eCharacter from '../../systems/dnd5e/module/actor/sheets/character.js';
 
-Handlebars.registerHelper('ogl5e-path', (relativePath: string) => {
+Handlebars.registerHelper('ogl5e-sheet-path', (relativePath: string) => {
   return `modules/${MODULE_ID}/${relativePath}`;
 });
 
-Handlebars.registerHelper('ogl5e-safeVal', (value, fallback) => {
+Handlebars.registerHelper('ogl5e-sheet-safeVal', (value, fallback) => {
   return new Handlebars.SafeString(value || fallback);
 });
 
-Handlebars.registerHelper('ogl5e-add', (value: number, toAdd: number) => {
+Handlebars.registerHelper('ogl5e-sheet-add', (value: number, toAdd: number) => {
   return new Handlebars.SafeString(String(value + toAdd));
 });
 
-Handlebars.registerHelper('ogl5e-isEmpty', (input: Object | Array<any> | Set<any>) => {
+Handlebars.registerHelper('ogl5e-sheet-isEmpty', (input: Object | Array<any> | Set<any>) => {
   if (input instanceof Array) {
     return input.length < 1;
   }
@@ -31,6 +31,7 @@ export class OGL5eCharacterSheet extends ActorSheet5eCharacter {
   get template() {
     //@ts-ignore
     if (!game.user.isGM && this.actor.limited) {
+      // FIXME TS
       return `modules/${MODULE_ID}/templates/character-sheet-ltd.hbs`;
     }
 
@@ -41,7 +42,7 @@ export class OGL5eCharacterSheet extends ActorSheet5eCharacter {
     const options = super.defaultOptions;
 
     mergeObject(options, {
-      classes: ['dnd5e', 'sheet', 'actor', 'character', 'ogl5e'],
+      classes: ['dnd5e', 'sheet', 'actor', 'character', 'ogl5e-sheet'],
       height: 680,
       width: 830,
     });
@@ -60,7 +61,7 @@ export class OGL5eCharacterSheet extends ActorSheet5eCharacter {
     log('onRollAbilitySave', ability);
 
     //@ts-ignore
-    this.actor.rollAbilitySave(ability, { event: event });
+    this.actor.rollAbilitySave(ability, { event: event }); // FIXME TS
   }
 
   /**
@@ -70,9 +71,9 @@ export class OGL5eCharacterSheet extends ActorSheet5eCharacter {
   activateListeners(html) {
     super.activateListeners(html);
     //@ts-ignore
-    if (!this.options.editable) return;
+    if (!this.options.editable) return; // FIXME TS
 
-    // Death saving throws
+    // Saving Throws
     html.find('.saving-throw-name').click(this._onRollAbilitySave.bind(this));
   }
 

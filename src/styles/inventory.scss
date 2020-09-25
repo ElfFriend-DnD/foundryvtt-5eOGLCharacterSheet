@@ -14,67 +14,103 @@
 
   h3 {
     margin-bottom: 0;
+    margin-right: 0;
+  }
+}
+
+.inventory-list {
+  .item {
+    padding: 0;
+    position: relative;
+
+    &.expanded {
+      .item-controls {
+        display: flex !important;
+      }
+    }
+
+    .item-controls {
+      display: none !important;
+      width: 100%;
+      flex: 1 0 100%;
+      order: 16;
+      place-content: flex-end;
+    }
+  }
+
+  .item-quantity {
+    flex: 0 0 2.5em;
+  }
+
+  .item-weight {
+    flex: 0 0 2.5em;
+  }
+
+  .sub-header {
+    @include spaced($space);
+
+    display: flex;
+    padding: 0 $space;
+
+    h3 {
+      font-family: 'Modesto Condensed', 'Palatino Linotype', serif;
+      font-weight: 700;
+      flex: 0 auto;
+      margin-bottom: 0;
+    }
+
+    hr {
+      flex: 1 100%;
+      height: 2px;
+    }
+
+    .item-controls {
+      flex: 0 0 auto;
+
+      a {
+        flex: 1 0 auto;
+      }
+    }
   }
 }
 
 .inventory-sidebar {
+  @include spaced-vertical($space);
+  display: flex;
+  flex-direction: column;
   flex: 0 auto;
 }
 
 .currency {
+  align-items: stretch;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  margin-left: auto;
-  flex: 1 0 auto;
+  flex: 0 auto;
 
   .currency-inputs {
-    @include spaced($space);
+    @include spaced-vertical($space);
     align-items: center;
     flex-direction: column;
     display: flex;
 
-    > * {
-      align-items: center;
-      display: flex;
-      flex-wrap: nowrap;
-
-      > * {
-        margin-left: 0.2em;
-      }
+    input {
+      margin-left: 0.2em;
+      width: 4em;
     }
+  }
+
+  .currency-input {
+    position: relative;
+    width: 100%;
   }
 
   label {
     text-transform: uppercase;
     font-weight: 700;
-  }
-
-  .dynamic-input {
-    position: relative;
-    width: max-content;
-
-    .hidden {
-      border: 1px solid transparent; // match input styles
-      display: block;
-      min-width: 20px;
-      opacity: 0;
-      padding: 0.1em 0.2em;
-      pointer-events: none;
-    }
-
-    input {
-      bottom: 0;
-      color: inherit;
-      font-weight: normal;
-      height: 100%;
-      left: 0;
-      padding: 0.1em 0.2em;
-      position: absolute;
-      right: 0;
-      top: 0;
-      width: 100%;
-    }
+    font-size: 0.6em;
+    position: absolute;
+    right: 100%;
+    top: 0.7em;
   }
 }
 

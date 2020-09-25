@@ -2,7 +2,18 @@
 @import './variables';
 
 .health-armor {
+  @include spaced-vertical($space);
+
+  background: var(--groove-gray);
+  padding: $space;
+}
+
+.ac-initiative-speed {
   @include spaced($space);
+
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .ac {
@@ -19,6 +30,13 @@
     font-weight: 700;
     margin: 0;
     text-transform: uppercase;
+  }
+}
+
+.hd {
+  .non-editable {
+    flex: 0 auto;
+    width: 100%;
   }
 }
 

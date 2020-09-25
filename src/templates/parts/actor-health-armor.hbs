@@ -1,9 +1,9 @@
 <section class="flexcol health-armor">
 
-  <ul class="flexrow">
+  <ul class="ac-initiative-speed flexrow">
     <li class="ac">
       <div class="ac-symbol">
-        {{> (ogl5e-path "assets/armor-class.hbs")}}
+        {{> (ogl5e-sheet-path "assets/armor-class.hbs")}}
       </div>
       <h4>Armor</h4>
       <div class="attribute-value">
@@ -55,18 +55,19 @@
     </footer>
   </div>
 
-  <div class="hd-ds">
-    <div class="attribute health">
+  <div class="hd-ds flexrow">
+    <div class="attribute hd">
+      <h4 class="attribute-name box-title">
+        <a class="rest short-rest">{{ localize "DND5E.HitDice" }}</a>
+      </h4>
       <div class="attribute-value multiple">
-        <input name="data.attributes.hp.value" type="text" value="{{data.attributes.hd}}" data-dtype="Number"
+        <input name="data.attributes.hd" type="text" value="{{data.attributes.hd}}" data-dtype="Number"
           placeholder="0" />
         <span class="sep"> / </span>
         <span class="non-editable">{{data.details.level}}</span>
       </div>
       <footer class="attribute-footer">
-        <h4 class="attribute-name box-title">
-          <a class="rest short-rest">{{ localize "DND5E.HitDice" }}</a>
-        </h4>
+        {{!-- display hit die size? features[class].data.hitdice --}}
       </footer>
     </div>
 
@@ -76,17 +77,17 @@
         <div>
           <input type="text" name="data.attributes.death.success" data-dtype="Number" placeholder="0"
             value="{{data.attributes.death.success}}" />
-          <label class="attribute-footer">
-            <i class="fas fa-check"></i></label>
         </div>
         <div>
           <input type="text" name="data.attributes.death.failure" data-dtype="Number" placeholder="0"
             value="{{data.attributes.death.failure}}" />
-          <label class="attribute-footer">
-            <i class="fas fa-times"></i>
-          </label>
         </div>
       </div>
+      <footer class="attribute-footer">
+        <i class="fas fa-check"></i>
+
+        <i class="fas fa-times"></i>
+      </footer>
     </div>
 
   </div>

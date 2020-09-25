@@ -1,6 +1,6 @@
 <form class="{{cssClass}} flexcol" autocomplete="off">
 
-  {{> (ogl5e-path "templates/parts/sheet-header.hbs")}}
+  {{> (ogl5e-sheet-path "templates/parts/sheet-header.hbs")}}
 
   <main class="sheet-body">
 
@@ -28,38 +28,38 @@
             {{/each}}
           </ul>
 
-          {{> (ogl5e-path "templates/parts/actor-skills.hbs")}}
+          {{> (ogl5e-sheet-path "templates/parts/actor-skills.hbs")}}
         </div>
 
-        {{> (ogl5e-path "templates/parts/actor-traits.hbs")}}
+        {{> (ogl5e-sheet-path "templates/parts/actor-traits.hbs")}}
       </div>
 
       <div class="flexcol sheet-body-column">
         {{!-- Health, Armor, Initiative, Speed, Exhaustion --}}
-        {{> (ogl5e-path "templates/parts/actor-health-armor.hbs")}}
+        {{> (ogl5e-sheet-path "templates/parts/actor-health-armor.hbs")}}
 
         {{!-- Attacks & Spellcasting --}}
         <section class="actions flexcol">
           <ol class="inventory-list">
 
             {{!-- Actions --}}
-            {{> (ogl5e-path "templates/parts/actor-actions-list.hbs")  items=actionsData.action label=(localize "DND5E.Action") }}
+            {{> (ogl5e-sheet-path "templates/parts/actor-actions-list.hbs")  items=actionsData.action label=(localize "DND5E.Action") }}
 
             {{!-- Bonus Actions --}}
-            {{> (ogl5e-path "templates/parts/actor-actions-list.hbs")  items=actionsData.bonus label=(localize "DND5E.BonusAction") }}
+            {{> (ogl5e-sheet-path "templates/parts/actor-actions-list.hbs")  items=actionsData.bonus label=(localize "DND5E.BonusAction") }}
 
             {{!-- Reactions --}}
-            {{> (ogl5e-path "templates/parts/actor-actions-list.hbs")  items=actionsData.reaction label=(localize "DND5E.Reaction") }}
+            {{> (ogl5e-sheet-path "templates/parts/actor-actions-list.hbs")  items=actionsData.reaction label=(localize "DND5E.Reaction") }}
 
             {{!-- Special --}}
-            {{> (ogl5e-path "templates/parts/actor-actions-list.hbs")  items=actionsData.special label=(localize "DND5E.Special") }}
+            {{> (ogl5e-sheet-path "templates/parts/actor-actions-list.hbs")  items=actionsData.special label=(localize "DND5E.Special") }}
 
           </ol>
         </section>
 
         {{!-- Inventory --}}
         <section class="inventory flexrow">
-          {{> (ogl5e-path "templates/parts/actor-inventory.hbs") sections=inventory}}
+          {{> (ogl5e-sheet-path "templates/parts/actor-inventory.hbs") sections=inventory}}
 
         </section>
 
@@ -69,19 +69,19 @@
       <div class="flexcol sheet-body-column">
         {{!-- Personality/Ideals/Bonds/Flaws --}}
         <article>
-          <h4 class="section-titles biopage">{{ localize "ogl5e.Traits" }}</h4>
+          <h4 class="section-titles biopage">{{ localize "ogl5e-sheet.Traits" }}</h4>
           {{editor content=data.details.trait target="data.details.trait" button=true owner=owner editable=editable}}
         </article>
         <article>
-          <h4 class="section-titles biopage">{{ localize "ogl5e.Ideals" }}</h4>
+          <h4 class="section-titles biopage">{{ localize "ogl5e-sheet.Ideals" }}</h4>
           {{editor content=data.details.ideal target="data.details.ideal" button=true owner=owner editable=editable}}
         </article>
         <article>
-          <h4 class="section-titles biopage">{{ localize "ogl5e.Bonds" }}</h4>
+          <h4 class="section-titles biopage">{{ localize "ogl5e-sheet.Bonds" }}</h4>
           {{editor content=data.details.bond target="data.details.bond" button=true owner=owner editable=editable}}
         </article>
         <article>
-          <h4 class="section-titles biopage">{{ localize "ogl5e.Flaws" }}</h4>
+          <h4 class="section-titles biopage">{{ localize "ogl5e-sheet.Flaws" }}</h4>
           {{editor content=data.details.flaw target="data.details.flaw" button=true owner=owner editable=editable}}
         </article>
 
@@ -120,7 +120,7 @@
 
         {{!-- Features --}}
         <div class="features flexcol" data-group="primary" data-tab="features">
-          {{> (ogl5e-path "templates/parts/actor-features.hbs") sections=features}}
+          {{> (ogl5e-sheet-path "templates/parts/actor-features.hbs") sections=features}}
         </div>
       </div>
 
@@ -128,21 +128,21 @@
 
     {{!-- Spellbook Tab --}}
     <article class="tab spellbook flexrow" data-group="primary" data-tab="spellbook">
-      {{> (ogl5e-path "templates/parts/actor-spellbook.hbs")}}
+      {{> (ogl5e-sheet-path "templates/parts/actor-spellbook.hbs")}}
     </article>
 
     {{!-- Biography Tab --}}
     <article class="tab biography flexrow" data-group="primary" data-tab="biography">
       <div class="left-notes note-entries flexcol">
         <article>
-          <h4 class="section-titles biopage">{{ localize "ogl5e.Appearance" }}</h4>
+          <h4 class="section-titles biopage">{{ localize "ogl5e-sheet.Appearance" }}</h4>
           {{editor content=data.details.description.value target="data.details.description.value" button=true owner=owner editable=editable}}
         </article>
       </div>
 
       <div class="right-notes note-entries flexcol">
         <article class="biography-notes big-bio">
-          <h4 class="section-titles">{{ localize "ogl5e.Background" }}</h4>
+          <h4 class="section-titles">{{ localize "ogl5e-sheet.Background" }}</h4>
           {{editor content=data.details.biography.value target="data.details.biography.value" button=true owner=owner editable=editable}}
         </article>
       </div>
