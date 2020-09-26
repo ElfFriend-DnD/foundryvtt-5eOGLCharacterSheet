@@ -23,7 +23,8 @@
   @import './styles/header.scss';
   @import './styles/health-armor.scss';
   @import './styles/inventory.scss';
-  @import './styles/sidebar.scss';
+  @import './styles/personality.scss';
+  @import './styles/skills.scss';
   @import './styles/spellbook.scss';
   @import './styles/tab-area.scss';
 
@@ -32,10 +33,9 @@
 
   .window-content {
     box-sizing: border-box;
-    padding: (
-      $space / 2
-    ); //  ($space / 2 + $scrollbar-width) ($space / 2) ($space / 2); // scrollbar width taken into account
+    padding: $space / 2;
     overflow: auto;
+    font-size: 12px;
 
     * {
       box-sizing: inherit;
@@ -64,10 +64,6 @@
     height: 1em;
     flex-basis: 1em;
     margin: 0;
-  }
-
-  h4.box-title {
-    font-size: 16px;
   }
 
   .tag {
@@ -121,7 +117,10 @@
   }
 
   /* Overall Layout related */
-  .sheet-sidebar {
+  .abilities-skills {
+    @include spaced;
+
+    align-items: flex-start;
   }
 
   .tab {
@@ -130,8 +129,28 @@
     flex-wrap: nowrap;
   }
 
+  .traits {
+    margin-top: 0;
+  }
+
   .sheet-body-column {
+    @include spaced-vertical;
+
     flex: 1 33%;
+  }
+
+  section {
+    border: 1px solid var(--accent-text);
+    padding: $space / 2;
+    border-radius: $border-radius;
+  }
+
+  h3 {
+    font-size: 1.4em;
+  }
+
+  h4.box-title {
+    font-size: 1.2em;
   }
 
   /* Scrollbars */
@@ -171,14 +190,21 @@
     justify-content: center;
     align-items: center;
     font-family: 'Modesto Condensed', 'Palatino Linotype', serif;
-    font-size: 24px;
+    font-size: 2em;
     font-weight: 700;
   }
 
   .attribute-footer {
     font-family: 'Signika', sans-serif;
-    font-size: 12px;
+    font-size: 1em;
     font-weight: 400;
+  }
+
+  .box-title {
+    font-family: 'Modesto Condensed', 'Palatino Linotype', serif;
+    font-weight: 700;
+    margin-left: 0;
+    margin-right: 0;
   }
 
   .flexcol > * {

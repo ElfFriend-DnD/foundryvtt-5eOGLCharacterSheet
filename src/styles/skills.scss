@@ -1,16 +1,11 @@
 @import './mixins';
 @import './variables';
 
-.sheet-sidebar {
-  @include spaced-vertical($space / 2);
+.skills-column {
+  @include spaced-vertical;
 
   display: flex;
   flex-direction: column;
-  flex: 1 0 25%;
-  margin-top: 0;
-  min-width: calc(80px + 80px + 0.25em); // width of two attribute boxes
-  padding-right: 10px;
-  border-right: $groove-border;
 }
 
 ul.skills-list {

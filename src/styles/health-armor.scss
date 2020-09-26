@@ -2,10 +2,10 @@
 @import './variables';
 
 .health-armor {
+  @include background-section;
   @include spaced-vertical($space);
 
-  background: var(--groove-gray);
-  padding: $space;
+  border: 0;
 }
 
 .ac-initiative-speed {

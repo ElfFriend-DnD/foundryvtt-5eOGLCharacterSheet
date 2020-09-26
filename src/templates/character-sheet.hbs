@@ -7,7 +7,7 @@
     <article class="tab core flexrow active" data-group="primary" data-tab="core">
 
       <div class="flexcol sheet-body-column">
-        <div class="flexrow">
+        <div class="abilities-skills flexrow">
           {{!-- Ability Scores --}}
           <ul class="ability-scores ability-score-column">
             {{#each data.abilities as |ability id|}}
@@ -68,21 +68,23 @@
 
       <div class="flexcol sheet-body-column">
         {{!-- Personality/Ideals/Bonds/Flaws --}}
-        <article>
-          <h4 class="section-titles biopage">{{ localize "ogl5e-sheet.Traits" }}</h4>
-          {{editor content=data.details.trait target="data.details.trait" button=true owner=owner editable=editable}}
-        </article>
-        <article>
-          <h4 class="section-titles biopage">{{ localize "ogl5e-sheet.Ideals" }}</h4>
-          {{editor content=data.details.ideal target="data.details.ideal" button=true owner=owner editable=editable}}
-        </article>
-        <article>
-          <h4 class="section-titles biopage">{{ localize "ogl5e-sheet.Bonds" }}</h4>
-          {{editor content=data.details.bond target="data.details.bond" button=true owner=owner editable=editable}}
-        </article>
-        <article>
-          <h4 class="section-titles biopage">{{ localize "ogl5e-sheet.Flaws" }}</h4>
-          {{editor content=data.details.flaw target="data.details.flaw" button=true owner=owner editable=editable}}
+        <article class="personality">
+          <section>
+            <h4 class="box-title">{{ localize "OGL5E.Traits" }}</h4>
+            {{editor content=data.details.trait target="data.details.trait" button=true owner=owner editable=editable}}
+          </section>
+          <section>
+            <h4 class="box-title">{{ localize "OGL5E.Ideals" }}</h4>
+            {{editor content=data.details.ideal target="data.details.ideal" button=true owner=owner editable=editable}}
+          </section>
+          <section>
+            <h4 class="box-title">{{ localize "OGL5E.Bonds" }}</h4>
+            {{editor content=data.details.bond target="data.details.bond" button=true owner=owner editable=editable}}
+          </section>
+          <section>
+            <h4 class="box-title">{{ localize "OGL5E.Flaws" }}</h4>
+            {{editor content=data.details.flaw target="data.details.flaw" button=true owner=owner editable=editable}}
+          </section>
         </article>
 
         {{!-- Resources --}}
@@ -119,9 +121,9 @@
 
 
         {{!-- Features --}}
-        <div class="features flexcol" data-group="primary" data-tab="features">
+        <section class="features flexcol" data-group="primary" data-tab="features">
           {{> (ogl5e-sheet-path "templates/parts/actor-features.hbs") sections=features}}
-        </div>
+        </section>
       </div>
 
     </article>
@@ -135,14 +137,14 @@
     <article class="tab biography flexrow" data-group="primary" data-tab="biography">
       <div class="left-notes note-entries flexcol">
         <article>
-          <h4 class="section-titles biopage">{{ localize "ogl5e-sheet.Appearance" }}</h4>
+          <h4 class="box-title">{{ localize "OGL5E.Appearance" }}</h4>
           {{editor content=data.details.description.value target="data.details.description.value" button=true owner=owner editable=editable}}
         </article>
       </div>
 
       <div class="right-notes note-entries flexcol">
         <article class="biography-notes big-bio">
-          <h4 class="section-titles">{{ localize "ogl5e-sheet.Background" }}</h4>
+          <h4 class="section-titles">{{ localize "OGL5E.Background" }}</h4>
           {{editor content=data.details.biography.value target="data.details.biography.value" button=true owner=owner editable=editable}}
         </article>
       </div>

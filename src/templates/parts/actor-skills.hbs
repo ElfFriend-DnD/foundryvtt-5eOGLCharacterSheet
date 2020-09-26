@@ -13,7 +13,9 @@
     <div>{{numberFormat data.attributes.prof decimals=0 sign=true}}</div>
   </div>
 
-  <div>
+  {{!-- Saving Throws --}}
+  <section>
+    <h3 class="box-title">Saving Throws</h3>
     <ul class="skills-list saving-throws">
       {{#each data.abilities as |ability id|}}
       <li class="ability skill flexrow {{#if ability.proficient}}proficient{{/if}}" data-ability="{{id}}">
@@ -24,11 +26,11 @@
       </li>
       {{/each}}
     </ul>
-    <h4>Saving Throws</h4>
-  </div>
+  </section>
 
-  <div>
-    {{!-- Skills --}}
+  {{!-- Skills --}}
+  <section>
+    <h3 class="box-title">Skills</h3>
     <ul class="skills-list">
       {{#each data.skills as |skill s|}}
       <li class="skill flexrow {{#if skill.value}}proficient{{/if}}" data-skill="{{s}}">
@@ -39,10 +41,8 @@
           {{skill.label}}
           <span class="skill-ability">{{skill.ability}}</span>
         </h4>
-        <!-- <span class="skill-passive">({{skill.passive}})</span> -->
       </li>
       {{/each}}
     </ul>
-    <h4>Skills</h4>
-  </div>
+  </section>
 </aside>

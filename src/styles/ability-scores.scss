@@ -3,9 +3,12 @@
 
 .ability-scores {
   height: auto;
+  font-size: inherit;
 
   .ability {
     height: auto;
+    min-width: 70px; // arbitrary
+
     &:last-child {
       margin-bottom: 0;
     }
@@ -25,9 +28,9 @@
 }
 
 .ability-score-column {
+  @include background-section;
   @include spaced-vertical($space / 2);
 
-  border-radius: 0;
   border: 0;
   display: flex;
   flex-direction: column;

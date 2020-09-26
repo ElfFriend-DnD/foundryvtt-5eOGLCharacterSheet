@@ -15,3 +15,9 @@
 @function asset($file-name) {
   @return url('assets/#{$file-name}');
 }
+
+@mixin background-section {
+  border-radius: $border-radius;
+  background: var(--groove-gray);
+  padding: $space / 2;
+}
