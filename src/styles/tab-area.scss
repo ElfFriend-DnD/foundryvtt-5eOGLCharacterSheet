@@ -65,23 +65,3 @@
   flex: 0 auto;
   margin: 0;
 }
-
-.inventory-list {
-  padding: 0;
-
-  .inventory-header {
-    background: none;
-    border: 0;
-    border-bottom: $groove-border;
-  }
-
-  .item-list {
-    &:not(:last-of-type) {
-      margin-bottom: $space / 2;
-    }
-  }
-
-  .item-name {
-    margin-left: $space / 2;
-  }
-}

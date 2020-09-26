@@ -21,6 +21,11 @@ ul.skills-list {
     line-height: normal;
     padding: 0;
 
+    &:nth-child(even) {
+      background-color: var(--darker-background);
+      border-radius: $border-radius / 2;
+    }
+
     .skill-proficiency {
       line-height: normal;
     }

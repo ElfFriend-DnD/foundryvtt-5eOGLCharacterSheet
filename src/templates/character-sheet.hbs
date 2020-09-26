@@ -11,18 +11,15 @@
           {{!-- Ability Scores --}}
           <ul class="ability-scores ability-score-column">
             {{#each data.abilities as |ability id|}}
-            <li class="ability {{#if ability.proficient}}proficient{{/if}}" data-ability="{{id}}">
+            <li class="ability" data-ability="{{id}}">
+              <div class="ability-outline">
+                {{> (ogl5e-sheet-path "assets/strength.hbs")}}
+              </div>
               <h4 class="ability-name box-title rollable">{{ability.label}}</h4>
               <input class="ability-score" name="data.abilities.{{id}}.value" type="text" value="{{ability.value}}"
                 data-dtype="Number" placeholder="10" />
               <div class="ability-modifiers flexrow">
                 <span class="ability-mod" title="Modifier">{{numberFormat ability.mod decimals=0 sign=true}}</span>
-                <input type="hidden" name="data.abilities.{{id}}.proficient" value="{{ability.proficient}}"
-                  data-dtype="Number" />
-                <a class="proficiency-toggle ability-proficiency"
-                  title="{{ localize 'DND5E.Proficiency' }}">{{{ability.icon}}}</a>
-                <span class="ability-save"
-                  title="Saving Throw">{{numberFormat ability.save decimals=0 sign=true}}</span>
               </div>
             </li>
             {{/each}}
@@ -41,6 +38,11 @@
         {{!-- Attacks & Spellcasting --}}
         <section class="actions flexcol">
           <ol class="inventory-list">
+            <li class="inventory-header flexrow">
+              <h3 class="item-name flexrow">{{localize "DND5E.ActionPl"}}</h3>
+              <div class="item-detail">Hit / DC</div>
+              <div class="item-detail item-damage">{{localize "DND5E.Damage"}}</div>
+            </li>
 
             {{!-- Actions --}}
             {{> (ogl5e-sheet-path "templates/parts/actor-actions-list.hbs")  items=actionsData.action label=(localize "DND5E.Action") }}
@@ -60,7 +62,6 @@
         {{!-- Inventory --}}
         <section class="inventory flexrow">
           {{> (ogl5e-sheet-path "templates/parts/actor-inventory.hbs") sections=inventory}}
-
         </section>
 
       </div>

@@ -22,7 +22,6 @@
   {{/if}}
   {{/inline}}
 
-  {{#unless isVehicle}}
   <div class="form-group {{#unless data.traits.senses}}inactive{{/unless}}">
     <label>{{localize "DND5E.Senses"}}</label>
     <input type="text" name="data.traits.senses" value="{{data.traits.senses}}"
@@ -36,7 +35,6 @@
     </a>
     {{> possiblyNoneList list=data.traits.languages.selected}}
   </div>
-  {{/unless}}
 
   <div class="form-group {{data.traits.di.cssClass}}">
     <label>{{localize "DND5E.DamImm"}}</label>

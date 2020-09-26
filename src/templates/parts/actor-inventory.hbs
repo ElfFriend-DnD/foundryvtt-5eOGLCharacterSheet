@@ -1,7 +1,5 @@
 <aside class="inventory-sidebar">
 
-
-  {{#unless isNPC}}
   <div class="currency">
     <div class="currency-inputs">
       {{#each data.currency as |v k|}}
@@ -14,9 +12,7 @@
       {{/each}}
     </div>
   </div>
-  {{/unless}}
 
-  {{#unless isNPC}}
   <div class="encumberance">
     {{#with data.attributes.encumbrance}}
     <strong>{{localize "DND5E.CoverTotal"}} {{localize "DND5E.ItemContainerCapacityWeight"}}</strong>
@@ -28,7 +24,6 @@
     {{/if}}
     {{/with}}
   </div>
-  {{/unless}}
 </aside>
 
 <ol class="inventory-list">
@@ -56,7 +51,7 @@
   {{#each sections as |section sid|}}
   <li class="sub-header">
 
-    <h3>{{localize section.label}}</h3>
+    <h4>{{localize section.label}}</h4>
 
     <hr />
 

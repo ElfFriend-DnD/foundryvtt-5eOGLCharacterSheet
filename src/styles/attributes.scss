@@ -24,7 +24,7 @@
   height: auto;
 
   .attribute-value {
-    font-size: 24px;
+    font-size: 2em;
     margin-top: auto;
     margin-bottom: auto;
   }
@@ -33,7 +33,7 @@
 .attribute-footer {
   display: flex;
   align-items: center;
-  min-height: 18px; // arbitrary
+  min-height: 1.5em; // arbitrary
   justify-content: space-around;
 
   input {

@@ -7,6 +7,7 @@
   --groove-gray: #eeede0;
   --highlight: #c53131;
   --light-gray: #b5b3a4;
+  --darker-background: rgba(0, 0, 0, 0.05);
 
   .dark-mode & {
     --accent-text: #a0a0a0;
@@ -14,6 +15,7 @@
     --groove-gray: #5e5e5e;
     --highlight: #3f88e6;
     --light-gray: #5e5e5e;
+    --darker-background: rgba(255, 255, 255, 0.05);
   }
 
   @import './styles/ability-scores.scss';
@@ -32,10 +34,11 @@
   min-width: 830px;
 
   .window-content {
+    border-radius: 0;
+    border: 0;
     box-sizing: border-box;
-    padding: $space / 2;
-    overflow: auto;
     font-size: 12px;
+    overflow: auto;
 
     * {
       box-sizing: inherit;
@@ -137,10 +140,11 @@
     @include spaced-vertical;
 
     flex: 1 33%;
+    max-width: 33%;
   }
 
   section {
-    border: 1px solid var(--accent-text);
+    border: $groove-border;
     padding: $space / 2;
     border-radius: $border-radius;
   }
@@ -181,7 +185,7 @@
 
   .attribute {
     border: 2px groove var(--groove-gray);
-    border-radius: 4px;
+    border-radius: $border-radius;
     text-align: center;
   }
 
@@ -205,6 +209,7 @@
     font-weight: 700;
     margin-left: 0;
     margin-right: 0;
+    color: var(--accent-text);
   }
 
   .flexcol > * {

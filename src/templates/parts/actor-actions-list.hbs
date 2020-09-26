@@ -1,16 +1,18 @@
 {{!-- props: {items: oneof sheetData.actionsData; label: string;} --}}
 
 {{#unless (ogl5e-sheet-isEmpty items)}}
-<li class="item inventory-header flexrow">
-  <h3 class="item-name flexrow">{{label}}</h3>
-  <div class="item-detail">Hit / DC</div>
-  <div class="item-detail">{{localize "DND5E.Damage"}}</div>
+<li class="sub-header">
+  <h4>{{label}}</h4>
+
+  <hr />
 </li>
+
 <ol class="item-list">
   {{#each items as |item|}}
 
   <li class="item flexrow" data-item-id="{{item._id}}">
     <div class="item-name flexrow rollable {{#if (eq item.type "feat")}}feat-name-hack{{/if}}">
+      <div class="item-image" style="background-image: url({{item.img}})"></div>
       <h4>{{item.name}}</h4>
     </div>
 

@@ -2,9 +2,7 @@
 @import './variables';
 
 .inventory {
-  hr {
-    width: 100%;
-  }
+  @include spaced($space / 2);
 }
 
 .inventory-header {
@@ -19,9 +17,23 @@
 }
 
 .inventory-list {
+  padding: 0;
+
+  .inventory-header {
+    background: none;
+    border: 0;
+    border-bottom: $groove-border;
+  }
+
   .item {
+    border-bottom: 0;
     padding: 0;
     position: relative;
+
+    &:nth-child(even) {
+      background-color: var(--darker-background);
+      border-radius: $border-radius / 2;
+    }
 
     &.expanded {
       .item-controls {
@@ -38,12 +50,32 @@
     }
   }
 
+  .item-list {
+    &:not(:last-of-type) {
+      margin-bottom: $space / 2;
+    }
+  }
+
+  .item-detail {
+    border-right: 0;
+  }
+
+  .item-name {
+    margin-left: $space / 2;
+  }
+
+  .item-summary {
+    border-top: $groove-border;
+  }
+
   .item-quantity {
     flex: 0 0 2.5em;
   }
 
   .item-weight {
     flex: 0 0 2.5em;
+    border-right: 0;
+    border-left: 0;
   }
 
   .sub-header {
@@ -52,11 +84,12 @@
     display: flex;
     padding: 0 $space;
 
-    h3 {
-      font-family: 'Modesto Condensed', 'Palatino Linotype', serif;
+    h4 {
+      // font-family: 'Modesto Condensed', 'Palatino Linotype', serif;
       font-weight: 700;
       flex: 0 auto;
       margin-bottom: 0;
+      white-space: nowrap;
     }
 
     hr {
@@ -78,7 +111,12 @@
   @include spaced-vertical($space);
   display: flex;
   flex-direction: column;
-  flex: 0 auto;
+  flex: 1 1px;
+  max-width: 20%;
+
+  + .inventory-list {
+    flex: 4;
+  }
 }
 
 .currency {
@@ -100,11 +138,16 @@
   }
 
   .currency-input {
+    background: var(--groove-gray);
     position: relative;
     width: 100%;
+    border-radius: $border-radius / 2;
   }
 
   label {
+    border-top-left-radius: $border-radius / 2;
+    border-bottom-left-radius: $border-radius / 2;
+    background: var(--groove-gray);
     text-transform: uppercase;
     font-weight: 700;
     font-size: 0.6em;
@@ -115,6 +158,16 @@
 }
 
 .encumberance {
+  overflow: hidden;
+  font-size: 0.7em;
+  width: 100%;
+
+  h3 {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
   .encumbered {
     font-weight: 700;
     color: var(--highlight);

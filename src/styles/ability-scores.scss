@@ -6,22 +6,39 @@
   font-size: inherit;
 
   .ability {
+    display: flex;
+    flex-direction: column;
     height: auto;
     min-width: 70px; // arbitrary
+    height: 69px; // lines things up with fancy outline
+    position: relative;
+    border: 0;
 
     &:last-child {
       margin-bottom: 0;
     }
 
+    .ability-name {
+      position: relative;
+      border-bottom: 0;
+    }
+
+    .ability-score {
+      position: relative;
+    }
+
     .ability-modifiers {
       height: auto;
+      justify-content: center;
       margin: 0;
+      position: absolute;
+      top: calc(100% - 0.8em);
+      width: 100%;
 
-      .ability-proficiency {
-        display: flex;
+      span.ability-mod {
+        border: 0;
         line-height: normal;
-        place-items: center;
-        place-content: center;
+        border-radius: 50%;
       }
     }
   }
@@ -29,17 +46,41 @@
 
 .ability-score-column {
   @include background-section;
-  @include spaced-vertical($space / 2);
+  @include spaced-vertical($space * 2);
 
   border: 0;
   display: flex;
   flex-direction: column;
   flex: 0 0 auto;
   height: auto;
+  padding-top: $space;
+  padding-bottom: $space * 2;
 
   > li {
-    border-radius: $border-radius;
-    flex: 1 0 80px; // arbitrary
-    border: $groove-border;
+    flex: 1 0 auto;
+    padding-bottom: 0.8em;
+  }
+}
+
+.ability-outline {
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  > svg {
+    max-width: 100%;
+
+    .cls-1,
+    .cls-3 {
+      fill: var(--groove-gray);
+    }
+
+    .cls-2,
+    .cls-3 {
+      stroke: currentColor;
+    }
   }
 }
