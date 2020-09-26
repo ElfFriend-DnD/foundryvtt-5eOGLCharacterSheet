@@ -1,9 +1,7 @@
 @import './mixins';
 @import './variables';
 
-.inventory {
-  @include spaced($space / 2);
-}
+/* Applied to all Lists on the Sheet */
 
 .inventory-header {
   display: flex;
@@ -13,6 +11,13 @@
   h3 {
     margin-bottom: 0;
     margin-right: 0;
+  }
+
+  .item-controls {
+    flex: 0 auto;
+    .item-control {
+      flex: 0 1em;
+    }
   }
 }
 
@@ -60,6 +65,18 @@
     border-right: 0;
   }
 
+  .item-uses {
+    flex: 0 0 4em;
+  }
+
+  .item-action {
+    flex: 0 0 45px;
+  }
+
+  .player-class {
+    flex: 0 auto;
+  }
+
   .item-name {
     margin-left: $space / 2;
   }
@@ -85,7 +102,6 @@
     padding: 0 $space;
 
     h4 {
-      // font-family: 'Modesto Condensed', 'Palatino Linotype', serif;
       font-weight: 700;
       flex: 0 auto;
       margin-bottom: 0;
@@ -105,6 +121,20 @@
       }
     }
   }
+}
+
+/* Only the Features Section */
+
+.features {
+  .item {
+    padding-right: 1em;
+  }
+}
+
+/* Only the Inventory Section */
+
+.inventory {
+  @include spaced($space / 2);
 }
 
 .inventory-sidebar {

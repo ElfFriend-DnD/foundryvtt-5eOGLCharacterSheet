@@ -1,13 +1,3 @@
-{{#unless isVehicle}}
-<div class="inventory-filters flexrow">
-  <ul class="filter-list flexrow" data-filter="features">
-    <li class="filter-item tag" data-filter="action">{{localize "DND5E.Action"}}</li>
-    <li class="filter-item tag" data-filter="bonus">{{localize "DND5E.BonusAction"}}</li>
-    <li class="filter-item tag" data-filter="reaction">{{localize "DND5E.Reaction"}}</li>
-  </ul>
-</div>
-{{/unless}}
-
 <ol class="inventory-list">
   {{#each sections as |section sid|}}
   <li class="inventory-header flexrow">
@@ -28,7 +18,7 @@
     <div class="item-controls">
       <a class="item-control item-create" title="{{localize 'DND5E.FeatureAdd'}}"
         {{#each section.dataset as |v k|}}data-{{k}}="{{v}}" {{/each}}>
-        <i class="fas fa-plus"></i> {{localize "DND5E.Add"}}
+        <i class="fas fa-plus"></i>
       </a>
     </div>
     {{/if}}
@@ -37,8 +27,10 @@
   <ol class="item-list">
     {{#each section.items as |item iid|}}
     <li class="item flexrow {{#if isDepleted}}depleted{{/if}}" data-item-id="{{item._id}}">
-      <div class="item-name flexrow rollable">
+      <div class="item-name flexrow {{#if section.hasActions}}rollable{{/if}}">
+        {{#if section.hasActions}}
         <div class="item-image" style="background-image: url({{item.img}})"></div>
+        {{/if}}
         <h4>{{item.name}}</h4>
       </div>
 
@@ -56,7 +48,8 @@
 
       <div class="item-detail item-action">
         {{#if item.data.activation.type }}
-        {{item.labels.activation}}
+        {{!-- Use our custom abbreviated labels --}}
+        {{item.labels.activationAbbrev}}
         {{/if}}
       </div>
 
