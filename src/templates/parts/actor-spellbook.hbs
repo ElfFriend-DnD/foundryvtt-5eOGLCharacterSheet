@@ -45,12 +45,28 @@
 </div>
 
 <ol class="inventory-list">
-  {{#each spellbook as |section|}}
-  <li class="item flexrow inventory-header spellbook-header">
+  <li class="flexrow inventory-header spellbook-header">
     <div class="item-name flexrow">
-      <h3>{{section.label}}</h3>
+      <h3>{{localize "DND5E.Spellbook"}}</h3>
     </div>
 
+    <div class="spell-comps">
+      {{localize "DND5E.SpellComponents"}}
+    </div>
+
+    <div class="spell-action">{{localize "DND5E.SpellUsage"}}</div>
+    <div class="spell-target">{{localize "DND5E.SpellTarget"}} / {{localize "DND5E.Range"}}</div>
+    <div class="spell-school">{{localize "DND5E.SpellSchool"}}</div>
+
+    <div class="item-controls">
+    </div>
+  </li>
+
+  {{#each spellbook as |section|}}
+  <li class="sub-header spellbook-header">
+    <h4>{{section.label}}</h4>
+
+    {{#if section.usesSlots}}
     <div class="spell-slots">
       {{#if section.usesSlots}}
       <input type="text" name="data.spells.{{section.prop}}.value" value="{{section.uses}}" placeholder="0"
@@ -69,9 +85,9 @@
         <span class="spell-max">{{{section.slots}}}</span>
         {{/if}}
     </div>
+    {{/if}}
 
-    <div class="spell-action">{{localize "DND5E.SpellUsage"}}</div>
-    <div class="spell-target">{{localize "DND5E.SpellTarget"}}</div>
+    <hr />
 
     <div class="item-controls">
       {{#if section.canCreate}}
@@ -99,13 +115,21 @@
         <span class="spell-component {{this}}">{{this}}</span>
         {{/each}}
       </div>
+
       <div class="spell-action">{{labels.activation}}</div>
+
       <div class="spell-target" title="{{localize 'DND5E.Range'}}: {{labels.range}}">
+        <span>{{labels.range}}</span>
         {{#if labels.target}}
-        {{labels.target}}
-        {{else}}None
+        {{#unless (eq labels.target labels.range)}}
+        <small>
+          {{labels.target}}
+        </small>
+        {{/unless}}
         {{/if}}
       </div>
+
+      <div class="spell-school">{{labels.school}}</div>
 
 
       {{#if ../../owner}}

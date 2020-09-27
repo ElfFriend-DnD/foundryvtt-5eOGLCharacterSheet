@@ -37,7 +37,7 @@
 
         {{!-- Attacks & Spellcasting --}}
         <section class="actions flexcol">
-          <ol class="inventory-list">
+          <ol class="inventory-list condensed-inventory-list">
             <li class="inventory-header flexrow">
               <h3 class="item-name flexrow">{{localize "DND5E.ActionPl"}}</h3>
               <div class="item-detail">Hit / DC</div>
@@ -130,7 +130,7 @@
     </article>
 
     {{!-- Spellbook Tab --}}
-    <article class="tab spellbook flexrow" data-group="primary" data-tab="spellbook">
+    <article class="tab spellbook flexcol" data-group="primary" data-tab="spellbook">
       {{> (ogl5e-sheet-path "templates/parts/actor-spellbook.hbs")}}
     </article>
 
@@ -145,7 +145,7 @@
 
       <div class="right-notes note-entries flexcol">
         <article class="biography-notes big-bio">
-          <h4 class="section-titles">{{ localize "OGL5E.Background" }}</h4>
+          <h4 class="box-title">{{ localize "OGL5E.Background" }}</h4>
           {{editor content=data.details.biography.value target="data.details.biography.value" button=true owner=owner editable=editable}}
         </article>
       </div>

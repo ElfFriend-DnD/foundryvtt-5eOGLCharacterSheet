@@ -3,26 +3,8 @@
 
 /* Applied to all Lists on the Sheet */
 
-.inventory-header {
-  display: flex;
-  flex: 0 auto;
-  font-size: inherit;
-
-  h3 {
-    margin-bottom: 0;
-    margin-right: 0;
-  }
-
-  .item-controls {
-    flex: 0 auto;
-    .item-control {
-      flex: 0 1em;
-    }
-  }
-}
-
 .inventory-list {
-  padding: 0;
+  // padding: 0;
 
   .inventory-header {
     background: none;
@@ -32,13 +14,71 @@
 
   .item {
     border-bottom: 0;
-    padding: 0;
-    position: relative;
 
     &:nth-child(even) {
       background-color: var(--darker-background);
       border-radius: $border-radius / 2;
     }
+  }
+
+  .item-list {
+    &:not(:last-of-type) {
+      margin-bottom: $space / 2;
+    }
+  }
+
+  .sub-header {
+    @include spaced($space);
+
+    display: flex;
+    padding: 0 $space;
+
+    h4 {
+      font-weight: 700;
+      flex: 0 auto;
+      margin-bottom: 0;
+      white-space: nowrap;
+    }
+
+    hr {
+      flex: 1 100%;
+      height: 2px;
+    }
+
+    .item-controls {
+      flex: 0 0 auto;
+
+      a {
+        flex: 1 0 auto;
+      }
+    }
+  }
+}
+
+.condensed-inventory-list {
+  padding: 0;
+
+  .inventory-header {
+    display: flex;
+    flex: 0 auto;
+    font-size: inherit;
+
+    h3 {
+      margin-bottom: 0;
+      margin-right: 0;
+    }
+
+    .item-controls {
+      flex: 0 auto;
+      .item-control {
+        flex: 0 1em;
+      }
+    }
+  }
+
+  .item {
+    padding: 0;
+    position: relative;
 
     &.expanded {
       .item-controls {
@@ -52,12 +92,6 @@
       flex: 1 0 100%;
       order: 16;
       place-content: flex-end;
-    }
-  }
-
-  .item-list {
-    &:not(:last-of-type) {
-      margin-bottom: $space / 2;
     }
   }
 
@@ -95,32 +129,32 @@
     border-left: 0;
   }
 
-  .sub-header {
-    @include spaced($space);
+  // .sub-header {
+  //   @include spaced($space);
 
-    display: flex;
-    padding: 0 $space;
+  //   display: flex;
+  //   padding: 0 $space;
 
-    h4 {
-      font-weight: 700;
-      flex: 0 auto;
-      margin-bottom: 0;
-      white-space: nowrap;
-    }
+  //   h4 {
+  //     font-weight: 700;
+  //     flex: 0 auto;
+  //     margin-bottom: 0;
+  //     white-space: nowrap;
+  //   }
 
-    hr {
-      flex: 1 100%;
-      height: 2px;
-    }
+  //   hr {
+  //     flex: 1 100%;
+  //     height: 2px;
+  //   }
 
-    .item-controls {
-      flex: 0 0 auto;
+  //   .item-controls {
+  //     flex: 0 0 auto;
 
-      a {
-        flex: 1 0 auto;
-      }
-    }
-  }
+  //     a {
+  //       flex: 1 0 auto;
+  //     }
+  //   }
+  // }
 }
 
 /* Only the Features Section */

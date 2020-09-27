@@ -193,6 +193,30 @@ export class OGL5eCharacterSheet extends ActorSheet5eCharacter {
       log('error trying to parse class list', e);
     }
 
+    // add abbreviated spell activation labels
+    try {
+      // MUTATES sheetData
+      sheetData?.spellbook.forEach(({ spells }) => {
+        spells.forEach((spell) => {
+          const newActivationLabel = spell.labels.activation
+            .split(' ')
+            .map((string: string, index) => {
+              // ASSUMPTION: First "part" of the split string is the number
+              if (index === 0) {
+                return string;
+              }
+              // ASSUMPTION: Everything after that we can safely abbreviate to be just the first character
+              return string.substr(0, 1);
+            })
+            .join(' ');
+
+          spell.labels.activationAbbrev = newActivationLabel;
+        });
+      });
+    } catch (e) {
+      log('error trying to modify activation labels', e);
+    }
+
     // add abbreviated feature activation labels
     try {
       let activeFeaturesIndex = sheetData.features.findIndex(({ label }) => label.includes('Active'));

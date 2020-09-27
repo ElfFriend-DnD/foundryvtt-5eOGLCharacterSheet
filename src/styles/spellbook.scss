@@ -1,6 +1,14 @@
 @import './mixins';
 @import './variables';
 
+.spellbook {
+  .spellbook-header {
+    h4 {
+      flex: 0 120px;
+    }
+  }
+}
+
 .spellcasting-ability {
   flex: 0 auto;
   display: flex;
@@ -20,4 +28,20 @@
 
 .spell-comps {
   @include spaced(0.2em);
+}
+
+.spell-target {
+  flex: 0 0 140px;
+  display: flex;
+  flex-direction: column;
+  line-height: normal;
+  place-content: center;
+}
+
+.spell-comps {
+  flex: 0 0 120px;
+}
+
+.spell-slots {
+  border-right: 0;
 }
