@@ -3,7 +3,7 @@
 	"title": "D&D 5e OGL Character Sheet",
 	"description": "",
 	"systems": ["dnd5e"],
-	"version": "0.2.0",
+	"version": "0.2.1",
 	"author": "Andrew Krigline (akrigline)",
 	"authors": [
 		{
@@ -58,6 +58,7 @@
 	"compatibleCoreVersion": "0.6.6",
 	"url": "https://github.com/ElfFriend-DnD/foundryvtt-5eOGLCharacterSheet",
 	"manifest": "https://github.com/ElfFriend-DnD/foundryvtt-5eOGLCharacterSheet/releases/latest/download/module.json",
+	"changelog": "https://github.com/ElfFriend-DnD/foundryvtt-5eOGLCharacterSheet/releases",
 	"download": "https://github.com/ElfFriend-DnD/foundryvtt-5eOGLCharacterSheet/releases/latest/download/module.zip",
 	"readme": "https://raw.githubusercontent.com/ElfFriend-DnD/foundryvtt-5eOGLCharacterSheet/master/README.md",
 	"bugs": "https://github.com/ElfFriend-DnD/foundryvtt-5eOGLCharacterSheet/issues"

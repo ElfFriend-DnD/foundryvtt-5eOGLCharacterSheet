@@ -3,13 +3,13 @@
 
 .health-armor {
   @include background-section;
-  @include spaced-vertical($space);
+  @include spaced-vertical($space / 2);
 
   border: 0;
 }
 
 .ac-initiative-speed {
-  @include spaced($space);
+  @include spaced($space / 2);
 
   list-style: none;
   padding: 0;
@@ -31,6 +31,10 @@
     margin: 0;
     text-transform: uppercase;
   }
+}
+
+.hd-ds {
+  @include spaced($space / 2);
 }
 
 .hd {

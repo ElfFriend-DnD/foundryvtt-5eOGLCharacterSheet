@@ -8,7 +8,6 @@ export const registerSettings = function () {
     type: Boolean,
     scope: 'client',
     config: true,
-    hint:
-      'Instead of showing all spells that deal damage in the Actions tab, limit it to only cantrips. This is the default D&DBeyond behavior.',
+    hint: 'Instead of showing all spells that deal damage in the Actions area, limit it to only cantrips.',
   });
 };
