@@ -20,8 +20,6 @@ export function getWeaponRelevantAbility(
   itemData: ItemData5e,
   actorData: ActorSheet5eCharacterSheetDataType
 ): keyof ActorSheet5eCharacterSheetDataType['abilities'] {
-  console.log('gettingAbility', { itemData, actorData });
-
   if (!('ability' in itemData)) {
     return null;
   }

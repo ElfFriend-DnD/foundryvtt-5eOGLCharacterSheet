@@ -58,10 +58,24 @@ export class OGL5eCharacterSheet extends ActorSheet5eCharacter {
   _onRollAbilitySave(event) {
     event.preventDefault();
     let ability = event.currentTarget.parentElement.dataset.ability;
-    log('onRollAbilitySave', ability);
 
     //@ts-ignore
     this.actor.rollAbilitySave(ability, { event: event }); // FIXME TS
+  }
+
+  /**
+   * Change the quantity of an Owned Item within the Actor
+   * @param {Event} event   The triggering click event
+   * @private
+   */
+  async _onQuantityChange(event) {
+    event.preventDefault();
+    const itemId = event.currentTarget.closest('.item').dataset.itemId;
+    // @ts-ignore
+    const item = this.actor.getOwnedItem(itemId);
+    const quantity = parseInt(event.target.value);
+    event.target.value = quantity;
+    return item.update({ 'data.quantity': quantity });
   }
 
   /**
@@ -75,6 +89,12 @@ export class OGL5eCharacterSheet extends ActorSheet5eCharacter {
 
     // Saving Throws
     html.find('.saving-throw-name').click(this._onRollAbilitySave.bind(this));
+
+    // Item Quantity
+    html
+      .find('.item-quantity input')
+      .click((ev) => ev.target.select())
+      .change(this._onQuantityChange.bind(this));
   }
 
   getData() {
@@ -177,8 +197,6 @@ export class OGL5eCharacterSheet extends ActorSheet5eCharacter {
 
     sheetData.actionsData = actionsData;
 
-    log('sheetData before classlist', sheetData);
-
     // replace classLabels with Subclass + Class list
     try {
       let items = sheetData.items;
@@ -241,7 +259,6 @@ export class OGL5eCharacterSheet extends ActorSheet5eCharacter {
       log('error trying to modify activation labels', e);
     }
 
-    log('sheetData after classlist', sheetData);
     return sheetData;
   }
 }
@@ -276,11 +293,15 @@ Actors.registerSheet('dnd5e', OGL5eCharacterSheet, {
   types: ['character'],
   makeDefault: false,
 });
+
 /* ------------------------------------ */
 /* When ready							*/
 /* ------------------------------------ */
 Hooks.once('ready', function () {
-  // Do anything once the module is ready
+  // register this sheet with BetterRolls
+  //@ts-ignore
+  if (window.BetterRolls) {
+    //@ts-ignore
+    window.BetterRolls.hooks.addActorSheet('OGL5eCharacterSheet');
+  }
 });
-
-// Add any additional hooks if necessary

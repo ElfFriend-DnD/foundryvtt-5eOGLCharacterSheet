@@ -1,31 +1,25 @@
 <form class="{{cssClass}} flexcol limited" autocomplete="off">
-  {{!-- Sheet Header --}}
-  <header class="sheet-header">
-    <img class="profile" src="{{actor.img}}" title="{{actor.name}}" data-edit="img" />
 
-    <section class="header-details">
-      <h1>
-        {{actor.name}}
-      </h1>
-    </section>
-  </header>
+  {{> (ogl5e-sheet-path "templates/parts/sheet-header.hbs")}}
 
-  {{!-- Sheet Body --}}
-  <section class="sheet-body">
+  <main class="sheet-body">
 
     {{!-- Biography Tab --}}
-    <div class="tab biography flexrow">
-      <div class="note-entries">
+    <article class="tab biography flexrow active" data-group="primary" data-tab="biography">
+      <div class="left-notes note-entries flexcol">
         <article>
-          <h4 class="section-titles biopage">{{ localize "OGL5E.Appearance" }}</h4>
+          <h4 class="box-title">{{ localize "OGL5E.Appearance" }}</h4>
           {{editor content=data.details.description.value target="data.details.description.value" button=true owner=owner editable=editable}}
         </article>
+      </div>
+
+      <div class="right-notes note-entries flexcol">
         <article class="biography-notes big-bio">
-          <h4 class="section-titles">{{ localize "OGL5E.Background" }}</h4>
+          <h4 class="box-title">{{ localize "OGL5E.Background" }}</h4>
           {{editor content=data.details.biography.value target="data.details.biography.value" button=true owner=owner editable=editable}}
         </article>
       </div>
-    </div>
 
-  </section>
+    </article>
+  </main>
 </form>
