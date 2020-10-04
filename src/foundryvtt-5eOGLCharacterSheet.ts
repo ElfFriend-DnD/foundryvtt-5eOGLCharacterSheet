@@ -295,12 +295,14 @@ Actors.registerSheet('dnd5e', OGL5eCharacterSheet, {
 });
 
 /* ------------------------------------ */
-/* When ready							*/
+/* When betterRollsAddedToWindow				*/
 /* ------------------------------------ */
-Hooks.once('ready', function () {
+
+Hooks.once('betterRollsAddedToWindow', function () {
   // register this sheet with BetterRolls
   //@ts-ignore
   if (window.BetterRolls) {
+    log('ready and BetterRolls exists');
     //@ts-ignore
     window.BetterRolls.hooks.addActorSheet('OGL5eCharacterSheet');
   }
