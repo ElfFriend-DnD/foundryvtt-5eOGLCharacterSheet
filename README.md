@@ -45,7 +45,7 @@ I'm honestly not sure how well this will play with modules that affect character
 | **Name**                                                                                         |       Works        | Notes                                                                    |
 | ------------------------------------------------------------------------------------------------ | :----------------: | ------------------------------------------------------------------------ |
 | [Better Rolls 5e](https://github.com/RedReign/FoundryVTT-BetterRolls5e)                          |        :x:         | Have not successfully integrated yet.                                    |
-| [Midi-QOL](https://gitlab.com/tposney/midi-qol)                                                  |         --         | haven't even tried it yet                                                |
+| [Midi-QOL](https://gitlab.com/tposney/midi-qol)                                                  |         :heavy_check_mark:         | Works out of the box for roll replacement, Inventory item buttons don't seem to append correctly                                                |
 | [Minor QOL](https://gitlab.com/tposney/minor-qol)                                                |         --         | haven't even tried it yet                                                |
 | [5e-Sheet Resources Plus](https://github.com/ardittristan/5eSheet-resourcesPlus)                 | :heavy_check_mark: | It's not pretty but it does work.                                        |
 | [Variant Encumbrance](https://github.com/VanirDev/VariantEncumbrance)                            |        :x:         | Default encumberance bar removed, Speed css overrides will break things. |
