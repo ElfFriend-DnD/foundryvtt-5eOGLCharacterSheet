@@ -1,6 +1,7 @@
 # D&D 5e OGL Character Sheet
 
 ![Latest Release Download Count](https://img.shields.io/badge/dynamic/json?label=Downloads@latest&query=assets%5B1%5D.download_count&url=https%3A%2F%2Fapi.github.com%2Frepos%2FElfFriend-DnD%2Ffoundryvtt-5eOGLCharacterSheet%2Freleases%2Flatest)
+[![ko-fi](https://img.shields.io/badge/-buy%20me%20a%20coke-%23FF5E5B)](https://ko-fi.com/elffriend)
 
 A classic layout for a 5e Character Sheet, heavily inspired by the Official 5e Character Sheet and the Roll20 default 5e Sheet. This sheet is chaotic and packed with information all on one screen, but it does have the advantage of having some muscle memory if you're coming from either pen and paper or Roll20.
 
@@ -42,19 +43,19 @@ This sheet respects the 5e System setting: "Disable Experience Tracking"
 
 I'm honestly not sure how well this will play with modules that affect character sheets, I'll try to test as many as possible but if somethign is obviously breaking please create and issue here and I'll see what I can do.
 
-| **Name**                                                                                         |       Works        | Notes                                                                    |
-| ------------------------------------------------------------------------------------------------ | :----------------: | ------------------------------------------------------------------------ |
-| [Better Rolls 5e](https://github.com/RedReign/FoundryVTT-BetterRolls5e)                          |        :x:         | Have not successfully integrated yet.                                    |
-| [Midi-QOL](https://gitlab.com/tposney/midi-qol)                                                  |         :heavy_check_mark:         | Works out of the box for roll replacement, Inventory item buttons don't seem to append correctly                                                |
-| [Minor QOL](https://gitlab.com/tposney/minor-qol)                                                |         --         | haven't even tried it yet                                                |
-| [5e-Sheet Resources Plus](https://github.com/ardittristan/5eSheet-resourcesPlus)                 | :heavy_check_mark: | It's not pretty but it does work.                                        |
-| [Variant Encumbrance](https://github.com/VanirDev/VariantEncumbrance)                            |        :x:         | Default encumberance bar removed, Speed css overrides will break things. |
-| [FoundryVTT Magic Items](https://gitlab.com/riccisi/foundryvtt-magic-items)                      |        :x:         | Have not successfully integrated yet.                                    |
-| [D&D5e Dark Mode](https://github.com/Stryxin/dnd5edark-foundryvtt)                               | :heavy_check_mark: | Respects foundry-wide dark mode and is "usable."                         |
-| [Favourite Item Tab](https://github.com/syl3r86/favtab)                                          | :heavy_check_mark: | Inventory overhauls make this particular module a wierd one to use here. |
-| [Inventory+](https://github.com/syl3r86/inventory-plus)                                          |        :x:         | Inventory overhaul removed the "Inventory" Tab                           |
-| [Illandril's Character Sheet Lockdown](https://github.com/illandril/FoundryVTT-sheet5e-lockdown) |        :x:         | Doesn't seem to work with any sheet but the 5e stock sheet.              |
-| [Crash's 5e Downtime Tracking](https://github.com/crash1115/5e-training)                         | :heavy_check_mark: | Works well.                                                              |
+| **Name**                                                                                         |       Works        | Notes                                                                                            |
+| ------------------------------------------------------------------------------------------------ | :----------------: | ------------------------------------------------------------------------------------------------ |
+| [Better Rolls 5e](https://github.com/RedReign/FoundryVTT-BetterRolls5e)                          |        :x:         | Have not successfully integrated yet.                                                            |
+| [Midi-QOL](https://gitlab.com/tposney/midi-qol)                                                  | :heavy_check_mark: | Works out of the box for roll replacement, Inventory item buttons don't seem to append correctly |
+| [Minor QOL](https://gitlab.com/tposney/minor-qol)                                                |         --         | Deprecated in favor of Midi-QOL. Won't support.                                                  |
+| [5e-Sheet Resources Plus](https://github.com/ardittristan/5eSheet-resourcesPlus)                 | :heavy_check_mark: | It's not pretty but it does work.                                                                |
+| [Variant Encumbrance](https://github.com/VanirDev/VariantEncumbrance)                            |        :x:         | Default encumberance bar removed, Speed css overrides will break things.                         |
+| [FoundryVTT Magic Items](https://gitlab.com/riccisi/foundryvtt-magic-items)                      |        :x:         | Have not successfully integrated yet.                                                            |
+| [D&D5e Dark Mode](https://github.com/Stryxin/dnd5edark-foundryvtt)                               | :heavy_check_mark: | Respects foundry-wide dark mode and is "usable."                                                 |
+| [Favourite Item Tab](https://github.com/syl3r86/favtab)                                          | :heavy_check_mark: | Inventory overhauls make this particular module a wierd one to use here.                         |
+| [Inventory+](https://github.com/syl3r86/inventory-plus)                                          |        :x:         | Inventory overhaul removed the "Inventory" Tab                                                   |
+| [Illandril's Character Sheet Lockdown](https://github.com/illandril/FoundryVTT-sheet5e-lockdown) |        :x:         | Doesn't seem to work with any sheet but the 5e stock sheet.                                      |
+| [Crash's 5e Downtime Tracking](https://github.com/crash1115/5e-training)                         | :heavy_check_mark: | Works well.                                                                                      |
 
 ## Known Issues
 
