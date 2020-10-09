@@ -1,13 +1,6 @@
 @import './mixins';
 @import './variables';
 
-.sheet-tab-area {
-  border-top: $groove-border;
-  display: flex;
-  flex-direction: column;
-  padding-top: $space;
-}
-
 .sheet-navigation {
   @include spaced($space);
 

@@ -50,6 +50,10 @@
       overflow: initial;
       height: auto;
     }
+
+    .sheet-body {
+      flex: 1 auto;
+    }
   }
 
   input[type='text'] {
