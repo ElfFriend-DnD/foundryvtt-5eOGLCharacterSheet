@@ -8,14 +8,14 @@
     <article class="tab biography flexrow active" data-group="primary" data-tab="biography">
       <div class="left-notes note-entries flexcol">
         <article>
-          <h4 class="box-title">{{ localize "OGL5E.Appearance" }}</h4>
-          {{editor content=data.details.description.value target="data.details.description.value" button=true owner=owner editable=editable}}
+          <h4 class="box-title">{{ localize "DND5E.Appearance" }}</h4>
+          {{editor content=data.details.appearance target="data.details.appearance" button=true owner=owner editable=editable}}
         </article>
       </div>
 
       <div class="right-notes note-entries flexcol">
         <article class="biography-notes big-bio">
-          <h4 class="box-title">{{ localize "OGL5E.Background" }}</h4>
+          <h4 class="box-title">{{ localize "DND5E.Background" }}/{{ localize "DND5E.Biography" }}</h4>
           {{editor content=data.details.biography.value target="data.details.biography.value" button=true owner=owner editable=editable}}
         </article>
       </div>

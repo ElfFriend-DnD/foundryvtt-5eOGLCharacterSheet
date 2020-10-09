@@ -140,7 +140,7 @@ export class OGL5eCharacterSheet extends ActorSheet5eCharacter {
         });
       });
     } catch (e) {
-      log('error trying to digest inventory', e);
+      log(true, 'error trying to digest inventory', e);
     }
 
     try {
@@ -192,7 +192,7 @@ export class OGL5eCharacterSheet extends ActorSheet5eCharacter {
         });
       });
     } catch (e) {
-      log('error trying to digest spellbook', e);
+      log(true, 'error trying to digest spellbook', e);
     }
 
     sheetData.actionsData = actionsData;
@@ -208,7 +208,7 @@ export class OGL5eCharacterSheet extends ActorSheet5eCharacter {
 
       sheetData.classLabels = classList.join(', ');
     } catch (e) {
-      log('error trying to parse class list', e);
+      log(true, 'error trying to parse class list', e);
     }
 
     // add abbreviated spell activation labels
@@ -232,7 +232,7 @@ export class OGL5eCharacterSheet extends ActorSheet5eCharacter {
         });
       });
     } catch (e) {
-      log('error trying to modify activation labels', e);
+      log(true, 'error trying to modify activation labels', e);
     }
 
     // add abbreviated feature activation labels
@@ -256,7 +256,17 @@ export class OGL5eCharacterSheet extends ActorSheet5eCharacter {
         item.labels.activationAbbrev = newActivationLabel;
       });
     } catch (e) {
-      log('error trying to modify activation labels', e);
+      log(true, 'error trying to modify activation labels', e);
+    }
+
+    // if description is populated and appearance isn't use description as appearance
+    try {
+      log(false, sheetData);
+      if (!!sheetData.data.details.description.value && !sheetData.data.details.appearance) {
+        sheetData.data.details.appearance = sheetData.data.details.description.value;
+      }
+    } catch (e) {
+      log(true, 'error trying to migrate description to appearance', e);
     }
 
     return sheetData;
@@ -267,26 +277,22 @@ export class OGL5eCharacterSheet extends ActorSheet5eCharacter {
 /* Initialize module					*/
 /* ------------------------------------ */
 Hooks.once('init', async function () {
-  log(`Initializing ${MODULE_ID}`);
-
-  // Assign custom classes and constants here
+  log(true, `Initializing ${MODULE_ID}`);
 
   // Register custom module settings
   registerSettings();
 
   // Preload Handlebars templates
   await preloadTemplates();
-
-  // Register custom sheets (if any)
 });
 
 /* ------------------------------------ */
 /* Setup module							*/
 /* ------------------------------------ */
-Hooks.once('setup', function () {
-  // Do anything after initialization but before
-  // ready
-});
+// Hooks.once('setup', function () {
+//   // Do anything after initialization but before
+//   // ready
+// });
 
 // Register OGL5eCharacterSheet Sheet
 Actors.registerSheet('dnd5e', OGL5eCharacterSheet, {
@@ -297,11 +303,5 @@ Actors.registerSheet('dnd5e', OGL5eCharacterSheet, {
 /* ------------------------------------ */
 /* When ready							*/
 /* ------------------------------------ */
-Hooks.once('ready', function () {
-  // register this sheet with BetterRolls
-  //@ts-ignore
-  if (window.BetterRolls) {
-    //@ts-ignore
-    window.BetterRolls.hooks.addActorSheet('OGL5eCharacterSheet');
-  }
-});
+// Hooks.once('ready', function () {
+// });
