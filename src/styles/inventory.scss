@@ -26,10 +26,6 @@
       margin-bottom: $space / 2;
     }
 
-    .item-image {
-      display: none;
-    }
-
     .item-image-show {
       display: block !important;
       box-sizing: inherit;
@@ -178,12 +174,20 @@
   .item {
     padding-right: 1em;
   }
+
+  .item-image {
+    display: none;
+  }
 }
 
 /* Only the Inventory Section */
 
 .inventory {
   @include spaced($space / 2);
+
+  .item-image {
+    display: none;
+  }
 }
 
 .inventory-sidebar {

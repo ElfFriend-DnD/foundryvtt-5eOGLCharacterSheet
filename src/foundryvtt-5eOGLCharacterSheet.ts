@@ -98,7 +98,8 @@ export class OGL5eCharacterSheet extends ActorSheet5eCharacter {
 
     // Settings html
     if (game.settings.get(MODULE_ID, MySettings.showIconsOnInventoryList) === true) {
-      html.find('.condensed-inventory-list .item-list .item-image').addClass('item-image-show');
+      html.find('.inventory .condensed-inventory-list .item-list .item-image').addClass('item-image-show');
+      html.find('.features .condensed-inventory-list .item-list .item-image').addClass('item-image-show');
     }
   }
 
