@@ -25,6 +25,21 @@
     &:not(:last-of-type) {
       margin-bottom: $space / 2;
     }
+
+    .item-image {
+      display: none;
+    }
+
+    .item-image-show {
+      display: block !important;
+      box-sizing: inherit;
+      align-self: stretch;
+      background-repeat: no-repeat;
+      background-position: center;
+      flex: 0 0 30px;
+      background-size: 30px;
+      margin-right: 5px;
+    }
   }
 
   .sub-header {

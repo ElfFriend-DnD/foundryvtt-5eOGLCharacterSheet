@@ -69,6 +69,9 @@
     {{#each section.items as |item iid|}}
     <li class="item flexrow {{section.css}}"
       data-item-id="{{#if section.editableName}}{{iid}}{{else}}{{item._id}}{{/if}}">
+
+      <div class="item-image" style="background-image: url({{item.img}})"></div>
+      
       <div class="item-detail item-quantity">
         <input type="text" name="{{item._id}}.data.quantity" value="{{item.data.quantity}}" data-dtype="Number" />
       </div>

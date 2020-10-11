@@ -95,6 +95,11 @@ export class OGL5eCharacterSheet extends ActorSheet5eCharacter {
       .find('.item-quantity input')
       .click((ev) => ev.target.select())
       .change(this._onQuantityChange.bind(this));
+
+    // Settings html
+    if (game.settings.get(MODULE_ID, MySettings.showIconsOnInventoryList) === true) {
+      html.find('.condensed-inventory-list .item-list .item-image').addClass('item-image-show');
+    }
   }
 
   getData() {
@@ -305,3 +310,18 @@ Actors.registerSheet('dnd5e', OGL5eCharacterSheet, {
 /* ------------------------------------ */
 // Hooks.once('ready', function () {
 // });
+
+// TODO how integrate this???
+/*
+// Manage Sheet Options
+
+async function setSheetClasses(app, html, data) {
+  let actor = game.actors.entities.find((a) => a.data.data._id === data.actor._id);
+}
+
+Hooks.on(`render${MODULE_ID}`, (app, html, data) => {
+  setSheetClasses(app, html, data);
+  // console.log(data);
+  console.log(`${MODULE_ID} Sheet rendered!`);
+});
+*/
