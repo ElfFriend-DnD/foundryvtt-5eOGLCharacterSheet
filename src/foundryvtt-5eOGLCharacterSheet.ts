@@ -3,6 +3,10 @@ import { registerSettings } from './module/settings.js';
 import { preloadTemplates } from './module/preloadTemplates.js';
 import { MODULE_ID, MySettings } from './constants.js';
 //@ts-ignore
+import { DND5E } from '../../systems/dnd5e/module/config.js';
+//@ts-ignore
+import ActorSheet5e from '../../systems/dnd5e/module/actor/sheets/base.js';
+//@ts-ignore
 import ActorSheet5eCharacter from '../../systems/dnd5e/module/actor/sheets/character.js';
 
 Handlebars.registerHelper('ogl5e-sheet-path', (relativePath: string) => {
@@ -139,6 +143,17 @@ export class OGL5eCharacterSheet extends ActorSheet5eCharacter {
           },
         });
       });
+      // Setting - Show icon on inventory list
+      if (game.settings.get(MODULE_ID, MySettings.showIconsOnInventoryList) === true) {
+        sheetData?.inventory?.forEach((itemType) => {
+          itemType.items.forEach((item) => {
+            if (!item.data.settings) {
+              item.data.settings = {};
+            }
+            item.data.settings.showIconsOnInventoryList = true;
+          });
+        });
+      }
     } catch (e) {
       log(true, 'error trying to digest inventory', e);
     }
