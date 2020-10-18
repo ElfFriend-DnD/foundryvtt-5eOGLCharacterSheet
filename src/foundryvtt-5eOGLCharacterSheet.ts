@@ -145,15 +145,11 @@ export class OGL5eCharacterSheet extends ActorSheet5eCharacter {
       });
 
       // Setting - Show icon on inventory list
-      const settingsShowIconsOnInventoryList = game.settings.get(MODULE_ID, MySettings.showIconsOnInventoryList);
-      sheetData?.inventory.forEach((itemType) => {
-        itemType.items.forEach((item) => {
-          if (!item.data.settings) {
-            item.data.settings = {};
-          }
-          item.data.settings.showIconsOnInventoryList = settingsShowIconsOnInventoryList;
-        });
-      });
+      if (game.settings.get(MODULE_ID, MySettings.showIconsOnInventoryList)) {
+        sheetData.settingsShowInventoryIcons = true;
+      } else {
+        sheetData.settingsShowInventoryIcons = false;
+      }
     } catch (e) {
       log(true, 'error trying to digest inventory', e);
     }
