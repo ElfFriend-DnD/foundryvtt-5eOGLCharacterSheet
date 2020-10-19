@@ -3,10 +3,6 @@ import { registerSettings } from './module/settings.js';
 import { preloadTemplates } from './module/preloadTemplates.js';
 import { MODULE_ID, MySettings } from './constants.js';
 //@ts-ignore
-import { DND5E } from '../../systems/dnd5e/module/config.js';
-//@ts-ignore
-import ActorSheet5e from '../../systems/dnd5e/module/actor/sheets/base.js';
-//@ts-ignore
 import ActorSheet5eCharacter from '../../systems/dnd5e/module/actor/sheets/character.js';
 
 Handlebars.registerHelper('ogl5e-sheet-path', (relativePath: string) => {
