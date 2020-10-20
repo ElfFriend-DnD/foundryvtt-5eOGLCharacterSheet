@@ -14,7 +14,7 @@ export const registerSettings = function () {
   });
 
   game.settings.register(MODULE_ID, MySettings.showIconsOnInventoryList, {
-    name: 'Add icons to inventory',
+    name: 'Add Icons to Inventory',
     default: false,
     type: Boolean,
     scope: 'client',

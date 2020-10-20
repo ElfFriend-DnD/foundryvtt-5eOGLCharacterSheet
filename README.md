@@ -33,9 +33,10 @@ It's not as familiar for a Roll20 user, but believe me when I say it's improved 
 
 ## Options
 
-| **Name**                      | Description                                                                                     |
-| ----------------------------- | ----------------------------------------------------------------------------------------------- |
-| **Limit Actions to Cantrips** | Instead of showing all spells that deal damage in the Actions panel, limit it to only cantrips. |
+| **Name**                      | Description                                                                                             |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------- |
+| **Limit Actions to Cantrips** | Instead of showing all spells that deal damage in the Actions panel, limit it to only cantrips.         |
+| **Add Icons to Inventory**    | Adds icons to all items in the inventory section, might make itemes with limited charges display oddly. |
 
 This sheet respects the 5e System setting: "Disable Experience Tracking"
 
