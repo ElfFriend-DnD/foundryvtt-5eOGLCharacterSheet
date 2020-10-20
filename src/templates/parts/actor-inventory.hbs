@@ -70,7 +70,7 @@
     <li class="item flexrow {{section.css}}"
       data-item-id="{{#if section.editableName}}{{iid}}{{else}}{{item._id}}{{/if}}">
       {{#if ../../settingsShowInventoryIcons}}
-      <div class="item-image item-image-show" style="background-image: url({{item.img}})"></div>
+      <div class="item-image item-image-show rollable" style="background-image: url({{item.img}})"></div>
       {{/if}}
       <div class="item-detail item-quantity">
         <input type="text" name="{{item._id}}.data.quantity" value="{{item.data.quantity}}" data-dtype="Number" />
