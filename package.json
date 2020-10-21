@@ -1,7 +1,7 @@
 {
 	"private": true,
 	"name": "foundryvtt-5eOGLCharacterSheet",
-	"version": "0.3.0",
+	"version": "0.4.0",
 	"description": "A Character Sheet for D&D 5e that resembles the OGL 5e Sheet",
 	"scripts": {
 		"publish": "gulp publish",
