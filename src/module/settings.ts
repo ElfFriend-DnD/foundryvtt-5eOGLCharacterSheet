@@ -5,20 +5,29 @@ export const registerSettings = function () {
 
   // Register any custom module settings here
   game.settings.register(MODULE_ID, MySettings.limitActionsToCantrips, {
-    name: 'Limit Actions to Cantrips',
+    name: 'OGL5E.limitActionsToCantrips',
     default: false,
     type: Boolean,
     scope: 'client',
     config: true,
-    hint: 'Instead of showing all spells that deal damage in the Actions area, limit it to only cantrips.',
+    hint: 'OGL5E.limitActionsToCantripsHint',
   });
 
   game.settings.register(MODULE_ID, MySettings.showIconsOnInventoryList, {
-    name: 'Add Icons to Inventory',
+    name: 'OGL5E.showIconsOnInventoryList',
     default: false,
     type: Boolean,
     scope: 'client',
     config: true,
-    hint: 'Add the icons to the items on the inventory list.',
+    hint: 'OGL5E.showIconsOnInventoryListHint',
+  });
+
+  game.settings.register(MODULE_ID, MySettings.expandedLimited, {
+    name: 'OGL5E.expandedLimited',
+    default: false,
+    type: Boolean,
+    scope: 'world',
+    config: true,
+    hint: 'OGL5E.expandedLimitedHint',
   });
 };

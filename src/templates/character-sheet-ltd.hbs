@@ -1,6 +1,10 @@
 <form class="{{cssClass}} flexcol limited" autocomplete="off">
 
-  {{> (ogl5e-sheet-path "templates/parts/sheet-header.hbs")}}
+  <header class="sheet-header">
+    <h1>
+      <input name="name" type="text" value="{{actor.name}}" placeholder="{{ localize 'DND5E.Name' }}" />
+    </h1>
+  </header>
 
   <main class="sheet-body">
 

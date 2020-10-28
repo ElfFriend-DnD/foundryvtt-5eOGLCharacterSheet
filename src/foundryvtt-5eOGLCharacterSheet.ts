@@ -30,8 +30,7 @@ Handlebars.registerHelper('ogl5e-sheet-isEmpty', (input: Object | Array<any> | S
 export class OGL5eCharacterSheet extends ActorSheet5eCharacter {
   get template() {
     //@ts-ignore
-    if (!game.user.isGM && this.actor.limited) {
-      // FIXME TS
+    if (!game.user.isGM && this.actor.limited && !game.settings.get(MODULE_ID, MySettings.expandedLimited)) {
       return `modules/${MODULE_ID}/templates/character-sheet-ltd.hbs`;
     }
 

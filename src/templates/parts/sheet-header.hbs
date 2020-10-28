@@ -4,7 +4,6 @@
     <input name="name" type="text" value="{{actor.name}}" placeholder="{{ localize 'DND5E.Name' }}" />
   </h1>
 
-  {{#unless limited}}
   {{!-- Character Summary --}}
   <ul class="header-fields">
     <li class="class">
@@ -34,10 +33,8 @@
     </li>
     {{/unless}}
   </ul>
-  {{/unless}}
 </header>
 
-{{#unless limited}}
 <div class="header-actions">
   <div class="rest-buttons">
     <a class="rest short-rest">{{ localize 'DND5E.RestS' }}<i class="fas fa-hourglass-half"></i></a>
@@ -51,4 +48,3 @@
     <a class="item" data-tab="biography">{{ localize "DND5E.Biography" }}</a>
   </nav>
 </div>
-{{/unless}}
