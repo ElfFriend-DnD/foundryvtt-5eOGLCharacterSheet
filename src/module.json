@@ -1,35 +1,38 @@
 {
-	"name": "5e-ogl-character-sheet",
-	"title": "D&D 5e OGL Character Sheet",
-	"description": "A character sheet resembling a classic Pencil and Paper or Roll20 sheet.",
-	"systems": ["dnd5e"],
-	"version": "0.4.2",
-	"author": "Andrew Krigline (akrigline)",
-	"authors": [
-		{
-			"name": "Andrew Krigline",
-			"url": "https://github.com/ElfFriend-DnD"
-		}
-	],
-	"esmodules": [
-		"foundryvtt-5eOGLCharacterSheet.js"
-	],
-	"styles": [
-		"foundryvtt-5eOGLCharacterSheet.css"
-	],
-	"languages": [
-		{
-			"lang": "en",
-			"name": "English",
-			"path": "lang/en.json"
-		}
-	],
-	"minimumCoreVersion": "0.6.0",
-	"compatibleCoreVersion": "0.7.5",
-	"bugs": "https://github.com/ElfFriend-DnD/foundryvtt-5eOGLCharacterSheet/issues",
-	"changelog": "https://github.com/ElfFriend-DnD/foundryvtt-5eOGLCharacterSheet/releases",
-	"download": "https://github.com/ElfFriend-DnD/foundryvtt-5eOGLCharacterSheet/releases/download/v0.4.2/module.zip",
-	"manifest": "https://github.com/ElfFriend-DnD/foundryvtt-5eOGLCharacterSheet/releases/latest/download/module.json",
-	"readme": "https://raw.githubusercontent.com/ElfFriend-DnD/foundryvtt-5eOGLCharacterSheet/master/README.md",
-	"url": "https://github.com/ElfFriend-DnD/foundryvtt-5eOGLCharacterSheet"
+  "name": "5e-ogl-character-sheet",
+  "title": "D&D 5e OGL Character Sheet",
+  "description": "A character sheet resembling a classic Pencil and Paper or Roll20 sheet.",
+  "system": ["dnd5e"],
+  "version": "0.4.2",
+  "author": "Andrew Krigline (akrigline)",
+  "authors": [
+    {
+      "name": "Andrew Krigline",
+      "url": "https://github.com/ElfFriend-DnD"
+    }
+  ],
+  "esmodules": ["foundryvtt-5eOGLCharacterSheet.js"],
+  "styles": ["foundryvtt-5eOGLCharacterSheet.css"],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "dependencies": [
+    {
+      "name": "dnd5e",
+      "type": "system",
+      "version": 0.99
+    }
+  ],
+  "minimumCoreVersion": "0.7.6",
+  "compatibleCoreVersion": "0.7.6",
+  "bugs": "https://github.com/ElfFriend-DnD/foundryvtt-5eOGLCharacterSheet/issues",
+  "changelog": "https://github.com/ElfFriend-DnD/foundryvtt-5eOGLCharacterSheet/releases",
+  "download": "https://github.com/ElfFriend-DnD/foundryvtt-5eOGLCharacterSheet/releases/download/v0.4.2/module.zip",
+  "manifest": "https://github.com/ElfFriend-DnD/foundryvtt-5eOGLCharacterSheet/releases/latest/download/module.json",
+  "readme": "https://raw.githubusercontent.com/ElfFriend-DnD/foundryvtt-5eOGLCharacterSheet/master/README.md",
+  "url": "https://github.com/ElfFriend-DnD/foundryvtt-5eOGLCharacterSheet"
 }

@@ -21,3 +21,9 @@
   background: var(--groove-gray);
   padding: $space / 2;
 }
+
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

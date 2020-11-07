@@ -61,3 +61,29 @@
     }
   }
 }
+
+.movement {
+  overflow: hidden;
+
+  &:hover {
+    .configure-movement {
+      visibility: visible;
+    }
+  }
+
+  .configure-movement {
+    visibility: hidden;
+    position: absolute;
+    top: $space / 2;
+    right: 2px;
+    font-size: 12px; // arbitrary
+  }
+
+  .movement-primary {
+    @include truncate;
+  }
+
+  .movement-special {
+    @include truncate;
+  }
+}
