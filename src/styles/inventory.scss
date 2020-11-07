@@ -2,8 +2,8 @@
 @import './variables';
 
 /* Applied to all Lists on the Sheet */
-.inventory-list {
-  .inventory-header {
+.items-list {
+  .items-header {
     background: none;
     border: 0;
     border-bottom: $groove-border;
@@ -67,12 +67,22 @@
       }
     }
   }
+
+  .item-name {
+    min-height: 30px;
+  }
+
+  .item-controls {
+    @include spaced($space / 2);
+
+    text-align: right;
+  }
 }
 
 .condensed-inventory-list {
   padding: 0;
 
-  .inventory-header {
+  .items-header {
     display: flex;
     flex: 0 auto;
     font-size: inherit;
