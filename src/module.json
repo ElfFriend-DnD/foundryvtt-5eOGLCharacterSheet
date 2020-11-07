@@ -29,6 +29,7 @@
   ],
   "minimumCoreVersion": "0.7.6",
   "compatibleCoreVersion": "0.7.6",
+  "minimumSystemVersion": 0.99,
   "bugs": "https://github.com/ElfFriend-DnD/foundryvtt-5eOGLCharacterSheet/issues",
   "changelog": "https://github.com/ElfFriend-DnD/foundryvtt-5eOGLCharacterSheet/releases",
   "download": "https://github.com/ElfFriend-DnD/foundryvtt-5eOGLCharacterSheet/releases/download/v0.4.2/module.zip",
