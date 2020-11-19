@@ -143,6 +143,8 @@
     {{!-- Biography Tab --}}
     <article class="tab biography flexrow" data-group="primary" data-tab="biography">
       <div class="left-notes note-entries flexcol">
+        <img class="profile" src="{{actor.img}}" title="{{actor.name}}" data-edit="img" />
+
         <article>
           <h4 class="box-title">{{ localize "DND5E.Appearance" }}</h4>
           {{editor content=data.details.appearance target="data.details.appearance" button=true owner=owner editable=editable}}
