@@ -19,7 +19,9 @@
     <ul class="skills-list saving-throws">
       {{#each data.abilities as |ability id|}}
       <li class="ability skill flexrow {{#if ability.proficient}}proficient{{/if}}" data-ability="{{id}}">
-        <a class="proficiency-toggle skill-proficiency"
+        <input type="hidden" name="data.abilities.{{id}}.proficient" value="{{ability.proficient}}"
+          data-dtype="Number" />
+        <a class="proficiency-toggle ability-proficiency"
           title="{{ localize 'DND5E.Proficiency' }}">{{{ability.icon}}}</a>
         <span class="skill-mod" title="Saving Throw">{{numberFormat ability.save decimals=0 sign=true}}</span>
         <h4 class="saving-throw-name rollable">{{ability.label}}</h4>

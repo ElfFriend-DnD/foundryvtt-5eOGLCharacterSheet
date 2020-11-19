@@ -26,8 +26,10 @@ ul.skills-list {
       border-radius: $border-radius / 2;
     }
 
-    .skill-proficiency {
+    .skill-proficiency,
+    .ability-proficiency {
       line-height: normal;
+      flex: 0 0 16px;
     }
 
     .skill-ability {
