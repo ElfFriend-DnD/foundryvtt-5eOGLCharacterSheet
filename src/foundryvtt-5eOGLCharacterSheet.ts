@@ -18,6 +18,9 @@ Handlebars.registerHelper('ogl5e-sheet-add', (value: number, toAdd: number) => {
 });
 
 Handlebars.registerHelper('ogl5e-sheet-isEmpty', (input: Object | Array<any> | Set<any>) => {
+  if (!input) {
+    return true;
+  }
   if (input instanceof Array) {
     return input.length < 1;
   }

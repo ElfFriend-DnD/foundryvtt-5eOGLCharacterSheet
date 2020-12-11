@@ -138,6 +138,13 @@
 
   .traits {
     margin-top: 0;
+
+    .config-button,
+    .trait-selector {
+      padding: 2px 0;
+      color: var(--color);
+      font-size: 10px;
+    }
   }
 
   .sheet-body-column {
