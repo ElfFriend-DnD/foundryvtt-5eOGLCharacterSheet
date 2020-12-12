@@ -305,6 +305,7 @@ Hooks.once('init', async function () {
 
 // Register OGL5eCharacterSheet Sheet
 Actors.registerSheet('dnd5e', OGL5eCharacterSheet, {
+  label: 'OGL Character Sheet',
   types: ['character'],
   makeDefault: false,
 });
