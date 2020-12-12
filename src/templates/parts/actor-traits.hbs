@@ -22,7 +22,7 @@
   {{/if}}
   {{/inline}}
 
-  <div class="form-group {{#if (and (eq data.traits.senses '') (ogl5e-isEmpty senses))}}inactive{{/if}}">
+  <div class="form-group {{#if (and (eq data.traits.senses '') (ogl5e-sheet-isEmpty senses))}}inactive{{/if}}">
     <label>{{localize "DND5E.Senses"}}</label>
     {{#if senses}}
     <a class="config-button" data-action="senses" title="{{localize 'DND5E.SensesConfig'}}">
