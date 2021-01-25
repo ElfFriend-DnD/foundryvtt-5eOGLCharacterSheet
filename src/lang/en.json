@@ -1,9 +1,4 @@
 {
-  "OGL5E.HitDC": "Hit / DC",
-
-  "OGL5E.limitActionsToCantrips": "Limit Actions to Cantrips",
-  "OGL5E.limitActionsToCantripsHint": "Instead of showing all spells that deal damage in the Actions area, limit it to only cantrips.",
-
   "OGL5E.showIconsOnInventoryList": "Add Icons to Inventory.",
   "OGL5E.showIconsOnInventoryListHint": "Add the icons to the items on the inventory list.",
 
