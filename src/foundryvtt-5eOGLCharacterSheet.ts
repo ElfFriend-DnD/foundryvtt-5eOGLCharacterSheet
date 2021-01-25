@@ -84,7 +84,17 @@ export class OGL5eCharacterSheet extends ActorSheet5eCharacter {
    * Activate event listeners using the prepared sheet HTML
    * @param html {HTML}   The prepared HTML object ready to be rendered into the DOM
    */
-  activateListeners(html) {
+  async activateListeners(html) {
+    try {
+      const actionsTab = html.find('.actions');
+
+      //@ts-ignore
+      const actionsTabHtml = $(await CAL5E.renderActionsList(this.actor, this.appId));
+      actionsTab.html(actionsTabHtml);
+    } catch (e) {
+      log(true, e);
+    }
+
     super.activateListeners(html);
     //@ts-ignore
     if (!this.options.editable) return; // FIXME TS

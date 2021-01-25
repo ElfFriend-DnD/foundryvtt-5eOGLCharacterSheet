@@ -6,16 +6,6 @@
     flex: 3;
   }
 
-  .items-header {
-    .item-detail {
-      flex: 1;
-    }
-
-    .item-damage {
-      flex: 2;
-    }
-  }
-
   .item {
     > :not(.item-summary) {
       min-height: 30px; // arbitrary
@@ -38,7 +28,7 @@
       background-position: center;
     }
 
-    .spell-uses {
+    .item-uses {
       flex: 0 auto;
       padding-right: 0.2em;
       margin-left: 0.2em;
@@ -60,8 +50,19 @@
   .damage-cell {
     overflow: hidden;
     white-space: nowrap;
-    justify-content: flex-start !important;
+    text-overflow: ellipsis;
     margin-left: 0.2em;
     flex: 2;
+  }
+
+  .action-range {
+    display: none !important;
+  }
+
+  .to-hit-cell {
+    text-overflow: initial;
+    flex-basis: 70px;
+    white-space: unset;
+    word-wrap: unset;
   }
 }
