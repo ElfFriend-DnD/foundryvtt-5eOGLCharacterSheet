@@ -1,4 +1,4 @@
-import { log, getActivationType, getWeaponRelevantAbility } from './helpers';
+import { log } from './helpers';
 import { registerSettings } from './module/settings.js';
 import { preloadTemplates } from './module/preloadTemplates.js';
 import { MODULE_ID, MySettings } from './constants.js';
@@ -53,6 +53,26 @@ export class OGL5eCharacterSheet extends ActorSheet5eCharacter {
   }
 
   /**
+   * Inject character actions list before listeners are activated
+   * @override
+   */
+  async _renderInner(...args) {
+    const html = await super._renderInner(...args);
+
+    try {
+      const actionsTab = html.find('.actions');
+
+      //@ts-ignore
+      const actionsTabHtml = $(await CAL5E.renderActionsList(this.actor));
+      actionsTab.html(actionsTabHtml);
+    } catch (e) {
+      log(true, e);
+    }
+
+    return html;
+  }
+
+  /**
    * Handle rolling an Ability check, either a test or a saving throw
    * @param {Event} event   The originating click event
    * @private
@@ -85,16 +105,6 @@ export class OGL5eCharacterSheet extends ActorSheet5eCharacter {
    * @param html {HTML}   The prepared HTML object ready to be rendered into the DOM
    */
   async activateListeners(html) {
-    try {
-      const actionsTab = html.find('.actions');
-
-      //@ts-ignore
-      const actionsTabHtml = $(await CAL5E.renderActionsList(this.actor, this.appId));
-      actionsTab.html(actionsTabHtml);
-    } catch (e) {
-      log(true, e);
-    }
-
     super.activateListeners(html);
     //@ts-ignore
     if (!this.options.editable) return; // FIXME TS
@@ -201,23 +211,9 @@ Hooks.once('init', async function () {
   await preloadTemplates();
 });
 
-/* ------------------------------------ */
-/* Setup module							*/
-/* ------------------------------------ */
-// Hooks.once('setup', function () {
-//   // Do anything after initialization but before
-//   // ready
-// });
-
 // Register OGL5eCharacterSheet Sheet
 Actors.registerSheet('dnd5e', OGL5eCharacterSheet, {
   label: 'OGL Character Sheet',
   types: ['character'],
   makeDefault: false,
 });
-
-/* ------------------------------------ */
-/* When ready							*/
-/* ------------------------------------ */
-// Hooks.once('ready', function () {
-// });
