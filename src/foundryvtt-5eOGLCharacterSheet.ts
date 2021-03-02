@@ -92,6 +92,7 @@ export class OGL5eCharacterSheet extends ActorSheet5eCharacter {
    */
   async _onQuantityChange(event) {
     event.preventDefault();
+    event.stopPropagation();
     const itemId = event.currentTarget.closest('.item').dataset.itemId;
     // @ts-ignore
     const item = this.actor.getOwnedItem(itemId);
@@ -216,4 +217,8 @@ Actors.registerSheet('dnd5e', OGL5eCharacterSheet, {
   label: 'OGL Character Sheet',
   types: ['character'],
   makeDefault: false,
+});
+
+Hooks.once('devModeReady', ({ registerPackageDebugFlag }) => {
+  registerPackageDebugFlag(MODULE_ID);
 });

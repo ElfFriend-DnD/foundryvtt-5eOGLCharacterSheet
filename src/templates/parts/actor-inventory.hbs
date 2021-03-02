@@ -1,47 +1,34 @@
-<aside class="inventory-sidebar">
-
+<aside class="inventory-header">
   <div class="currency">
     <div class="currency-inputs">
       {{#each data.currency as |v k|}}
       <div class="currency-input">
+        <input type="text" name="data.currency.{{k}}" value="{{v}}" data-dtype="Number" />
         <label class="denomination {{k}}">
           {{k}}
         </label>
-        <input type="text" name="data.currency.{{k}}" value="{{v}}" data-dtype="Number" />
       </div>
       {{/each}}
     </div>
-  </div>
-
-  <div class="encumberance">
-    {{#with data.attributes.encumbrance}}
-    <strong>{{localize "DND5E.CoverTotal"}} {{localize "DND5E.ItemContainerCapacityWeight"}}</strong>
-    <h3>{{ value }} {{localize "DND5E.AbbreviationLbs"}}</h3>
-    {{#if (gt value max)}}
-    <span class="encumbered">
-      {{localize "DND5E.Max"}}: {{ max }} {{localize "DND5E.AbbreviationLbs"}}
-    </span>
-    {{/if}}
-    {{/with}}
   </div>
 </aside>
 
 <ol class="inventory-list items-list condensed-inventory-list">
   <li class="items-header flexrow">
-    <div class="item-detail item-quantity" title="{{localize "DND5E.Quantity"}}">
+    <div class="item-detail item-quantity" title="{{localize 'DND5E.Quantity'}}">
       <i class="fas fa-hashtag"></i>
     </div>
 
     <h3 class="item-name flexrow">{{localize "DND5E.ItemName"}}</h3>
 
-    <div class="item-detail item-weight" title="{{localize "DND5E.Weight"}}">
+    <div class="item-detail item-weight" title="{{localize 'DND5E.Weight'}}">
       <i class="fas fa-weight-hanging"></i>
     </div>
 
     {{#if ../owner}}
     <div class="item-controls">
-      <a class="item-control item-create" title='{{localize "DND5E.ItemCreate"}}'
-        {{#each section.dataset as |v k|}}data-{{k}}="{{v}}" {{/each}}>
+      <a class="item-control item-create" title='{{localize "DND5E.ItemCreate"}}' {{#each section.dataset as |v
+        k|}}data-{{k}}="{{v}}" {{/each}}>
         <i class="fas fa-plus"></i> {{localize "DND5E.Add"}}
       </a>
     </div>
@@ -57,8 +44,8 @@
 
     {{#if ../owner}}
     <div class="item-controls">
-      <a class="item-control item-create" title='{{localize "DND5E.ItemCreate"}}'
-        {{#each section.dataset as |v k|}}data-{{k}}="{{v}}" {{/each}}>
+      <a class="item-control item-create" title='{{localize "DND5E.ItemCreate"}}' {{#each section.dataset as |v
+        k|}}data-{{k}}="{{v}}" {{/each}}>
         <i class="fas fa-plus"></i> {{localize "DND5E.Add"}}
       </a>
     </div>
@@ -73,7 +60,7 @@
       <div class="item-image item-image-show rollable" style="background-image: url({{item.img}})"></div>
       {{/if}}
       <div class="item-detail item-quantity">
-        <input type="text" name="{{item._id}}.data.quantity" value="{{item.data.quantity}}" data-dtype="Number" />
+        <input type="text" value="{{item.data.quantity}}" data-dtype="Number" />
       </div>
 
       <div class="item-name flexrow rollable">
@@ -84,7 +71,7 @@
         <h4>
           {{item.name~}}
           {{~#if (or item.data.attuned (eq data.attunement 2))}} <i class="fas fa-sun attuned"
-            title={{localize "DND5E.Attuned"}}></i>{{/if}}
+            title={{localize "DND5E.Attuned" }}></i>{{/if}}
         </h4>
         {{/if}}
       </div>
@@ -115,3 +102,17 @@
   </ol>
   {{/each}}
 </ol>
+
+<div class="inventory-footer">
+  <div class="encumberance">
+    {{#with data.attributes.encumbrance}}
+    <strong>{{localize "DND5E.CoverTotal"}} {{localize "DND5E.ItemContainerCapacityWeight"}}</strong>
+    <h3>{{ value }} {{localize "DND5E.AbbreviationLbs"}}</h3>
+    {{#if (gt value max)}}
+    <span class="encumbered">
+      {{localize "DND5E.Max"}}: {{ max }} {{localize "DND5E.AbbreviationLbs"}}
+    </span>
+    {{/if}}
+    {{/with}}
+  </div>
+</div>

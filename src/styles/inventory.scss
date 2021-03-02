@@ -166,34 +166,25 @@
   @include spaced($space / 2);
 }
 
-.inventory-sidebar {
-  @include spaced-vertical($space);
+.inventory-header {
+  @include spaced($space);
   display: flex;
-  flex-direction: column;
-  flex: 1 1px;
-  max-width: 20%;
+}
 
-  + .inventory-list {
-    flex: 4;
-  }
+.inventory-footer {
+  @include spaced($space);
+  display: flex;
 }
 
 .currency {
   align-items: stretch;
   display: flex;
-  flex-direction: column;
   flex: 0 auto;
 
   .currency-inputs {
-    @include spaced-vertical($space);
+    @include spaced($space);
     align-items: center;
-    flex-direction: column;
     display: flex;
-
-    input {
-      margin-left: 0.2em;
-      width: 4em;
-    }
   }
 
   .currency-input {
@@ -204,22 +195,24 @@
   }
 
   label {
-    border-top-left-radius: $border-radius / 2;
     border-bottom-left-radius: $border-radius / 2;
+    border-top-right-radius: $border-radius / 2;
+    border-bottom-right-radius: $border-radius / 2;
     background: var(--groove-gray);
     text-transform: uppercase;
     font-weight: 700;
-    font-size: 0.6em;
+    font-size: 0.8em;
     position: absolute;
-    right: 100%;
-    top: 0.7em;
+    left: calc(100% - 0.7em);
+    top: calc(100% - 0.7em);
   }
 }
 
 .encumberance {
   overflow: hidden;
   font-size: 0.7em;
-  width: 100%;
+  width: auto;
+  margin-left: auto;
 
   h3 {
     overflow: hidden;
