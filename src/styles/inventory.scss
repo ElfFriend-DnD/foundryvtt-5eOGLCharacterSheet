@@ -163,12 +163,18 @@
 
 /* Only the Inventory Section */
 .inventory {
-  @include spaced($space / 2);
+  @include spaced-vertical($space / 2);
+
+  hr {
+    flex: 0 0 2px;
+    width: 100%;
+  }
 }
 
 .inventory-header {
   @include spaced($space);
   display: flex;
+  margin-right: $space / 2;
 }
 
 .inventory-footer {

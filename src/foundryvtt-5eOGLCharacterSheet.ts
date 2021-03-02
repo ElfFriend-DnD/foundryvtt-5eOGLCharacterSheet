@@ -195,6 +195,13 @@ export class OGL5eCharacterSheet extends ActorSheet5eCharacter {
       log(true, 'error trying to migrate description to appearance', e);
     }
 
+    // Setting - Show icon on inventory list
+    if (game.settings.get(MODULE_ID, MySettings.showIconsOnInventoryList)) {
+      sheetData.settingsShowInventoryIcons = true;
+    } else {
+      sheetData.settingsShowInventoryIcons = false;
+    }
+
     return sheetData;
   }
 }
