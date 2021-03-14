@@ -228,20 +228,7 @@
   }
 }
 
-.encumberance {
-  overflow: hidden;
-  font-size: 0.7em;
-  width: auto;
-  margin-left: auto;
-
-  h3 {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-  }
-
-  .encumbered {
-    font-weight: 700;
-    color: var(--highlight);
-  }
+.encumbrance {
+  margin: 0;
+  flex: 0 0 12px !important;
 }
