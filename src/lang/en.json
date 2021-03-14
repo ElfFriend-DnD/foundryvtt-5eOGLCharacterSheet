@@ -1,7 +1,8 @@
 {
-  "OGL5E.showIconsOnInventoryList": "Add Icons to Inventory.",
-  "OGL5E.showIconsOnInventoryListHint": "Add the icons to the items on the inventory list.",
-
+  "OGL5E.showIconsOnInventoryList": "Add Icons to Inventory Rows",
+  "OGL5E.showIconsOnInventoryListHint": "Add the icons to the items on the inventory list rows.",
+  "OGL5E.showEquipOnInventoryList": "Add Equip Check to Inventory Rows",
+  "OGL5E.showEquipOnInventoryListHint": "Add a checkbox to equip/unequip items directly on the inventory list. By default these are in the expanded item details.",
   "OGL5E.expandedLimited": "Use Expanded Sheet as Limited",
   "OGL5E.expandedLimitedHint": "Show the full character sheet for users who have the Limited permission for a given Actor."
 }

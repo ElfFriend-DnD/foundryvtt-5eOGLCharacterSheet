@@ -102,6 +102,10 @@
         flex: 0 1em;
       }
     }
+
+    .item-equipped {
+      flex: 0 0 2em;
+    }
   }
 
   .item {
@@ -110,16 +114,30 @@
 
     &.expanded {
       .item-controls {
-        display: flex !important;
+        display: flex;
       }
     }
 
-    .item-controls {
-      display: none !important;
+    .item-equipped-controls {
+      display: flex;
+      flex: 0 0 2em;
+      place-content: center;
+      place-items: center;
+
+      i {
+        display: block;
+      }
+    }
+
+    .main-item-controls {
       width: 100%;
       flex: 1 0 100%;
       order: 16;
       place-content: flex-end;
+
+      &:last-child {
+        display: none;
+      }
     }
   }
 
