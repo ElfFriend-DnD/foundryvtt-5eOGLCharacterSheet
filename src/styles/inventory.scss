@@ -70,6 +70,10 @@
 
   .item-name {
     min-height: 30px;
+
+    > h4 {
+      @include truncate;
+    }
   }
 
   .item-controls {
@@ -124,7 +128,17 @@
   }
 
   .item-uses {
-    flex: 0 0 4em;
+    flex: unset;
+    flex-direction: column;
+    display: flex;
+
+    > input {
+      display: inline;
+    }
+
+    .item-recharge {
+      flex: unset;
+    }
   }
 
   .item-action {
