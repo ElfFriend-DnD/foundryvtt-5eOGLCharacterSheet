@@ -11,6 +11,15 @@ export const registerSettings = function () {
     hint: 'OGL5E.showIconsOnInventoryListHint',
   });
 
+  game.settings.register(MODULE_ID, MySettings.showEquipOnInventoryList, {
+    name: 'OGL5E.showEquipOnInventoryList',
+    default: false,
+    type: Boolean,
+    scope: 'client',
+    config: true,
+    hint: 'OGL5E.showEquipOnInventoryListHint',
+  });
+
   game.settings.register(MODULE_ID, MySettings.expandedLimited, {
     name: 'OGL5E.expandedLimited',
     default: false,
