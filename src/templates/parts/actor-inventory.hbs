@@ -17,6 +17,12 @@
 
 <ol class="inventory-list items-list condensed-inventory-list">
   <li class="items-header flexrow">
+    {{#if @root/settingsShowInventoryIcons}}
+    <div class="item-image item-quantity">
+      <i class="fas fa-image"></i>
+    </div>
+    {{/if}}
+
     <div class="item-detail item-quantity" title="{{localize 'DND5E.Quantity'}}">
       <i class="fas fa-hashtag"></i>
     </div>
@@ -117,16 +123,13 @@
   {{/each}}
 </ol>
 
-<div class="inventory-footer">
-  <div class="encumberance">
-    {{#with data.attributes.encumbrance}}
-    <strong>{{localize "DND5E.CoverTotal"}} {{localize "DND5E.ItemContainerCapacityWeight"}}</strong>
-    <h3>{{ value }} {{localize "DND5E.AbbreviationLbs"}}</h3>
-    {{#if (gt value max)}}
-    <span class="encumbered">
-      {{localize "DND5E.Max"}}: {{ max }} {{localize "DND5E.AbbreviationLbs"}}
-    </span>
-    {{/if}}
-    {{/with}}
-  </div>
+{{#with data.attributes.encumbrance}}
+<div class="encumbrance {{#if encumbered}}encumbered{{/if}}">
+  <span class="encumbrance-bar" style="width:{{pct}}%"></span>
+  <span class="encumbrance-label">{{value}} / {{max}}</span>
+  <i class="encumbrance-breakpoint encumbrance-33 arrow-up"></i>
+  <i class="encumbrance-breakpoint encumbrance-33 arrow-down"></i>
+  <i class="encumbrance-breakpoint encumbrance-66 arrow-up"></i>
+  <i class="encumbrance-breakpoint encumbrance-66 arrow-down"></i>
 </div>
+{{/with}}
