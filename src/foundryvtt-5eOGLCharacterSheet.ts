@@ -58,12 +58,13 @@ export class OGL5eCharacterSheet extends ActorSheet5eCharacter {
    */
   async _renderInner(...args) {
     const html = await super._renderInner(...args);
+    const actionsListApi = game.modules.get('character-actions-list-5e')?.api;
 
     try {
       const actionsTab = html.find('.actions');
 
       //@ts-ignore
-      const actionsTabHtml = $(await CAL5E.renderActionsList(this.actor));
+      const actionsTabHtml = $(await actionsListApi?.renderActionsList(this.actor));
       actionsTab.html(actionsTabHtml);
     } catch (e) {
       log(true, e);
