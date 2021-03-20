@@ -3,7 +3,7 @@
 	"title": "D&D 5e OGL Character Sheet",
 	"description": "A character sheet resembling a classic Pencil and Paper or Roll20 sheet.",
 	"systems": ["dnd5e"],
-	"version": "0.9.0",
+	"version": "0.10.0",
 	"author": "Andrew Krigline (akrigline)",
 	"authors": [
 		{
@@ -61,7 +61,7 @@
 	"minimumSystemVersion": "1.2.1",
 	"bugs": "https://github.com/ElfFriend-DnD/foundryvtt-5eOGLCharacterSheet/issues",
 	"changelog": "https://github.com/ElfFriend-DnD/foundryvtt-5eOGLCharacterSheet/releases",
-	"download": "https://github.com/ElfFriend-DnD/foundryvtt-5eOGLCharacterSheet/releases/download/v0.9.0/module.zip",
+	"download": "https://github.com/ElfFriend-DnD/foundryvtt-5eOGLCharacterSheet/releases/download/v0.10.0/module.zip",
 	"manifest": "https://github.com/ElfFriend-DnD/foundryvtt-5eOGLCharacterSheet/releases/latest/download/module.json",
 	"readme": "https://raw.githubusercontent.com/ElfFriend-DnD/foundryvtt-5eOGLCharacterSheet/master/README.md",
 	"url": "https://github.com/ElfFriend-DnD/foundryvtt-5eOGLCharacterSheet",
