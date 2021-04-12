@@ -15,6 +15,10 @@
 
 A classic layout for a 5e Character Sheet, heavily inspired by the Official 5e Character Sheet and the Roll20 default 5e Sheet. This sheet is chaotic and packed with information all on one screen, but it does have the advantage of having some muscle memory if you're coming from either pen and paper or Roll20.
 
+> ## Maintenance Mode
+>
+> I am not actively improving this module with new features. I will do my best to keep it compatible with dnd5e system updates. If any are interested in taking over please reach out to me on discord. @Calego#0914
+
 ## Installation
 
 Module JSON:
