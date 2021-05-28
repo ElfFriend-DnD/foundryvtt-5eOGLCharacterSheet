@@ -96,7 +96,7 @@ export class OGL5eCharacterSheet extends ActorSheet5eCharacter {
     event.stopPropagation();
     const itemId = event.currentTarget.closest('.item').dataset.itemId;
     // @ts-ignore
-    const item = this.actor.getOwnedItem(itemId);
+    const item = this.actor.items.get(itemId);
     const quantity = parseInt(event.target.value);
     event.target.value = quantity;
     return item.update({ 'data.quantity': quantity });
