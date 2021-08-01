@@ -1,5 +1,7 @@
 {{!-- Sheet Header --}}
 <header class="sheet-header">
+  {{> "systems/dnd5e/templates/actors/parts/actor-warnings.html"}}
+
   <h1>
     <input name="name" type="text" value="{{actor.name}}" placeholder="{{ localize 'DND5E.Name' }}" />
   </h1>

@@ -1,16 +1,17 @@
 <section class="flexcol health-armor">
 
   <ul class="ac-initiative-speed flexrow">
-    <li class="ac">
+    <li class="ac attributable" data-property="attributes.ac">
       <div class="ac-symbol">
         {{> (ogl5e-sheet-path "assets/armor-class.hbs")}}
       </div>
       <h4>Armor</h4>
       <div class="attribute-value">
-        <input name="data.attributes.ac.value" type="text" value="{{data.attributes.ac.value}}" data-dtype="Number"
-          placeholder="10" />
+        <span>{{data.attributes.ac.value}}</span>
       </div>
       <h4>Class</h4>
+      <a class="config-button" data-action="armor" title="{{localize 'DND5E.ArmorConfig'}}"><i
+          class="fas fa-cog"></i></a>
     </li>
 
     <li class="attribute initiative">
@@ -59,7 +60,9 @@
   <div class="hd-ds flexrow">
     <div class="attribute hd">
       <h4 class="attribute-name box-title">
-        <a class="rest short-rest">{{ localize "DND5E.HitDice" }}</a>
+        {{ localize "DND5E.HitDice" }}
+        <a class="config-button" data-action="hit-dice" title="{{localize 'DND5E.HitDiceConfig'}}"><i
+            class="fas fa-cog"></i></a>
       </h4>
       <div class="attribute-value multiple">
         <input name="data.attributes.hd" type="text" value="{{data.attributes.hd}}" data-dtype="Number"

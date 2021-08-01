@@ -23,6 +23,9 @@
   padding: 12px; // arbitrary to fit within shield shape
   position: relative;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   h4 {
     color: var(--accent-text);
@@ -31,6 +34,31 @@
     margin: 0;
     text-transform: uppercase;
   }
+
+  .attribute-value {
+    line-height: 1.3;
+  }
+
+  .config-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: none;
+  }
+
+  &:hover {
+    .config-button {
+      display: block;
+    }
+  }
+
+  .property-attribution {
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1rem;
+    min-width: 150px;
+    top: calc(100% - 1em);
+  }
 }
 
 .hd-ds {
@@ -38,9 +66,25 @@
 }
 
 .hd {
+  position: relative;
+
   .non-editable {
     flex: 0 auto;
     width: 100%;
+  }
+
+  &:hover {
+    .config-button {
+      visibility: visible;
+    }
+  }
+
+  .config-button {
+    visibility: hidden;
+    position: absolute;
+    top: $space / 2;
+    right: 2px;
+    font-size: 12px; // arbitrary
   }
 }
 
@@ -87,4 +131,11 @@
   .movement-special {
     @include truncate;
   }
+}
+
+.warnings {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  width: 100%;
 }
