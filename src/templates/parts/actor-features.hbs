@@ -28,7 +28,8 @@
     <li class="item flexrow {{#if isDepleted}}depleted{{/if}}" data-item-id="{{item._id}}">
       <div class="item-name flexrow rollable">
         {{#if (or section.hasActions ../../settingsShowInventoryIcons)}}
-        <div class="item-image" style="background-image: url({{item.img}})"></div>
+        <div class="item-image" tabindex="0" role="button" aria-label="{{item.name}}"
+          style="background-image: url({{item.img}})"></div>
         {{/if}}
         <h4 title="{{item.name}}">{{item.name}}</h4>
 

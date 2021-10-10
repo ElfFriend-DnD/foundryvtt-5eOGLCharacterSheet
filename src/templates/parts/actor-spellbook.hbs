@@ -91,8 +91,8 @@
 
     <div class="item-controls">
       {{#if section.canCreate}}
-      <a class="item-control item-create" title="{{localize 'DND5E.SpellCreate'}}"
-        {{#each section.dataset as |v k|}}data-{{k}}="{{v}}" {{/each}}>
+      <a class="item-control item-create" title="{{localize 'DND5E.SpellCreate'}}" {{#each section.dataset as |v
+        k|}}data-{{k}}="{{v}}" {{/each}}>
         <i class="fas fa-plus"></i> {{localize "DND5E.Add"}}
       </a>
       {{/if}}
@@ -103,7 +103,8 @@
     {{#each section.spells as |item i|}}
     <li class="item flexrow" data-item-id="{{item._id}}">
       <div class="item-name flexrow rollable">
-        <div class="item-image" style="background-image: url({{item.img}})"></div>
+        <div class="item-image" tabindex="0" role="button" aria-label="{{item.name}}"
+          style="background-image: url({{item.img}})"></div>
         <h4>{{item.name}}</h4>
         {{#if item.data.uses.per }}
         <div class="item-detail spell-uses">Uses {{item.data.uses.value}} / {{item.data.uses.max}}</div>

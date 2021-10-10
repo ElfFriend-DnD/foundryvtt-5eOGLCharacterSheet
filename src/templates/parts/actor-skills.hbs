@@ -10,7 +10,8 @@
 
   <div class="fancy-value">
     <h4>{{ localize "DND5E.Proficiency" }}</h4>
-    <div>{{numberFormat data.attributes.prof decimals=0 sign=true}}</div>
+    <div>{{#if systemFeatures.profLabel}}{{labels.proficiency}}{{else}}{{numberFormat data.attributes.prof decimals=0
+      sign=true}}{{/if}}</div>
   </div>
 
   {{!-- Saving Throws --}}
@@ -23,7 +24,11 @@
         <a class="proficiency-toggle ability-proficiency"
           title="{{ localize 'DND5E.Proficiency' }}">{{{ability.icon}}}</a>
         <span class="skill-mod" title="Saving Throw">{{numberFormat ability.save decimals=0 sign=true}}</span>
-        <h4 class="saving-throw-name rollable">{{ability.label}}</h4>
+        <div class="skill-name-controls">
+          <h4 class="saving-throw-name rollable">{{ability.label}}</h4>
+          {{#if @root/systemFeatures.attributeConfig}}<a class="config-button" data-action="ability"
+            title="{{localize 'DND5E.AbilityConfigure'}}"><i class="fas fa-cog"></i></a>{{/if}}
+        </div>
       </li>
       {{/each}}
     </ul>
@@ -38,10 +43,14 @@
         <input type="hidden" name="data.skills.{{s}}.value" value="{{skill.baseValue}}" data-dtype="Number" />
         <a class="proficiency-toggle skill-proficiency" title="{{skill.hover}}">{{{skill.icon}}}</a>
         <span class="skill-mod">{{numberFormat skill.total decimals=0 sign=true}}</span>
-        <h4 class="skill-name rollable">
-          {{skill.label}}
-          <span class="skill-ability">{{skill.ability}}</span>
-        </h4>
+        <div class="skill-name-controls">
+          <h4 class="skill-name rollable">
+            {{skill.label}}
+            <span class="skill-ability">{{skill.ability}}</span>
+          </h4>
+          {{#if @root/systemFeatures.skillConfig}}<a class="config-button" data-action="skill"
+            title="{{localize 'DND5E.SkillConfigure'}}"><i class="fas fa-cog"></i></a>{{/if}}
+        </div>
       </li>
       {{/each}}
     </ul>

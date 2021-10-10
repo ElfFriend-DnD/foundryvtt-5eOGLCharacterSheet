@@ -201,6 +201,20 @@ export class OGL5eCharacterSheet extends ActorSheet5eCharacter {
 
     sheetData.settingsShowEquipInventory = game.settings.get(MODULE_ID, MySettings.showEquipOnInventoryList);
 
+    // system features
+    const systemVersion = game.system.data.version;
+    //@ts-ignore
+    sheetData.systemFeatures = {
+      //@ts-ignore
+      skillConfig: !foundry.utils.isNewerVersion('1.5.0', systemVersion),
+      //@ts-ignore
+      attributeConfig: !foundry.utils.isNewerVersion('1.5.0', systemVersion),
+      //@ts-ignore
+      profLabel: !foundry.utils.isNewerVersion('1.5.0', systemVersion),
+      //@ts-ignore
+      currencyLabel: !foundry.utils.isNewerVersion('1.5.0', systemVersion),
+    };
+
     return sheetData;
   }
 }
