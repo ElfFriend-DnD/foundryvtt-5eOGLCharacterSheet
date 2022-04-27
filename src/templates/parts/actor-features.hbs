@@ -31,7 +31,33 @@
         <div class="item-image" tabindex="0" role="button" aria-label="{{item.name}}"
           style="background-image: url({{item.img}})"></div>
         {{/if}}
-        <h4 title="{{item.name}}">{{item.name}}</h4>
+        {{#if @root/systemFeatures.subclasses}}
+        <h4 title="{{item.name}}">
+          {{#if (eq item.type "subclass")}}&rdsh;{{/if}}
+          {{item.name}}
+          {{#if item.data.isOriginalClass}} <i class="original-class fas fa-sun"
+            title="{{localize 'DND5E.ClassOriginal'}}"></i>{{/if}}
+        </h4>
+        {{else}}
+        <h4 title="{{item.name}}">
+          {{item.name}}
+        </h4>
+        {{/if}}
+
+        {{#if (eq item.type "class")}}
+        {{#if @root/systemFeatures.levelDropdown}}
+        <select class="level-selector">
+          {{#select 0}}
+          {{#each item.availableLevels}}
+          <option value="{{this.delta}}" {{disabled this.disabled}}>
+            {{localize "DND5E.LevelNumber" level=this.level}}
+            {{#if this.delta}}({{numberFormat this.delta sign=true}}){{/if}}
+          </option>
+          {{/each}}
+          {{/select}}
+        </select>
+        {{/if}}
+        {{/if}}
 
         {{#if (or item.isOnCooldown item.data.recharge.value item.hasUses)}}
         <div class="item-detail item-uses" title="{{localize 'DND5E.Uses'}}">
@@ -63,14 +89,21 @@
         {{item.labels.activationAbbrev}}
         {{/if}}
       </div>
+      {{/if}}
 
-      {{else if section.isClass}}
+      {{#if section.isClass}}
+      {{#unless @root/systemFeatures.subclasses}}
       <div class="item-detail player-class">
         {{item.data.subclass}}
       </div>
+      {{/unless}}
+      {{#unless @root/systemFeatures.levelDropdown}}
+      {{#if (eq item.type "class")}}
       <div class="item-detail item-action">
         Level {{item.data.levels}}
       </div>
+      {{/if}}
+      {{/unless}}
       {{/if}}
 
       {{#if section.columns}}

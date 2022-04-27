@@ -127,11 +127,17 @@ export class OGL5eCharacterSheet extends ActorSheet5eCharacter {
     // replace classLabels with Subclass + Class list
     try {
       let items = sheetData.items;
-      const classList = items
-        .filter((item) => item.type === 'class')
-        .map((item) => {
-          return `${item.data.subclass} ${item.name} ${item.data.levels}`;
-        });
+      let classList;
+      //@ts-ignore
+      if (!foundry.utils.isNewerVersion('1.6.0', game.system.data.version)) {
+        classList = sheetData.features[1].items.map((item) => item.name);
+      } else {
+        classList = items
+          .filter((item) => item.type === 'class')
+          .map((item) => {
+            return `${item.data.subclass} ${item.name} ${item.data.levels}`;
+          });
+      }
 
       sheetData.classLabels = classList.join(', ');
     } catch (e) {
@@ -213,6 +219,12 @@ export class OGL5eCharacterSheet extends ActorSheet5eCharacter {
       profLabel: !foundry.utils.isNewerVersion('1.5.0', systemVersion),
       //@ts-ignore
       currencyLabel: !foundry.utils.isNewerVersion('1.5.0', systemVersion),
+      //@ts-ignore
+      componentLabels: !foundry.utils.isNewerVersion('1.6.0', systemVersion),
+      //@ts-ignore
+      levelDropdown: !foundry.utils.isNewerVersion('1.6.0', systemVersion),
+      //@ts-ignore
+      subclasses: !foundry.utils.isNewerVersion('1.6.0', systemVersion),
     };
 
     return sheetData;
