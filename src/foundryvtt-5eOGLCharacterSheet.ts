@@ -80,7 +80,7 @@ export class OGL5eCharacterSheet extends ActorSheet5eCharacter {
    */
   _onRollAbilitySave(event) {
     event.preventDefault();
-    let ability = event.currentTarget.parentElement.dataset.ability;
+    let ability = event.currentTarget.closest('[data-ability]')?.dataset?.ability;
 
     //@ts-ignore
     this.actor.rollAbilitySave(ability, { event: event }); // FIXME TS
