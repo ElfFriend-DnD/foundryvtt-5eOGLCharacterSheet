@@ -226,4 +226,9 @@
   .flexcol > * {
     flex: 0 auto;
   }
+
+  .prosemirror .editor-container {
+    min-height: 80px;
+    margin-bottom: 8px;
+  }
 }
