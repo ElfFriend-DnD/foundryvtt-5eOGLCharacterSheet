@@ -26,7 +26,7 @@ Handlebars.registerHelper('ogl5e-sheet-isEmpty', (input: Object | Array<any> | S
   if (input instanceof Set) {
     return input.size < 1;
   }
-  return isObjectEmpty(input);
+  return isEmpty(input);
 });
 
 export class OGL5eCharacterSheet extends dnd5e.applications.actor.ActorSheet5eCharacter {
@@ -120,8 +120,8 @@ export class OGL5eCharacterSheet extends dnd5e.applications.actor.ActorSheet5eCh
       .change(this._onQuantityChange.bind(this));
   }
 
-  getData() {
-    const sheetData = super.getData();
+  async getData() {
+    const sheetData = await super.getData();
 
     // replace classLabels with Subclass + Class list
     try {
@@ -225,6 +225,41 @@ export class OGL5eCharacterSheet extends dnd5e.applications.actor.ActorSheet5eCh
       //@ts-ignore
       subclasses: !foundry.utils.isNewerVersion('1.6.0', systemVersion),
     };
+
+    sheetData.trait = await TextEditor.enrichHTML(sheetData.system.details.trait, {
+      secrets: this.actor.isOwner,
+      rollData: sheetData.rollData,
+      async: true,
+      relativeTo: this.actor
+    });
+
+    sheetData.ideal = await TextEditor.enrichHTML(sheetData.system.details.ideal, {
+      secrets: this.actor.isOwner,
+      rollData: sheetData.rollData,
+      async: true,
+      relativeTo: this.actor
+    });
+
+    sheetData.bond = await TextEditor.enrichHTML(sheetData.system.details.bond, {
+      secrets: this.actor.isOwner,
+      rollData: sheetData.rollData,
+      async: true,
+      relativeTo: this.actor
+    });
+
+    sheetData.flaw = await TextEditor.enrichHTML(sheetData.system.details.flaw, {
+      secrets: this.actor.isOwner,
+      rollData: sheetData.rollData,
+      async: true,
+      relativeTo: this.actor
+    });
+
+    sheetData.appearance = await TextEditor.enrichHTML(sheetData.system.details.appearance, {
+      secrets: this.actor.isOwner,
+      rollData: sheetData.rollData,
+      async: true,
+      relativeTo: this.actor
+    });
 
     return sheetData;
   }

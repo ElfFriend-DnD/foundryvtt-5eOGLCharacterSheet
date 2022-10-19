@@ -55,19 +55,19 @@
         <article class="personality">
           <section>
             <h4 class="box-title">{{ localize "DND5E.PersonalityTraits" }}</h4>
-            {{editor content=system.details.trait target="system.details.trait" button=true owner=owner editable=editable}}
+            {{editor trait target="system.details.trait" button=true editable=editable engine="prosemirror" collaborate=false}}
           </section>
           <section>
             <h4 class="box-title">{{ localize "DND5E.Ideals" }}</h4>
-            {{editor content=system.details.ideal target="system.details.ideal" button=true owner=owner editable=editable}}
+            {{editor ideal target="system.details.ideal" button=true editable=editable engine="prosemirror" collaborate=false}}
           </section>
           <section>
             <h4 class="box-title">{{ localize "DND5E.Bonds" }}</h4>
-            {{editor content=system.details.bond target="system.details.bond" button=true owner=owner editable=editable}}
+            {{editor bond target="system.details.bond" button=true editable=editable engine="prosemirror" collaborate=false}}
           </section>
           <section>
             <h4 class="box-title">{{ localize "DND5E.Flaws" }}</h4>
-            {{editor content=system.details.flaw target="system.details.flaw" button=true owner=owner editable=editable}}
+            {{editor flaw target="system.details.flaw" button=true editable=editable engine="prosemirror" collaborate=false}}
           </section>
         </article>
 
@@ -130,16 +130,14 @@
 
         <article>
           <h4 class="box-title">{{ localize "DND5E.Appearance" }}</h4>
-          {{editor content=system.details.appearance target="system.details.appearance" button=true owner=owner
-          editable=editable}}
+          {{editor appearance target="system.details.appearance" button=true editable=editable engine="prosemirror" collaborate=false}}
         </article>
       </div>
 
       <div class="right-notes note-entries flexcol">
         <article class="biography-notes big-bio">
           <h4 class="box-title">{{ localize "DND5E.Background" }}</h4>
-          {{editor content=system.details.biography.value target="system.details.biography.value" button=true owner=owner
-          editable=editable}}
+          {{editor biographyHTML target="system.details.biography.value" button=true editable=editable engine="prosemirror" collaborate=false}}
         </article>
       </div>
 
