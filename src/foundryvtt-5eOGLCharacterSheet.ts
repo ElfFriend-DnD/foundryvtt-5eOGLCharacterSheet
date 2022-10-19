@@ -3,7 +3,6 @@ import { registerSettings } from './module/settings.js';
 import { preloadTemplates } from './module/preloadTemplates.js';
 import { MODULE_ID, MySettings } from './constants.js';
 //@ts-ignore
-import ActorSheet5eCharacter from '../../systems/dnd5e/module/actor/sheets/character.js';
 
 Handlebars.registerHelper('ogl5e-sheet-path', (relativePath: string) => {
   return `modules/${MODULE_ID}/${relativePath}`;
@@ -30,7 +29,7 @@ Handlebars.registerHelper('ogl5e-sheet-isEmpty', (input: Object | Array<any> | S
   return isObjectEmpty(input);
 });
 
-export class OGL5eCharacterSheet extends ActorSheet5eCharacter {
+export class OGL5eCharacterSheet extends dnd5e.applications.actor.ActorSheet5eCharacter {
   get template() {
     //@ts-ignore
     if (!game.user.isGM && this.actor.limited && !game.settings.get(MODULE_ID, MySettings.expandedLimited)) {
@@ -99,7 +98,7 @@ export class OGL5eCharacterSheet extends ActorSheet5eCharacter {
     const item = this.actor.items.get(itemId);
     const quantity = parseInt(event.target.value);
     event.target.value = quantity;
-    return item.update({ 'data.quantity': quantity });
+    return item.update({ 'system.quantity': quantity });
   }
 
   /**
@@ -129,13 +128,13 @@ export class OGL5eCharacterSheet extends ActorSheet5eCharacter {
       let items = sheetData.items;
       let classList;
       //@ts-ignore
-      if (!foundry.utils.isNewerVersion('1.6.0', game.system.data.version)) {
+      if (!foundry.utils.isNewerVersion('1.6.0', game.system.version)) {
         classList = sheetData.features[1].items.map((item) => item.name);
       } else {
         classList = items
           .filter((item) => item.type === 'class')
           .map((item) => {
-            return `${item.data.subclass} ${item.name} ${item.data.levels}`;
+            return `${item.system.subclass} ${item.name} ${item.system.levels}`;
           });
       }
 
@@ -195,8 +194,8 @@ export class OGL5eCharacterSheet extends ActorSheet5eCharacter {
     // if description is populated and appearance isn't use description as appearance
     try {
       log(false, sheetData);
-      if (!!sheetData.data.details.description?.value && !sheetData.data.details.appearance) {
-        sheetData.data.details.appearance = sheetData.data.details.description.value;
+      if (!!sheetData.system.details.description?.value && !sheetData.system.details.appearance) {
+        sheetData.system.details.appearance = sheetData.system.details.description.value;
       }
     } catch (e) {
       log(true, 'error trying to migrate description to appearance', e);
@@ -208,7 +207,7 @@ export class OGL5eCharacterSheet extends ActorSheet5eCharacter {
     sheetData.settingsShowEquipInventory = game.settings.get(MODULE_ID, MySettings.showEquipOnInventoryList);
 
     // system features
-    const systemVersion = game.system.data.version;
+    const systemVersion = game.system.version;
     //@ts-ignore
     sheetData.systemFeatures = {
       //@ts-ignore

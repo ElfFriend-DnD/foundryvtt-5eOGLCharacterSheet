@@ -10,13 +10,13 @@
         <div class="abilities-skills flexrow">
           {{!-- Ability Scores --}}
           <ul class="ability-scores ability-score-column">
-            {{#each data.abilities as |ability id|}}
+            {{#each system.abilities as |ability id|}}
             <li class="ability" data-ability="{{id}}">
               <div class="ability-outline">
                 {{> (ogl5e-sheet-path "assets/strength.hbs")}}
               </div>
               <h4 class="ability-name box-title rollable">{{ability.label}}</h4>
-              <input class="ability-score" name="data.abilities.{{id}}.value" type="text" value="{{ability.value}}"
+              <input class="ability-score" name="system.abilities.{{id}}.value" type="text" value="{{ability.value}}"
                 data-dtype="Number" placeholder="10" />
               <div class="ability-modifiers flexrow">
                 <span class="ability-mod" title="Modifier">{{numberFormat ability.mod decimals=0 sign=true}}</span>
@@ -55,19 +55,19 @@
         <article class="personality">
           <section>
             <h4 class="box-title">{{ localize "DND5E.PersonalityTraits" }}</h4>
-            {{editor content=data.details.trait target="data.details.trait" button=true owner=owner editable=editable}}
+            {{editor content=system.details.trait target="system.details.trait" button=true owner=owner editable=editable}}
           </section>
           <section>
             <h4 class="box-title">{{ localize "DND5E.Ideals" }}</h4>
-            {{editor content=data.details.ideal target="data.details.ideal" button=true owner=owner editable=editable}}
+            {{editor content=system.details.ideal target="system.details.ideal" button=true owner=owner editable=editable}}
           </section>
           <section>
             <h4 class="box-title">{{ localize "DND5E.Bonds" }}</h4>
-            {{editor content=data.details.bond target="data.details.bond" button=true owner=owner editable=editable}}
+            {{editor content=system.details.bond target="system.details.bond" button=true owner=owner editable=editable}}
           </section>
           <section>
             <h4 class="box-title">{{ localize "DND5E.Flaws" }}</h4>
-            {{editor content=data.details.flaw target="data.details.flaw" button=true owner=owner editable=editable}}
+            {{editor content=system.details.flaw target="system.details.flaw" button=true owner=owner editable=editable}}
           </section>
         </article>
 
@@ -76,26 +76,26 @@
           {{#each resources as |res|}}
           <li class="attribute resource">
             <h4 class="attribute-name box-title">
-              <input name="data.resources.{{res.name}}.label" type="text" value="{{res.label}}"
+              <input name="system.resources.{{res.name}}.label" type="text" value="{{res.label}}"
                 placeholder="{{res.placeholder}}" />
             </h4>
             <div class="attribute-value">
 
-              <input name="data.resources.{{res.name}}.value" type="text" value="{{res.value}}" data-dtype="Number"
+              <input name="system.resources.{{res.name}}.value" type="text" value="{{res.value}}" data-dtype="Number"
                 placeholder="0" />
               <span class="sep"> / </span>
-              <input name="data.resources.{{res.name}}.max" type="text" value="{{res.max}}" data-dtype="Number"
+              <input name="system.resources.{{res.name}}.max" type="text" value="{{res.max}}" data-dtype="Number"
                 placeholder="0" />
 
             </div>
             <div class="attribute-footer">
               <label class="recharge checkbox">
-                {{ localize "DND5E.AbbreviationSR" }} <input name="data.resources.{{res.name}}.sr" type="checkbox"
+                {{ localize "DND5E.AbbreviationSR" }} <input name="system.resources.{{res.name}}.sr" type="checkbox"
                   {{checked res.sr}} />
               </label>
 
               <label class="recharge checkbox">
-                {{ localize "DND5E.AbbreviationLR" }} <input name="data.resources.{{res.name}}.lr" type="checkbox"
+                {{ localize "DND5E.AbbreviationLR" }} <input name="system.resources.{{res.name}}.lr" type="checkbox"
                   {{checked res.lr}} />
               </label>
             </div>
@@ -130,7 +130,7 @@
 
         <article>
           <h4 class="box-title">{{ localize "DND5E.Appearance" }}</h4>
-          {{editor content=data.details.appearance target="data.details.appearance" button=true owner=owner
+          {{editor content=system.details.appearance target="system.details.appearance" button=true owner=owner
           editable=editable}}
         </article>
       </div>
@@ -138,7 +138,7 @@
       <div class="right-notes note-entries flexcol">
         <article class="biography-notes big-bio">
           <h4 class="box-title">{{ localize "DND5E.Background" }}</h4>
-          {{editor content=data.details.biography.value target="data.details.biography.value" button=true owner=owner
+          {{editor content=system.details.biography.value target="system.details.biography.value" button=true owner=owner
           editable=editable}}
         </article>
       </div>

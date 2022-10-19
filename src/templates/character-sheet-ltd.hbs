@@ -13,14 +13,14 @@
       <div class="left-notes note-entries flexcol">
         <article>
           <h4 class="box-title">{{ localize "DND5E.Appearance" }}</h4>
-          {{editor content=data.details.appearance target="data.details.appearance" button=true owner=owner editable=editable}}
+          {{editor content=system.details.appearance target="system.details.appearance" button=true owner=owner editable=editable}}
         </article>
       </div>
 
       <div class="right-notes note-entries flexcol">
         <article class="biography-notes big-bio">
           <h4 class="box-title">{{ localize "DND5E.Background" }}/{{ localize "DND5E.Biography" }}</h4>
-          {{editor content=data.details.biography.value target="data.details.biography.value" button=true owner=owner editable=editable}}
+          {{editor content=system.details.biography.value target="system.details.biography.value" button=true owner=owner editable=editable}}
         </article>
       </div>
 

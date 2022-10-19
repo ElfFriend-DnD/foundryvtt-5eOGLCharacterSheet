@@ -13,23 +13,23 @@
       <small>{{ localize "DND5E.ItemTypeClass" }} & {{ localize "DND5E.Level" }}</small>
     </li>
     <li class="background">
-      <input type="text" name="data.details.background" value="{{data.details.background}}"
+      <input type="text" name="system.details.background" value="{{system.details.background}}"
         placeholder="{{ localize 'DND5E.Background' }}" />
       <small><label>{{ localize 'DND5E.Background' }}</label></small>
     </li>
     <li class="race">
-      <input type="text" name="data.details.race" value="{{data.details.race}}"
+      <input type="text" name="system.details.race" value="{{system.details.race}}"
         placeholder="{{ localize 'DND5E.Race' }}" />
       <small><label>{{ localize 'DND5E.Race' }}</label></small>
     </li>
     <li class="alignment">
-      <input type="text" name="data.details.alignment" value="{{data.details.alignment}}"
+      <input type="text" name="system.details.alignment" value="{{system.details.alignment}}"
         placeholder="{{ localize 'DND5E.Alignment' }}" />
       <small><label>{{ localize 'DND5E.Alignment' }}</label></small>
     </li>
     {{#unless disableExperience}}
     <li class="experience-input">
-      <input name="data.details.xp.value" type="text" value="{{data.details.xp.value}}" data-dtype="Number"
+      <input name="system.details.xp.value" type="text" value="{{system.details.xp.value}}" data-dtype="Number"
         placeholder="0" />
       <small><label>{{ localize 'OGL5E.experience' }}</label></small>
     </li>
