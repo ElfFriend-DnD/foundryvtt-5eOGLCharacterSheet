@@ -57,7 +57,18 @@
 			"link": "https://raw.githubusercontent.com/ElfFriend-DnD/foundryvtt-5eOGLCharacterSheet/master/readme-img/biography.png"
 		}
 	],
-	"minimumSystemVersion": "2.0.0",
+	"relationships": {
+		"systems": [
+			{
+				"id": "dnd5e",
+				"type": "system",
+				"manifest": "https://raw.githubusercontent.com/foundryvtt/dnd5e/master/system.json",
+				"compatibility": {
+					"minimum": "2.0.0"
+				}
+			}
+		]
+	},
 	"compatibility":{
 		"minimum": 10,
 		"verified": 10,
