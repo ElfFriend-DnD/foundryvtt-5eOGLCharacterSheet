@@ -129,8 +129,11 @@ export class OGL5eCharacterSheet extends dnd5e.applications.actor.ActorSheet5eCh
       let classList;
       //@ts-ignore
       if (!foundry.utils.isNewerVersion('1.6.0', game.system.version)) {
-        classList = sheetData.features[1].items.map((item) => item.name);
-      } else {
+        classList = sheetData.features[1].items.map((item) => {
+            if(item.type === "class") return `${item.name} ${item.system.levels}`;
+            return item.name
+        });
+    } else {
         classList = items
           .filter((item) => item.type === 'class')
           .map((item) => {
