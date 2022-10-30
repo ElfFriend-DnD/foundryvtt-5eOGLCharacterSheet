@@ -1,9 +1,9 @@
 <div class="inventory-header">
   <div class="currency">
     <div class="currency-inputs">
-      {{#each data.currency as |v k|}}
+      {{#each system.currency as |v k|}}
       <div class="currency-input">
-        <input type="text" name="data.currency.{{k}}" value="{{v}}" data-dtype="Number" />
+        <input type="text" name="system.currency.{{k}}" value="{{v}}" data-dtype="Number" />
         <label class="denomination {{k}}">
           {{#if @root/systemFeatures.currencyLabels}}{{ lookup @root/labels.currencies k }}{{else}}{{k}}{{/if}}
         </label>
@@ -72,7 +72,7 @@
       {{#if (and @root/owner @root/settingsShowEquipInventory)}}
       <div class="item-controls item-equipped-controls">
         <a class="item-control item-toggle {{item.toggleClass}}" title='{{item.toggleTitle}}'><i
-            class="far fa-{{#if item.data.equipped}}check-{{/if}}square"></i></a>
+            class="far fa-{{#if item.system.equipped}}check-{{/if}}square"></i></a>
       </div>
       {{/if}}
 
@@ -81,30 +81,30 @@
         style="background-image: url({{item.img}})"></div>
       {{/if}}
       <div class="item-detail item-quantity">
-        <input type="text" value="{{item.data.quantity}}" data-dtype="Number" />
+        <input type="text" value="{{item.system.quantity}}" data-dtype="Number" />
       </div>
 
       <div class="item-name flexrow rollable">
         <h4 title="{{item.name}}">
           {{item.name~}}
-          {{~#if (or item.data.attuned (eq data.attunement 2))}} <i class="fas fa-sun attuned"
+          {{~#if (or item.system.attuned (eq system.attunement 2))}} <i class="fas fa-sun attuned"
             title={{localize "DND5E.Attuned" }}></i>{{/if}}
         </h4>
 
-        {{#if (or item.isOnCooldown item.data.recharge.value item.hasUses)}}
+        {{#if (or item.isOnCooldown item.system.recharge.value item.hasUses)}}
         <div class="item-detail item-uses" title="{{localize 'DND5E.Uses'}}">
 
           {{#if item.isOnCooldown}}
 
           <a class="item-recharge rollable">{{item.labels.recharge}}</a>
 
-          {{else if item.data.recharge.value}}
+          {{else if item.system.recharge.value}}
 
           {{localize "DND5E.Charged"}}
 
           {{else if item.hasUses}}
 
-          <span><input type="text" value="{{item.data.uses.value}}" placeholder="0" /> / {{item.data.uses.max}}</span>
+          <span><input type="text" value="{{item.system.uses.value}}" placeholder="0" /> / {{item.system.uses.max}}</span>
 
           <small>{{localize "DND5E.Uses"}}</small>
 
@@ -138,7 +138,7 @@
   {{/each}}
 </ol>
 
-{{#with data.attributes.encumbrance}}
+{{#with system.attributes.encumbrance}}
 <div class="encumbrance {{#if encumbered}}encumbered{{/if}}">
   <span class="encumbrance-bar" style="width:{{pct}}%"></span>
   <span class="encumbrance-label">{{value}} / {{max}}</span>

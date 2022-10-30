@@ -3,7 +3,6 @@ import { registerSettings } from './module/settings.js';
 import { preloadTemplates } from './module/preloadTemplates.js';
 import { MODULE_ID, MySettings } from './constants.js';
 //@ts-ignore
-import ActorSheet5eCharacter from '../../systems/dnd5e/module/actor/sheets/character.js';
 
 Handlebars.registerHelper('ogl5e-sheet-path', (relativePath: string) => {
   return `modules/${MODULE_ID}/${relativePath}`;
@@ -27,10 +26,10 @@ Handlebars.registerHelper('ogl5e-sheet-isEmpty', (input: Object | Array<any> | S
   if (input instanceof Set) {
     return input.size < 1;
   }
-  return isObjectEmpty(input);
+  return isEmpty(input);
 });
 
-export class OGL5eCharacterSheet extends ActorSheet5eCharacter {
+export class OGL5eCharacterSheet extends dnd5e.applications.actor.ActorSheet5eCharacter {
   get template() {
     //@ts-ignore
     if (!game.user.isGM && this.actor.limited && !game.settings.get(MODULE_ID, MySettings.expandedLimited)) {
@@ -99,7 +98,7 @@ export class OGL5eCharacterSheet extends ActorSheet5eCharacter {
     const item = this.actor.items.get(itemId);
     const quantity = parseInt(event.target.value);
     event.target.value = quantity;
-    return item.update({ 'data.quantity': quantity });
+    return item.update({ 'system.quantity': quantity });
   }
 
   /**
@@ -121,21 +120,24 @@ export class OGL5eCharacterSheet extends ActorSheet5eCharacter {
       .change(this._onQuantityChange.bind(this));
   }
 
-  getData() {
-    const sheetData = super.getData();
+  async getData() {
+    const sheetData = await super.getData();
 
     // replace classLabels with Subclass + Class list
     try {
       let items = sheetData.items;
       let classList;
       //@ts-ignore
-      if (!foundry.utils.isNewerVersion('1.6.0', game.system.data.version)) {
-        classList = sheetData.features[1].items.map((item) => item.name);
-      } else {
+      if (!foundry.utils.isNewerVersion('1.6.0', game.system.version)) {
+        classList = sheetData.features[1].items.map((item) => {
+            if(item.type === "class") return `${item.name} ${item.system.levels}`;
+            return item.name
+        });
+    } else {
         classList = items
           .filter((item) => item.type === 'class')
           .map((item) => {
-            return `${item.data.subclass} ${item.name} ${item.data.levels}`;
+            return `${item.system.subclass} ${item.name} ${item.system.levels}`;
           });
       }
 
@@ -195,8 +197,8 @@ export class OGL5eCharacterSheet extends ActorSheet5eCharacter {
     // if description is populated and appearance isn't use description as appearance
     try {
       log(false, sheetData);
-      if (!!sheetData.data.details.description?.value && !sheetData.data.details.appearance) {
-        sheetData.data.details.appearance = sheetData.data.details.description.value;
+      if (!!sheetData.system.details.description?.value && !sheetData.system.details.appearance) {
+        sheetData.system.details.appearance = sheetData.system.details.description.value;
       }
     } catch (e) {
       log(true, 'error trying to migrate description to appearance', e);
@@ -208,7 +210,7 @@ export class OGL5eCharacterSheet extends ActorSheet5eCharacter {
     sheetData.settingsShowEquipInventory = game.settings.get(MODULE_ID, MySettings.showEquipOnInventoryList);
 
     // system features
-    const systemVersion = game.system.data.version;
+    const systemVersion = game.system.version;
     //@ts-ignore
     sheetData.systemFeatures = {
       //@ts-ignore
@@ -226,6 +228,41 @@ export class OGL5eCharacterSheet extends ActorSheet5eCharacter {
       //@ts-ignore
       subclasses: !foundry.utils.isNewerVersion('1.6.0', systemVersion),
     };
+
+    sheetData.trait = await TextEditor.enrichHTML(sheetData.system.details.trait, {
+      secrets: this.actor.isOwner,
+      rollData: sheetData.rollData,
+      async: true,
+      relativeTo: this.actor
+    });
+
+    sheetData.ideal = await TextEditor.enrichHTML(sheetData.system.details.ideal, {
+      secrets: this.actor.isOwner,
+      rollData: sheetData.rollData,
+      async: true,
+      relativeTo: this.actor
+    });
+
+    sheetData.bond = await TextEditor.enrichHTML(sheetData.system.details.bond, {
+      secrets: this.actor.isOwner,
+      rollData: sheetData.rollData,
+      async: true,
+      relativeTo: this.actor
+    });
+
+    sheetData.flaw = await TextEditor.enrichHTML(sheetData.system.details.flaw, {
+      secrets: this.actor.isOwner,
+      rollData: sheetData.rollData,
+      async: true,
+      relativeTo: this.actor
+    });
+
+    sheetData.appearance = await TextEditor.enrichHTML(sheetData.system.details.appearance, {
+      secrets: this.actor.isOwner,
+      rollData: sheetData.rollData,
+      async: true,
+      relativeTo: this.actor
+    });
 
     return sheetData;
   }

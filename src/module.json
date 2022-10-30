@@ -1,4 +1,5 @@
 {
+	"id": "5e-ogl-character-sheet",
 	"name": "5e-ogl-character-sheet",
 	"title": "D&D 5e OGL Character Sheet",
 	"description": "A character sheet resembling a classic Pencil and Paper or Roll20 sheet.",
@@ -56,9 +57,23 @@
 			"link": "https://raw.githubusercontent.com/ElfFriend-DnD/foundryvtt-5eOGLCharacterSheet/master/readme-img/biography.png"
 		}
 	],
-	"minimumCoreVersion": "9",
-	"compatibleCoreVersion": "9",
-	"minimumSystemVersion": "1.4.0",
+	"relationships": {
+		"systems": [
+			{
+				"id": "dnd5e",
+				"type": "system",
+				"manifest": "https://raw.githubusercontent.com/foundryvtt/dnd5e/master/system.json",
+				"compatibility": {
+					"minimum": "2.0.0"
+				}
+			}
+		]
+	},
+	"compatibility":{
+		"minimum": 10,
+		"verified": 10,
+		"maximum": 10
+	},
 	"bugs": "https://github.com/ElfFriend-DnD/foundryvtt-5eOGLCharacterSheet/issues",
 	"changelog": "https://github.com/ElfFriend-DnD/foundryvtt-5eOGLCharacterSheet/releases",
 	"download": "https://github.com/ElfFriend-DnD/foundryvtt-5eOGLCharacterSheet/releases/download/v0.14.1/module.zip",

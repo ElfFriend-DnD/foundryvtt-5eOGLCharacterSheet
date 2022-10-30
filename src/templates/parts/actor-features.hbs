@@ -35,7 +35,7 @@
         <h4 title="{{item.name}}">
           {{#if (eq item.type "subclass")}}&rdsh;{{/if}}
           {{item.name}}
-          {{#if item.data.isOriginalClass}} <i class="original-class fas fa-sun"
+          {{#if item.system.isOriginalClass}} <i class="original-class fas fa-sun"
             title="{{localize 'DND5E.ClassOriginal'}}"></i>{{/if}}
         </h4>
         {{else}}
@@ -59,20 +59,20 @@
         {{/if}}
         {{/if}}
 
-        {{#if (or item.isOnCooldown item.data.recharge.value item.hasUses)}}
+        {{#if (or item.isOnCooldown item.system.recharge.value item.hasUses)}}
         <div class="item-detail item-uses" title="{{localize 'DND5E.Uses'}}">
 
           {{#if item.isOnCooldown}}
 
           <a class="item-recharge rollable">{{item.labels.recharge}}</a>
 
-          {{else if item.data.recharge.value}}
+          {{else if item.system.recharge.value}}
 
           {{localize "DND5E.Charged"}}
 
           {{else if item.hasUses}}
 
-          <span><input type="text" value="{{item.data.uses.value}}" placeholder="0" /> / {{item.data.uses.max}}</span>
+          <span><input type="text" value="{{item.system.uses.value}}" placeholder="0" /> / {{item.system.uses.max}}</span>
 
           <small>{{localize "DND5E.Uses"}}</small>
 
@@ -84,7 +84,7 @@
 
       {{#if section.hasActions}}
       <div class="item-detail item-action">
-        {{#if item.data.activation.type }}
+        {{#if item.system.activation.type }}
         {{!-- Use our custom abbreviated labels --}}
         {{item.labels.activationAbbrev}}
         {{/if}}
@@ -94,13 +94,13 @@
       {{#if section.isClass}}
       {{#unless @root/systemFeatures.subclasses}}
       <div class="item-detail player-class">
-        {{item.data.subclass}}
+        {{item.system.subclass}}
       </div>
       {{/unless}}
       {{#unless @root/systemFeatures.levelDropdown}}
       {{#if (eq item.type "class")}}
       <div class="item-detail item-action">
-        Level {{item.data.levels}}
+        Level {{item.system.levels}}
       </div>
       {{/if}}
       {{/unless}}

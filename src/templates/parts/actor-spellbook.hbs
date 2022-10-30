@@ -1,14 +1,14 @@
 <div class="spellcasting-ability">
   <div>
     <label>{{localize "DND5E.SpellDC"}} </label>
-    <span>{{data.attributes.spelldc}}</span>
+    <span>{{system.attributes.spelldc}}</span>
   </div>
 
   <div>
     <label>{{localize "DND5E.ItemTypeSpell"}} {{localize "DND5E.Attack"}}</label>
     <span>
-      {{#with (lookup data.abilities data.attributes.spellcasting)}}
-      {{numberFormat (ogl5e-sheet-add mod ../data.attributes.prof) decimals=0 sign=true}}
+      {{#with (lookup system.abilities system.attributes.spellcasting)}}
+      {{numberFormat (ogl5e-sheet-add mod ../system.attributes.prof) decimals=0 sign=true}}
       {{/with}}
     </span>
   </div>
@@ -16,15 +16,15 @@
   <div>
     {{#if isNPC}}
     <label>{{localize "DND5E.Level"}}</label>
-    <input class="spellcasting-level" type="text" name="data.details.spellLevel" value="{{data.details.spellLevel}}"
+    <input class="spellcasting-level" type="text" name="system.details.spellLevel" value="{{system.details.spellLevel}}"
       data-dtype="Number" placeholder="0" />
     {{else}}
     <label>{{localize "DND5E.SpellAbility"}}</label>
     {{/if}}
-    <select name="data.attributes.spellcasting" data-type="String">
-      {{#select data.attributes.spellcasting}}
+    <select name="system.attributes.spellcasting" data-type="String">
+      {{#select system.attributes.spellcasting}}
       <option value="">{{localize "DND5E.None"}}</option>
-      {{#each data.abilities as |abl a|}}
+      {{#each system.abilities as |abl a|}}
       <option value="{{a}}">{{abl.label}}</option>
       {{/each}}
       {{/select}}
@@ -69,7 +69,7 @@
     {{#if section.usesSlots}}
     <div class="spell-slots">
       {{#if section.usesSlots}}
-      <input type="text" name="data.spells.{{section.prop}}.value" value="{{section.uses}}" placeholder="0"
+      <input type="text" name="system.spells.{{section.prop}}.value" value="{{section.uses}}" placeholder="0"
         data-dtype="Number" />
       <span class="sep"> / </span>
       <span class="spell-max" data-level="{{section.prop}}" data-slots="{{section.slots}}">
@@ -106,24 +106,15 @@
         <div class="item-image" tabindex="0" role="button" aria-label="{{item.name}}"
           style="background-image: url({{item.img}})"></div>
         <h4>{{item.name}}</h4>
-        {{#if item.data.uses.per }}
-        <div class="item-detail spell-uses">Uses {{item.data.uses.value}} / {{item.data.uses.max}}</div>
+        {{#if item.system.uses.per }}
+        <div class="item-detail spell-uses">Uses {{item.system.uses.value}} / {{item.system.uses.max}}</div>
         {{/if}}
       </div>
 
       <div class="spell-comps">
-        {{#if @root/systemFeatures.componentLabels}}
-
         {{#each labels.components.all}}
         <span class="spell-component{{#if tag}} tag{{/if}}">{{abbr}}</span>
         {{/each}}
-        {{else}}
-
-        {{#each labels.components}}
-        <span class="spell-component {{this}}">{{this}}</span>
-        {{/each}}
-
-        {{/if}}
       </div>
 
       <div class="spell-action">{{labels.activation}}</div>
